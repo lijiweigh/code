@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+		/*
+			多个元素同时占满一个元素，要想让每一个元素占同样大小时，解决方法：
+			没有边框时，直接设置每个元素百分比即可
+			有边框时，为每一个元素设置  margin 为 -1
+			
+
+		*/
+
+		/**{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 1000px;
+            margin: 30px auto;
+            background-color: yellowgreen;
+            height: 420px;
+        }
+        .box li{
+            width: 33.333333333%;
+            height: 200px;
+            float: left;
+            background-color: pink;
+            border: solid 1px #666;
+            margin: -1px;
+        }
+*/
+		
+		/*
+			在一个元素中，有多个元素，每个元素之间有一定空隙，为此为每一个元素设置相同的  margin-right
+			问题：最右边的一个会多出 margin-right 的空隙
+			解决办法：
+			1.为每一个最右边的元素设置 margin-right 为0
+			2.利用 CSS3 的 nth-child() 为每一行的最后一个元素设置margin-right 为0
+			3.用一个没有宽度的div包裹住，并为这个div设置父级元素的宽度加上该空隙的宽度
+			4.用一个没有宽度的div包裹住，并为这个div设置 该空隙的负值的 margin-right 原理：盒模型：
+
+			 元素实际所占位置（大小）：
+                有宽度的元素：w/h + p + b + m 
+                没有宽度元素：盒模型永远保持和父级相同的大小
+                    内容宽度=父级的宽度 -p -b -m
+            元素实际宽高：
+                w/h + p + b
+		*/
+
+		/*.clearfix:after,.clearfix:before{content: '';display: table;}.clearfix:after{clear: both;}.clearfix{*zoom:1;}
+        .box{
+            width: 705px;
+            margin: 30px auto;
+            background-color: lavenderblush;
+        }
+        .item{
+            width: 165px;
+            height: 96px;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            background-color: pink;
+        }
+        
+        .box_cont{
+            width: 720px;
+            margin-right: -15px;
+        }*/
+		
+		/*
+			让div中的 inline/inline-block 元素垂直居中的方法：
+			在div中加一个 i 标签，宽度为0，高度100%，设置vertical-align 为 middle，使他成为参照物，其他元素也设置vertical-align 为 middle 即可
+		*/
+		.box{
+			width: 400px;
+			height: 200px;
+			background-color: yellow;
+
+		}
+
+		.box strong,.box em{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.box strong{
+			background-color: red;
+			
+		}
+		.box em{
+			background-color: green;
+			
+		}
+		.box img{
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.box i{
+			height: 100%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="box">
+		<strong>strong</strong>
+		<em>ememm</em>
+		<img src="tuzi.png" alt="">
+		<i></i>
+	</div>
+
+
+</body>
+</html>

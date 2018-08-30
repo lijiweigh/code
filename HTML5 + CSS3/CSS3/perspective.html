@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>perspective</title>
+	<style type="text/css">
+		body{
+			perspective: 200px;
+			/*景深 */
+			 /*
+                景深：
+                    值越小 代表的是我们离物体越近
+                        一般推荐大家使用 500~800
+                        开启3D必须
+            */
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: orange;
+			transition: .5s;
+			transform-style: preserve-3d;
+			 /*
+                flat | preserve-3d
+                设置该元素在2d平面 | 3d空间
+            */
+		}
+		.box:hover{
+			transform: translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

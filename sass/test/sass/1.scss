@@ -1,0 +1,218 @@
+body{
+	height:300px;
+	width:500px;
+
+}
+
+$class:container;
+.#{class}{
+	color:red;
+	#{class}:none;
+}
+/* 中文注释 */
+//中文注释
+
+.funky{
+	font:20px/24px {
+		weight:bold;
+		family:"微软雅黑";
+	}
+}
+
+$maps:(background:red,color:orange,font-size:20px);
+// $maps : map-merge($maps) => (font-weight:bold);
+
+.m{
+	background:map-get($maps,background);
+	color:map-get($maps,color);
+	font-size:map-get($maps,font-size);
+}
+
+.m2{
+	@extend .m;
+	width:20px;
+}
+
+.parent{
+	width:500px;
+	.firstsub{
+		width:300px;
+		@at-root {
+			.second{
+				width:100px;
+			}
+			.third{
+				height:200px;
+			}
+		}
+	}
+}
+
+@media screen{
+	.box{
+		width:100px;
+		@at-root(without:media all){
+			.box2{
+				width:200px;
+			}
+		}
+
+		@media (min-width:300px){
+			@at-root(without:media){
+				.box3{
+					width:300px;
+				}
+			}
+		}
+	}
+}
+
+// @debug 10em + 20em;
+
+p{
+	font-size: if(2 > 1,10px,20px);
+}
+
+h2{
+	$color:red;
+	@if $color == green{
+		border:1px solid green;
+	}@else if $color == orange{
+		border:1px solid orange;
+	}@else{
+		border:1px solid red;
+	}
+}
+
+.div{
+	@for $i from 1 through 3{
+		item-#{$i}:1px * $i;
+	}
+}
+
+@each $e in Mon Tues Thirth Forth{
+	.#{$e}day{
+		background:url(#{$e}.png);
+	}
+}
+
+@each $fir,$sec in o1 o2,s1 s2{
+	.class{
+		#{$fir}:$sec;
+	}
+}
+
+$n:6;
+
+@while $n > 0{
+	p-#{$n}{
+		font-size:$n * 5px;
+	}
+
+	$n:$n - 1;
+}
+
+@mixin large-text{
+	font:{
+		weight:bold;
+		size:30px;
+		family:"微软雅黑";
+	}
+
+	color:#ccc;
+}
+
+.div{
+	@include large-text;
+}
+
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+.cl{
+	@include clearfix;
+}
+
+@import "2.scss";
+@import "3";
+
+.error{
+	color:red;
+	font-weight:bold;
+}
+
+.serious{
+	@extend .error;
+	font-size:20px;
+}
+
+// a:hover{
+// 	text-decoration:underline;
+// }
+
+// .hoverlink{
+// 	@extend a:hover;
+// }
+
+// a{
+// 	font-size: $size;
+// }
+
+// $size:20px;
+
+.div a%ee{
+	text-decoration:none;
+}
+
+.ul{
+	@extend %ee !optional;
+}
+
+// #context a%extreme {
+//   color: blue;
+//   font-weight: bold;
+//   font-size: 2em;
+// }
+
+// .notice {
+//   @extend %extreme;
+// }
+
+.parent{
+	@at-root .child{
+		font:20px/24px;
+	}
+}
+
+.parent2{
+	@at-root {
+		.child2{
+			font:20px/24px;
+		}
+
+		.child3{
+			color:red;
+		}
+	}
+}
+
+@function fn($n){
+	@if $n == 1{
+		@return 1 * 1px;
+	}@else{
+		@return fn($n - 1) * $n;
+	}
+}
+
+.fn{
+	font-size:fn(5);
+}

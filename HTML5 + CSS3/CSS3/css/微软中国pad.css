@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.banner{
+	overflow: hidden;
+}
+.banner .img{
+	float: left;
+	height: 100%;
+	width: 60%;
+	padding:80px 0 0 20px;
+	box-sizing: border-box;
+	
+}
+.banner .img img{
+	/*height: 100%;*/
+}
+
+.banner .content{
+	float: right;
+	width: 40%;
+	
+	padding:70px 30px 0 0;
+	box-sizing: border-box;
+}
+
+.bannernav{
+	height: 24px;
+	
+	
+	background: #fff;
+	color: #000;
+	padding-left: 12px;
+}
+.but a{
+	width: 15.5%;
+
+}
+
+.changxiao{
+	height: 250px;
+}
+.changxiao .cover:after{
+	
+    border-right-width: 150px;
+    border-bottom-width:250px;
+    
+}
+
+.changxiao .cover h3{
+	font-size: 43px;
+	margin-top: 30px;
+}
+.changxiao .cover p{
+	font-size: 20px;
+}
+
+.rexiao .out{
+	width: 45%;
+	margin: 0;
+	float: left;
+	margin-top: 2%;
+}
+
+.rexiao{
+	padding-left: 4%;
+	margin-bottom: 2%;
+	width: 96%;
+}
+.rexiao .out:nth-child(odd){
+	margin-right: 2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pcshow{
+	display: none;
+}
+#padshow{
+	display: block;
+}

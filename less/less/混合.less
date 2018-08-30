@@ -1,0 +1,248 @@
+.h_css{
+	color: red;
+	background-color: #ccc;
+}
+
+h1{
+	.h_css();
+}
+
+.h_css2(){
+	color: orange;
+	background-color: #666;
+}
+
+h2{
+	.h_css2();
+	box-sizing: border-box;
+}
+
+.mixin_hover{
+	&:hover{
+		border:5px solid yellow;
+
+	}
+}
+
+h2{
+	.mixin_hover();
+}
+
+.hover_args(@color){
+	&:hover{
+		border:3px solid @color;
+	}
+}
+
+.box{
+	.hover_args(blue);
+}
+
+.hover_you(@width:5px){
+	&:hover{
+		border:@width solid green;
+	}
+}
+
+.box2{
+	.hover_you();
+}
+
+.mixin(@color){
+	color-1:@color;
+}
+
+.mixin(@color;@padding:2){
+	color-2:@color;
+	padding-2:@padding;
+}
+
+.mixin(@color;@padding:3;@margin){
+	color-3:@color;
+	padding-3:@padding;
+	margin-3:@margin;
+}
+
+.mixClss{
+	.mixin(red);
+}
+
+.mix_pipei(all;@w:5px){
+	border-radius: @w;
+}
+
+.mix_pipei(t_l;@w:6px){
+	border-top-left-radius: @w;
+}
+
+.class{
+	/*.mix_pipei(all);*/
+	.mix_pipei(t_l);
+}
+
+.average(@x;@y){
+	font-size:(@x+@y);
+}
+
+p{
+	.average(10px;20px);
+}
+
+h1,h2{
+	&:hover{
+		color:#ccc;
+	}
+}
+
+.box2{
+	h1&{
+		font-size: 25px;
+	}
+}
+
+.box2{
+	h1{
+		background-color: #999;
+	}
+}
+
+.a1{
+	.a2{
+		.a3&{
+			color: red;
+		}
+	}
+}
+
+.b1,.b2 ,.b3{
+	&&{
+		border:none;
+	}
+}
+
+.b1 .b2 .b3{
+	&&{
+		border:none;
+	}
+}
+
+.a{
+	font-size: 20 + 20px;
+	 color: #ccc + 20 + rgb(1,3,5);
+}
+
+/*import*/
+
+/*@import "../css/1.css";*/
+/*.im{
+	font-size: @new;
+}*/
+
+/*@import (reference) "1.less";
+.im{
+	font-size: @new;
+	.newClass();
+}*/
+
+/*@import (less) "1.less";
+.im{
+	font-size: @new;
+	.newClass();
+}
+*/
+
+.mixinnew(@aa){
+	color: @aa;
+}
+
+.mixinnew (@aa) when (lightness(@aa) >= 50%){
+	background-color: white;
+}
+
+.mixinnew (@aa) when (lightness(@aa) < 50%){
+	background-color: black;
+}
+
+
+.c1{
+
+	.mixinnew(#555);
+}
+
+
+.loop(@a) when(@a > 0){
+	.loop(@a - 1);
+	width: @a * 10px;
+}
+
+.l{
+	.loop(5);
+}
+
+.hebing(){
+	box-shadow+: inset 0 0 10px #ccc;
+}
+
+.h{
+	box-shadow+: 0 0 20px #555;
+	.hebing();
+}
+
+.h2{
+	background+:#fff;
+	background+_:no-repeat;
+	background+:center;
+	background+_:url();
+}
+
+.e{
+	width: escape("100px=100px");
+}
+
+/*Div{ filter: ~"ms:alwaysHasItsOwnSyntax.For.Stuff()"; }
+
+Div{ filter: "ms:alwaysHasItsOwnSyntax.For.Stuff()"; }*/
+
+.r{
+	font-family: replace("weiruanyahei","weiruan","wr");
+}
+
+.f{
+	font-family: %("%a %a",microsoft,yahei);
+}
+
+/*p{
+	color: argb(1,1,1,1)
+}*/
+
+.ar(@color:#ccc;@solid:solid){
+	border:1px @arguments;
+}
+
+.aa{
+	.ar();
+}
+
+.aver(@x;@y){
+	@aver:(@x + @y)/2;
+	@he:@x + @y;
+}
+
+.avera{
+	.aver(20px;30px);
+	width:@aver;
+	height: @he;
+}
+
+/*@import "1.less";*/
+
+/*.new{
+	.newClass();
+}
+*/
+
+@import (inline) "1.less";
+
+.n{
+	/*font-size: @new;*/
+}

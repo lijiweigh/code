@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>鼠标绘制div</title>
+	<style type="text/css">
+		body{
+			height: 2000px;
+			width: 2000px;
+		}
+		.out{
+			width: 600px;
+			height: 600px;	
+			cursor: crosshair;
+		}
+		div{
+			position: absolute;
+			border: 2px solid orange;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var out = document.getElementById("out");
+			out.style.top = 50 + "px";
+			out.style.left = ( document.documentElement.offsetWidth - out.offsetWidth )/2 + "px"; 
+			// alert(document.documentElement.offsetWidth)
+
+			var bordertop = out.offsetTop;
+			var borderleft = out.offsetLeft;
+			var borderright = borderleft + out.offsetWidth;
+			var borderbottom = bordertop + out.offsetHeight;
+
+			console.log(borderleft);
+
+			out.onmousedown = function(ev){
+				var ev = ev || event;
+
+				if(out.setCapture){
+					out.setCapture();
+				}
+
+				var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+				var scrollleft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+				var left = ev.clientX - out.offsetLeft + scrollleft;
+				var top = ev.clientY - out.offsetTop + scrolltop;
+				var firstx = ev.clientX + scrollleft;
+				var firsty = ev.clientY + scrolltop;
+
+				console.log(scrolltop);
+				console.log(scrollleft);
+
+				var newdiv = document.createElement("div");
+				newdiv.style.left = left + "px";
+				newdiv.style.top = top + "px";
+				out.appendChild(newdiv);
+
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+
+					var x = ev.clientX + scrollleft > borderright ? borderright -  6 : ev.clientX + scrollleft;
+					var y = ev.clientY + scrolltop > borderbottom ? borderbottom -  6 : ev.clientY + scrolltop;
+
+					var width = Math.abs(x - left - out.offsetLeft);
+					var height = Math.abs(y - top - out.offsetTop);
+					newdiv.style.width = width  + "px";
+					newdiv.style.height = height + "px";
+
+					console.log("firstx = " + firstx);
+					console.log("x = " + x);
+
+					if(x < firstx){
+						if(x < borderleft){
+							newdiv.style.left = 0 - 2 + "px";
+						}else{
+							newdiv.style.left = left - width + "px";
+						}
+					}
+
+					if(y < firsty){
+						if(y < bordertop){
+							newdiv.style.top = 0 - 2 + "px";
+						}else{
+							newdiv.style.top = top - height + "px";
+						}
+						
+					}
+
+					// if(width > borderright - left -2){
+					// 	newdiv.style.width = borderright - left -2 + "px";
+					// }else{
+					// 	newdiv.style.width = width + "px";
+					// }
+
+					// if(height > borderbottom - top - 2){
+					// 	newdiv.style.height = borderbottom - top -2 + "px";
+					// }else{
+					// 	newdiv.style.height = height + "px";
+					// }
+
+					// console.log(width);
+					// console.log(borderright - left -2);
+
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+				}
+
+				if(out.releaseCapture){
+					out.releaseCapture();
+				}
+				return false;
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="out" id="out"></div>
+
+</body>
+</html>

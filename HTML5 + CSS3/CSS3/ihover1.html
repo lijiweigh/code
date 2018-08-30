@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ihover1</title>
+	<style type="text/css">
+		.hole{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			margin: 50px auto;
+			position: relative;
+			cursor: pointer;
+
+		}
+
+		.hole .img , .hole img{
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+		.img:after{
+			content: "";
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			border: 20px solid;
+			display: block;
+			position: absolute;
+			left: -20px;
+			top: -20px;
+			border-color: orange orange skyblue skyblue;
+			transform: rotate(90deg);
+			transition: 2s;
+		}
+		.text,.text2{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition: 2s;
+		}
+		.text{
+			background: #000;
+			opacity: 0;
+			z-index: 2;
+		}
+		.text2{
+			line-height: 200px;
+			text-align: center;
+			color: #fff;
+			font-size: 20px;
+			/*display: none;*/
+			visibility: hidden;
+			z-index: 2;
+			opacity: 0;
+		}
+		.hole:hover .text2{
+			/*display: block;*/
+			visibility: visible; 
+			opacity: 1;
+		}
+		.hole:hover .text{
+			opacity: .4;
+		}
+		.hole:hover .img:after{
+			transform: rotate(270deg);
+		}
+	</style>
+</head>
+<body>	
+
+	<div class="hole">
+		<div class="img"><img src="img/tuzi.png"></div>
+		<div class="text"></div>
+		<div class="text2">HELLO</div>
+	</div>
+
+</body>
+</html>

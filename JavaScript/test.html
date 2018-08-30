@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<style type="text/css">
+		body{
+			position: relative;
+		}
+		div{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+			left: 0;
+		}
+
+
+	</style>
+
+	<script src="utils.js"></script>
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			var odiv = document.getElementsByTagName("div")[0];
+
+			// alert(odiv.currentStyle.left);
+
+			// odiv.onmouseover = function(){
+			// 	console.log( getStyle(odiv,"opacity") );
+			// 	move(odiv,{width:200,height:200,opacity:0.2},false,function(){});
+			// }
+
+			// odiv.onmouseout = function(){
+			// 	console.log( getStyle(odiv,"opacity") );
+			// 	move(odiv,{width:100,height:100,opacity:1},false,function(){});
+			// }
+
+			odiv.onclick = function(){
+				console.log( getStyle(odiv,"opacity") );
+				move(odiv,{"left":1000,"opacity":0.2},true,function(){});
+			}
+
+
+		}
+
+
+		// function getStyle(obj,attr){
+
+		// 	return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+
+		// }
+
+		// function move(obj,json,isbuffer,fn){
+
+		// 	clearInterval(obj.timer);
+
+		// 	var speed = 10;
+
+		// 	obj.timer = setInterval(function(){
+
+		// 		for(var attr in json){
+
+		// 			if( getStyle(obj,attr) > json[attr]){
+		// 				speed = -speed;
+		// 			}
+
+		// 			if(attr == "opacity"){
+		// 				speed = speed / 100;
+		// 				obj.style[attr] = getStyle(obj,attr) + speed;
+		// 			}else{
+		// 				obj.style[attr] = getStyle(obj,attr) + speed + "px";
+		// 			}
+
+		// 			if( ( speed > 0 && getStyle(obj,attr) > json[attr] ) || ( speed < 0 && getStyle(obj,attr) < json[attr] ) ){
+		// 				clearInterval(obj.timer);
+		// 				fn&&fn();
+		// 			}
+
+					
+					
+
+		// 		}
+
+		// 	},30);
+
+		// }
+	</script>
+
+</head>
+<body>
+	<div></div>
+
+</body>
+</html>

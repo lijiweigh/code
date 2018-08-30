@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ihover8</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		body{
+			background: orange;
+		}
+
+		div{
+			width: 300px;
+			margin:50px auto;
+			color: #fff;
+			font-size: 30px;
+			cursor: pointer;
+		}
+		div:before{
+			content: "[";
+			display: inline-block;
+			position: relative;
+			left: 0;
+			opacity: 0;
+			transition: .5s;
+		}
+		div:after{
+			content: "]";
+			display: inline-block;
+			position: relative;
+			right: 0;
+			opacity: 0;
+			transition: .5s;
+		}
+		div:hover:before{
+			left: -10px;
+			opacity:1;
+		}
+		div:hover:after{
+			right: -10px;
+			opacity:1;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="left">蚊子蚊子</div>
+	<div class="right">文字文字</div>
+	
+	
+</body>
+</html>

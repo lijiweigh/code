@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/prop-types.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+
+<script type="text/babel">
+
+   class Axios extends React.Component{
+
+       state = {
+           reponame:"",
+           repourl:""
+       }
+
+       componentDidMount(){
+
+           const url = 'https://api.github.com/search/repositories?q=r&sort=stars';
+
+           axios.get(url)
+               .then(response=>{
+                   console.log(response)
+                 const {name,html_url} = response.data.items[0];
+                 this.setState({
+                     reponame:name,
+                     repourl:html_url
+                 })
+               })
+       }
+
+       render(){
+           const {reponame,repourl} = this.state;
+
+           if(reponame){
+                return <h2>most stars repo is <a href={repourl}>{reponame}</a></h2>
+           }else{
+                return <h2>LOADING...</h2>
+           }
+
+       }
+   }
+
+   ReactDOM.render(<Axios/>,document.getElementById("box"))
+
+</script>
+</body>
+</html>

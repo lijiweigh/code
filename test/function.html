@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>function</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+	
+	function factorial(num){
+		if(num > 1){
+			return num * arguments.callee(num - 1);
+		}else{
+			return 1;
+		}
+	}
+
+	// alert(factorial(15));
+
+	function sayColor(){
+		alert(this.color);
+	}
+
+	var color = "red";
+	// sayColor();
+
+	var o = {"color" : "blue"};
+	o.sayColor = sayColor;
+	// o.sayColor();
+
+	function outer(){
+		inner();
+	}
+
+	function inner(){
+		alert(arguments.callee.caller);
+	}
+
+	// outer();
+
+	function sum(num1,num2){
+		return sum1 + sum2;
+	}
+
+	//函数的形参的个数
+	// alert(sayColor.length);
+	// alert(sum.length);
+
+	// sayColor.call(o);
+	// sayColor.apply(o);
+
+	//返回一个函数的拷贝，该函数的this指向bind的第一个参数，第一个参数后可以接多个参数 args1 args2...
+	var sayColor2 = sayColor.bind(o);
+
+	sayColor2();
+	
+</script>
+</body>
+</html>

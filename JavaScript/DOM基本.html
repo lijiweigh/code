@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dom基本</title>
+
+	<script type="text/javascript">
+		window.onload =function(){
+			var oul = document.getElementById("ul1");
+
+			// alert(oul.childNodes.length);
+
+			// alert(oul.nodeType);
+			// alert(oul.attributes.length);
+
+			// for(var i=0;i<oul.attributes.length;i++){
+			// 	alert(oul.attributes[i].value);
+			// }
+			// alert(oul.children);
+
+			// for(var i = 0;i<oul.children.length;i++){
+			// 	oul.children[i].style.background = "red";
+			// }
+
+			// console.log(oul.firstChild.nodeType);
+			// console.log(oul.firstElementChild.nodeType);
+			// console.log(oul.lastChild.innerHTML);
+			// console.log(oul.lastElementChild.innerHTML);
+			// console.log(oul.firstElementChild.nextSibling.innerHTML);
+			// console.log(oul.firstElementChild.nextElementSibling.innerHTML);
+			// console.log(oul.lastElementChild.previousSibling.innerHTML);
+			// console.log(oul.lastElementChild.previousElementSibling.innerHTML);
+
+			// console.log(oul.firstElementChild.parentNode);
+
+			// console.log(oul.firstElementChild.offsetParent);
+			// console.log(oul.firstElementChild.offsetLeft);
+
+
+			// console.log(oul.getAttribute("id"));
+			// console.log(oul.setAttribute("name","ul1"));
+			// console.log(oul.removeAttribute("name"));
+
+			var oli = oul.firstElementChild;
+			var obtn = document.createElement("button");
+			obtn.innerHTML = "删除";
+
+			obtn.onclick = function(){
+				oul.removeChild(this.parentNode);
+			}
+
+			oli.appendChild(obtn);
+
+			var obtn2 = document.createElement("button");
+			obtn2.innerHTML = "全部删除";
+
+			obtn2.onclick = function(){
+				var attr = oul.children;
+				console.log(attr.length);
+				var len = attr.length;
+				for(var i=0;i<len;i++){
+					oul.removeChild(attr[0]);
+					console.log(i);
+				}
+			}
+
+			oul.insertBefore(obtn2,oli);
+
+			// alert(oul.children.length);
+
+
+			var rep = document.createElement("button");
+			rep.innerHTML = "替换";
+			rep.onclick = function(){
+				var newnode = document.createElement("li");
+				newnode.innerHTML = "被替换的";
+				oul.replaceChild(newnode,oul.children[oul.children.length-1]);
+			}
+			oul.children[oul.children.length-1].appendChild(rep);
+			// alert(oul.children.length);
+		}
+	</script>
+
+
+
+</head>
+<body>
+
+	<ul id="ul1" style="border:1px solid red;list-style:none;">
+		<li>11111</li>
+		<li>22222</li>
+		<li>33333</li>
+		<li>44444</li>
+		<li>55555</li>
+	</ul>
+
+</body>
+</html>

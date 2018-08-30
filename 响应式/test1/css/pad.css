@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+.header ul{
+	display: block;
+	position: static;
+	float: right;
+	width: auto;
+}
+.header ul li{
+	background-color: transparent;
+	width: auto;
+	float: left;
+	padding: 0;
+	margin-left: 40px;
+}
+
+.header ul a{	
+	font-size: 15px;
+	color:#a8b9c0;
+	line-height: 44px;
+}
+
+.header ul a.now{
+	color: #02b7b2;
+}
+
+.header .menu{
+	display: none;
+}
+
+/*good_at*/
+
+.good_at .module{
+	padding-top: 130px;	
+	/*background-color: red;*/
+	overflow: hidden;
+}
+
+.good_at .wrap{
+	/*margin:0 -1.5%;*/
+	margin-right: -3.33333333333%;
+	/*margin-right: -10%;*/
+
+}
+
+.good_at .item{
+	margin-bottom: 115px;
+	float: left;
+	width: 30%;
+	/*margin:0 1.5%;*/
+	margin-right: 3.33333333333%;
+}
+
+
+
+/*good_at end*/

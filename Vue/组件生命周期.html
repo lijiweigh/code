@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" >
+        <life  v-bind:isShow='iShow' @stopshow='stopF()'>
+
+        </life>
+
+        <!-- <div>
+            <button @click='stopF'>stop</button>    
+            <h2 v-show='iShow'>some text</h2>
+        </div> -->
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        
+        Vue.component('life',{
+            props: ['isshow'],
+            template: `
+            <div>
+                <button @click='$emit("stopshow")'>stop</button>    
+                <h2 v-show='isshow'>some text</h2>
+            </div>
+            `
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                iShow: true
+            },
+            methods: {
+                stopF() {
+                    clearInterval(this.intervalId );
+                }
+            },
+            mounted() {
+                this.intervalId = setInterval(() => {
+                    console.log('11111111111');
+                    this.iShow = !this.iShow;
+                },1000)
+            },
+        })
+
+    </script>
+</body>
+</html>

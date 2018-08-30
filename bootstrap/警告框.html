@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<title>警告框</title>
+
+	<style type="text/css">
+		body{
+			padding: 100px;
+			height: 2000px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="alert alert-success">some text should be here</div>
+	<div class="alert alert-danger">some text should be here</div>
+	<div class="alert alert-warning">some text should be here</div>
+	<div class="alert alert-info">some text should be here</div>
+
+	<div class="alert alert-warning alert-dismissible">
+		<button type="button" class="close">
+			<span>&times;</span>
+		</button>
+		some text should be here
+	</div>
+
+	<div class="alert alert-warning">
+		some text and a <a href="#" class="alert-link">link</a> should be here
+	</div>
+
+</body>
+</html>

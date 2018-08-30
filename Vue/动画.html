@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+       
+       .myfade-enter-active,.myfade-leave-active{
+            transition: 3s;
+        }
+       .myfade-enter{
+            opacity: 0;
+           
+        } 
+        /* .myfade-enter-to{
+            background: green;
+        }  */
+       .myfade-leave-to{
+            opacity: 0;
+          
+        }
+ 
+        .myanimation-enter-active{
+            animation: myanimate 1s;
+        }
+
+    
+        .myanimation-leave-active{
+            animation: myanimate 0.8s reverse;
+        }
+
+        @keyframes myanimate{
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+ 
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <button @click='isshow=!isshow'>toggle</button><br/>
+        <transition name='myfade'>
+            <span v-show="isshow" >some text</span>
+        </transition>
+    </div>
+
+    <div id="app3">
+        <button @click='isshow = !isshow'>toggle</button><br/>
+        <transition name='myanimation'>
+            <p v-if='isshow' style="display: inline-block">some text</p>
+        </transition>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        new Vue({
+            el: '#app3',
+            data: {
+                isshow: true
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                isshow: true
+            }
+        })
+
+    </script>
+</body>
+</html>

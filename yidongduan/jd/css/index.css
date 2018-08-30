@@ -1,0 +1,314 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.ic{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*search*/
+.warp{
+	max-width: 640px;
+	margin: 0 auto;
+	background-color: #eee;
+	height: 2000px;
+}
+.top{
+	/*width: 100%;
+	height: 50px;*/
+	position: relative;
+}
+.search{
+	height: 50px;
+	width: 100%;
+	position: relative;
+	background-color: rgba(255,0,0,0); 
+	line-height: 50px;
+	z-index: 999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+}
+.search_box{
+	
+	height: 30px;
+	
+	margin-top: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.search_box div{
+	width: 100%;
+	height: 100%;
+}
+
+.search input{
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding-left: 50px;
+	padding-right: 2em;
+	border-radius: 15px;
+	background-color: #fff;
+	color: #aaa;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.search a{
+	color: #fff;
+	display: inline-block;
+	width: 30px;
+	text-align: center;	
+	position: absolute;
+	font-size: 20px;
+
+
+}
+.search_menu{
+	
+	left: 0px;
+}
+
+.search_msg{
+	
+	right:0px;
+	top: 0;
+}
+
+.lunbo{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.lunbo ul{
+	width: 600%;
+
+}
+
+.lunbo li{
+	float: left;
+	/*width: 16.66666666666666%;*/
+}
+
+.lunbo img{
+	width:100%;
+}
+
+.lunbo_point{
+	position: absolute;
+	left: 50%;
+	margin-left: -60px;
+	bottom: 10px;
+}
+
+.lunbo_point .active{
+	background-color: #fff;
+}
+
+.lunbo_point a{
+	float: left;
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 4px;
+	border:1px solid #fff;
+	margin: 0 5px;
+}
+
+.banner{
+	position: relative;
+	bottom: 5px;
+}
+
+.banner img{
+	display: block;
+	width: 100%;
+}
+
+/*nav*/
+
+.nav{
+	/*width: 100%;*/
+	background-color: #fff;
+	padding-bottom: 15px;
+}
+.nav a{
+	display: inline-block;
+	float: left;
+	width: 20%;
+	text-align: center;
+	margin-top: 15px;
+	color: #999;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.nav a img{
+	margin: 0 auto;
+	display: block;
+	width: 60%;
+}
+
+/*news*/
+.news{
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	margin: 0 10px;
+	border-radius: 5px;
+	background-color: #fff;
+	padding: 0 5px;
+}
+
+.news img{
+	height: 16px;
+	margin-top: 7px;
+}
+
+.news a,.news p span{
+	font-size: 12px;
+}
+
+.news ul{
+	/*margin-top: 7px;*/
+	margin-left: 5px;
+	height: 100%;
+}
+
+.news ul li,.news a,.news p span{
+	height: 100%;
+	line-height:30px;
+}
+
+.news > a{
+	color: #999;
+}
+
+.fuli{
+	margin-top: 10px;
+}
+
+.fuli img{
+	width: 100%;
+}
+
+.miaosha_tit{
+	height: 35px;
+	line-height: 35px;
+	background-color: #fff;
+}
+.miaosha_tit .text{
+	width: 68%;
+}
+
+.miaosha_tit a{
+	display: block;
+	height: 100%;
+	/*line-height: 35px;*/
+	/*vertical-align: center;*/
+}
+
+.miaosha_tit i{
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.miaosha_tit strong,.miaosha_tit span{
+	/*height: 100%;
+	line-height: 35px;
+	display: inline-block;*/
+	vertical-align: middle;
+}
+
+.miaosha_tit span{
+	padding: 0 5px;
+	border:1px solid #ccc;
+	font-size: 10px;
+}
+
+.miaosha_tit .jd{
+	color: red;
+	font-size: 20px;
+	height: 100%;	
+	margin-left: 5px;
+}
+
+.miaosha_tit .time{
+	color: #333;
+	font-size: 12px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.miaosha_tit .link{
+	font-size: 10px;
+	margin-right: 20px;
+	position: relative;
+}
+
+.miaosha_tit .link:after{
+	content: ">";
+	display: block;
+	width:12px;
+	height: 12px;
+	background-color: red;
+	border-radius: 6px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	right: -15px;
+	top: 50%;
+	margin-top: -6px;
+}
+
+.miaosha .content{
+	width: 100%;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.miaosha .content ul{
+	width: 600%;
+	
+}
+
+.miaosha .content ul li{
+	float: left;
+	padding:10px;
+}
+
+.miaosha .content ul li img{
+	width: 125px;
+	/*padding-bottom: 5px;*/
+}
+
+.miaosha .content .price{
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.miaosha .content .price,.miaosha .content .price2{
+	
+	text-align: center;
+}
+
+.miaosha .content .price2{
+	font-size: 12px;
+	color: #999;
+}

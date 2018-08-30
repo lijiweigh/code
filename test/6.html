@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<select name="" id="myselect">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+
+<script type="text/javascript">
+	// console.log( typeof JSON.parse('[{"name":"tom"}]') === "object");
+
+	function fn(){
+
+		var f = ()=>{
+			console.log(this)
+		}
+
+		// f()
+		return f;
+	}
+
+	// fn()();
+
+	// var ff = new fn();
+	// ff()
+
+	var select = document.getElementById("myselect")
+
+	select.onchange = ()=>{
+		console.log(select.value)
+	}
+
+	
+
+</script>
+</body>
+</html>

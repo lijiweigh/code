@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>导航延迟消失</title>
+	<style type="text/css">
+		.nav{
+			width: 1000px;
+			margin: 50px auto 0;
+		}
+		.top{
+			border: 1px solid orange;
+			padding: 5px;
+			background-color: skyblue;
+			
+		}
+		.right{
+			float: right;
+		}
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		a{
+			display: inline-block;
+			text-decoration: none;
+			padding: 0 15px;
+			color: #fff;
+			border-radius: 5px;
+		}
+		.top a:last-child:hover{
+			background-color: orange;
+		}
+		span{
+			color: #fff;
+		}
+		.nav-child{
+			border: 1px solid blue;
+			display: none;
+			width: auto;
+			border-radius: 5px;
+			margin-top: 5px;
+		}
+		.nav-child a,.nav-child span{
+			color: blue;
+		}
+		.nav-child a:hover{
+			text-decoration: underline;
+		}
+		.first{
+			margin-left: 0px;
+		}
+		.two{
+			margin-left: 20px;
+		}
+		.three{
+			margin-left: 80px;
+		}
+		.four{
+			margin-left: 160px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var a1 = document.querySelectorAll(".nav .top > a");
+			var navChild = document.querySelectorAll(".nav-child");
+			var a2 = document.querySelectorAll(".nav-child a");
+			var timer1 = null;
+			var timer2 = null;
+			// alert(navChild[2]);
+
+			// for(var i=0;i<a2.length;i++){
+			// 	a2[i].onmouseover = function(){
+			// 		this.style.textDecoration = "underline";
+			// 	}
+			// }
+
+			for(var i=0;i<a1.length - 1;i++){
+				a1[i].index = i;
+				a1[i].onmouseover = function(){
+					for(var j=0;j<a1.length - 1;j++){
+						a1[j].style.backgroundColor = "transparent";
+					}
+					this.style.backgroundColor = "orange";
+
+					for(var k=0;k<navChild.length;k++){
+						navChild[k].style.display = "none";
+					}
+					navChild[this.index].style.display = "inline-block";
+					// alert(this.index);
+				}
+
+				a1[i].onmouseout = function(){
+					clearTimeout(timer1);
+					clearTimeout(timer2);
+					timer1 = setTimeout(function(){
+						for(var k=0;k<navChild.length;k++){
+							navChild[k].style.display = "none";
+						}
+						// alert(this.index);
+					},1000);
+				}
+
+			}
+
+			for(var i=0;i<navChild.length;i++){
+				navChild[i].onmouseout = function(){
+					clearTimeout(timer1);
+					clearTimeout(timer2);
+					timer2 = setTimeout(function(){
+						for(var k=0;k<navChild.length;k++){
+							navChild[k].style.display = "none";
+						}
+					},1000);
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="nav">
+		<div class="top clearfix">
+			<a href="javascript:;">首页1</a><span>|</span>
+			<a href="javascript:;">首页2</a><span>|</span>
+			<a href="javascript:;">首页3</a><span>|</span>
+			<a href="javascript:;" class="last">首页4</a>
+			<a href="javascript:;" class="right">&gt;&gt;更多</a>
+		</div>
+
+
+		<div class="nav-child first">
+			<a href="javascript:;">学员</a><span>|</span>
+			<a href="javascript:;">学生</a><span>|</span>
+			<a href="javascript:;">老师</a><span>|</span>
+			<a href="javascript:;">其他网站</a>
+		</div>
+		<div class="nav-child two">
+			<a href="javascript:;">学员</a><span>|</span>
+			<a href="javascript:;">学生</a><span>|</span>
+			<a href="javascript:;">老师</a><span>|</span>
+			<a href="javascript:;">其他网站</a>
+		</div>
+		<div class="nav-child three">
+			<a href="javascript:;">学员</a><span>|</span>
+			<a href="javascript:;">学生</a><span>|</span>
+			<a href="javascript:;">老师</a><span>|</span>
+			<a href="javascript:;">其他网站</a>
+		</div>
+		<div class="nav-child four">
+			<a href="javascript:;">学员</a><span>|</span>
+			<a href="javascript:;">学生</a><span>|</span>
+			<a href="javascript:;">老师</a><span>|</span>
+			<a href="javascript:;">其他网站</a>
+		</div>
+
+	</div>
+
+
+	
+</body>
+</html>

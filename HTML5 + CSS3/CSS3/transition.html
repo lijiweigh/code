@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>transition</title>
+	
+	<style type="text/css">
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+			margin: 100px auto;
+
+			transition: all 2s;
+			 /*transition: 哪个属性动 运动在多长时间内完成 延迟时间 运动的类型;*/
+
+            /*transition: width 5s linear, height 2s linear;*/
+            /*transition: all 5s 2s ease;*/
+            /*transition: all 5s ease-in-out;*/
+
+            /*
+                linear			线性过渡(匀速)    跑高速的时候，一直100公里/小时
+                ease			平滑过渡(缓冲)    到达目的之的时候，松开了油门
+                ease-in			由慢到快(加速)    起步，踩油门
+                ease-out		由快到慢(减速)    刹车了
+                ease-in-out		由慢到快再到慢(先加后减 )  起步，遇到s*插队，减速
+
+                steps(数字, start/end)		分步动画(逐帧动画)   新手，起步 熄火 起步....
+                参数2未设定为 end
+
+            */
+
+            /*move(obj,{width:},time)*/
+		}
+
+		.box:hover{
+			width: 500px;
+			height: 500px;
+			opacity: 0.3;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

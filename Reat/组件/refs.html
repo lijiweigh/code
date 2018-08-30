@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+
+<script type="text/babel">
+
+    class Mycomponent extends React.Component{
+        constructor(props){
+            super(props);
+
+            this.handleClick = this.handleClick.bind(this);
+            this.handleBlur = this.handleBlur.bind(this);
+        }
+
+        handleClick(){
+            alert(this.myinput.value);
+        }
+
+        handleBlur(e){
+            alert(e.target.value);
+        }
+
+        render(){
+            return (
+                <div>
+                    <input type="text" ref={input => this.myinput = input}/> {"    "}
+                    <button onClick={this.handleClick}>点击获取</button>{"    "}
+                    <input type="text" placeholder="失去焦点获取内容" onBlur={this.handleBlur} />
+                </div>
+            )
+        }
+
+    }
+
+    ReactDOM.render(<Mycomponent/>,document.getElementById("box"))
+
+</script>
+</body>
+</html>

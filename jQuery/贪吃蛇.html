@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>贪吃蛇</title>
+
+	<style type="text/css">
+		
+		*{
+			margin:0;
+			padding:0;
+
+		}
+
+		.wrap, .box{
+			margin: 10px auto;
+			position: relative;	
+			width: 500px;
+			height: 300px;
+			border: 1px solid #ccc;
+
+		}
+
+		.box{
+			margin: 10px auto;
+			zoom:1;
+		}
+
+		.box:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.move, .eaten,.div1{
+			width:20px;
+			height: 20px;
+			background-color: red;
+			position: absolute;
+			text-align: center;
+			line-height: 20px;
+			color: #fff;
+			border: 1px solid #999;
+			box-sizing: border-box;
+		}
+
+		.div1{
+			background-color: #fff;
+			position: static;
+			float: left;
+		}
+
+		.eaten{
+			background-color: orange;
+		}
+
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			
+
+			$.fn.extend({
+				move : function(){
+
+					var obj = $(this);
+
+					var dir = "";
+					var isPositive = 1;
+					
+					obj.get(0).timer = null;
+					obj.get(0).timer2 = null;
+
+					$(document).on("keydown",function(ev){
+
+						canRun = true;
+
+						switch(ev.keyCode){
+							case 37:dir = "left";isPositive = -1;
+							break;
+							case 38:dir = "top";isPositive = -1;
+							break;
+							case 39:dir = "left";isPositive = 1;
+							break;
+							case 40:dir = "top";isPositive = 1;
+							break;
+							default:return;
+						}
+		
+						clearInterval(obj.get(0).timer);
+
+						
+
+						obj.get(0).timer = setInterval(function(){
+
+							console.log("running");
+
+							var x = parseInt(obj.css("left"));
+							var y = parseInt(obj.css("top"));
+
+							$.move2(obj,dir,isPositive,function(){
+								$.digui(obj.prev(), x,y,dir,isPositive);
+							});
+
+						},moveTime);
+
+						return false;
+
+					});
+
+				}
+			});
+
+			$.extend({
+				move2 : function(obj,dir,isPositive,fn){
+					var now = parseInt(obj.css(dir));
+					var next = isPositive * moveSize + now;
+					var oLeft = 0;
+					var oTop = 0;
+					var is = false;
+
+					if(next < 0 || ((dir == "left") ? next > wrapW - moveSize : next > wrapH - moveSize )){
+						alert("你输了！");
+						
+						clearInterval(obj.get(0).timer);
+						console.log(2);
+						return;
+					}
+
+					if(dir == "left"){
+						oLeft = next;
+						oTop = parseInt(obj.css("top"));
+
+						is = arrP[next/moveSize][parseInt(obj.css("top"))/moveSize];
+					}else{
+						oLeft = parseInt(obj.css("left"));
+						oTop = next;
+						is = arrP[parseInt(obj.css("left"))/moveSize][next/moveSize];
+					}
+
+
+
+					if(is){
+						var isContinue = false;
+						$(".eaten").each(function(i,e){
+
+							if( parseInt($(e).css("left")) == oLeft && parseInt($(e).css("top")) == oTop ){
+
+								isContinue = true;
+
+								if(dir == "left"){
+							
+									arrP[next/moveSize][parseInt(obj.css("top"))/moveSize] = true;
+									arrP[now/moveSize][parseInt(obj.css("top"))/moveSize] = false;
+								}else{
+									
+									arrP[parseInt(obj.css("left"))/moveSize][next/moveSize] = true;
+									arrP[parseInt(obj.css("left"))/moveSize][now/moveSize] = false;
+								}
+
+								
+
+								obj.css(dir, next);
+								$.addDiv();
+								fn();
+
+								
+								var oFirst = $(".wrap").find(".move").eq(0); 
+								$(e).insertBefore(oFirst);
+								$(e).removeClass("eaten");	
+								
+
+								if(dir == "left"){
+									if(isPositive == 1){
+										if(parseInt(oFirst.css("left")) - moveSize < 0){
+											$(e).css("left",parseInt(oFirst.css("left")));
+											$(e).css("top",parseInt(oFirst.css("top")) + moveSize);
+										}else{
+											$(e).css("left",parseInt(oFirst.css("left")) - moveSize);
+											$(e).css("top",parseInt(oFirst.css("top")));
+										}
+										
+
+										arrP[(parseInt(oFirst.css("left")) - moveSize)/moveSize][(parseInt(oFirst.css("top")))/moveSize] = true;
+									}else{
+										if(parseInt(oFirst.css("left")) + moveSize >= wrapW){
+											$(e).css("left",parseInt(oFirst.css("left")));
+											$(e).css("top",parseInt(oFirst.css("top")) + moveSize);
+										}else{
+											$(e).css("left",parseInt(oFirst.css("left")) + moveSize);
+											$(e).css("top",parseInt(oFirst.css("top")));
+										}
+										
+
+										arrP[(parseInt(oFirst.css("left")) + moveSize)/moveSize][(parseInt(oFirst.css("top")))/moveSize] = true;
+									}
+								}else{
+									if(isPositive == 1){
+										if(parseInt(oFirst.css("top")) - moveSize < 0){
+											$(e).css("left",parseInt(oFirst.css("left")) + moveSize);
+											$(e).css("top",parseInt(oFirst.css("top")));
+										}else{
+											$(e).css("left",parseInt(oFirst.css("left")));
+											$(e).css("top",parseInt(oFirst.css("top")) - moveSize);
+										}
+										
+
+										arrP[(parseInt(oFirst.css("left")))/moveSize][(parseInt(oFirst.css("top")) - moveSize)/moveSize] = true;
+									}else{
+
+										if(parseInt(oFirst.css("top")) + moveSize >= wrapH){
+											$(e).css("left",parseInt(oFirst.css("left")) + moveSize);
+											$(e).css("top",parseInt(oFirst.css("top")));
+										}else{
+											$(e).css("left",parseInt(oFirst.css("left")));
+											$(e).css("top",parseInt(oFirst.css("top")) + moveSize);
+										}
+										
+
+										arrP[(parseInt(oFirst.css("left")))/moveSize][(parseInt(oFirst.css("top")) + moveSize)/moveSize] = true;
+									}
+								}
+
+
+								// var isLeft = 0;
+								// var isIsPositive = 0;
+								// $(".move").not(".eaten").each(function(i,e){
+								// 	if($(e).attr("dir") == "left"){
+								// 		isLeft++;
+								// 	}else{
+								// 		isLeft--;
+								// 	}
+
+								// 	if($(e).attr("isPositive") == "1"){
+								// 		isIsPositive++;
+								// 	}else{
+								// 		isIsPositive--;
+								// 	}
+								// });
+
+								// console.log(isLeft + " : " + isIsPositive + " : " + $(".move").not(".eaten").size());
+
+
+								
+
+								// if(isLeft > 0){
+
+								// 	if(isIsPositive > 0){
+								// 		$(e).css("left",parseInt(oFirst.css("left")) - moveSize);
+								//  		$(e).css("top",parseInt(oFirst.css("top")));
+
+								//  		arrP[(parseInt(oFirst.css("left")) - moveSize)/moveSize][(parseInt(oFirst.css("top")))/moveSize] = true;
+								// 	}else{
+								// 		$(e).css("left",parseInt(oFirst.css("left")) + moveSize);
+								// 		$(e).css("top",parseInt(oFirst.css("top")));
+
+								// 		arrP[(parseInt(oFirst.css("left")) + moveSize)/moveSize][(parseInt(oFirst.css("top")))/moveSize] = true;
+								// 	}
+
+								// }else{
+								// 	if(isIsPositive > 0){
+								// 		$(e).css("left",parseInt(oFirst.css("left")));
+								// 		$(e).css("top",parseInt(oFirst.css("top")) - moveSize);
+
+								// 		arrP[(parseInt(oFirst.css("left")))/moveSize][(parseInt(oFirst.css("top")) - moveSize)/moveSize] = true;
+								// 	}else{
+								// 		$(e).css("left",parseInt(oFirst.css("left")));
+								// 		$(e).css("top",parseInt(oFirst.css("top")) + moveSize);
+
+								// 		arrP[(parseInt(oFirst.css("left")))/moveSize][(parseInt(oFirst.css("top")) + moveSize)/moveSize] = true;
+								// 	}
+								// }
+								
+							}
+
+						});
+
+						if(!isContinue){
+							canRun = false;
+							clearInterval(obj.get(0).timer);
+							alert("你输了！");
+							console.log(1);
+						}
+						
+
+					}/*else if(next < 0 || ((dir == "left") ? next > wrapW - moveSize : next > wrapH - moveSize )){
+						alert("你输了！");
+						canRun = false;
+						clearInterval(obj.get(0).timer);
+
+						console.log(2);
+
+					}*/else{
+
+						if(dir == "left"){
+							
+							arrP[next/moveSize][parseInt(obj.css("top"))/moveSize] = true;
+							arrP[now/moveSize][parseInt(obj.css("top"))/moveSize] = false;
+						}else{
+							
+							arrP[parseInt(obj.css("left"))/moveSize][next/moveSize] = true;
+							arrP[parseInt(obj.css("left"))/moveSize][now/moveSize] = false;
+						}
+						
+						obj.css(dir, next);
+						fn();
+						
+					}
+				}
+			});
+
+
+			$.extend({
+
+				digui : function(obj,x,y,dir,isPositive){
+				
+					if(obj.height() ){
+
+						obj.x = parseInt( parseInt(obj.css("left"))/moveSize);
+						obj.y = parseInt( parseInt(obj.css("top"))/moveSize);
+						arrP[obj.x][obj.y] = false;
+
+						
+						$.digui(obj.prev(), parseInt(obj.css("left")),parseInt(obj.css("top")));
+
+						
+						arrP[parseInt(x/moveSize)][parseInt(y/moveSize)] = true;
+
+						obj.css("left",x);
+						obj.css("top",y);
+
+					}
+
+				}	
+
+			});
+
+			$.extend({
+				addDiv : function(){
+
+					var divX = parseInt(Math.random() * xLength);
+					var divY = parseInt(Math.random() * yLength);
+
+					while( arrP[divX][divY] ){
+						divX = parseInt(Math.random() * xLength);
+						divY = parseInt(Math.random() * yLength);
+					}
+
+					arrP[divX][divY] = true;
+
+					var newDiv = $("<div>");
+
+					newDiv.css("left",divX * moveSize);
+					newDiv.css("top",divY * moveSize);
+					newDiv.attr("class","move eaten");
+					newDiv.html($(".move").size());
+
+					$(".wrap").append(newDiv);
+
+				}
+			});
+
+			
+
+			var arrP = [];
+			var arrC = [];
+
+			var moveSize = $(".move").outerHeight();
+			var wrapH = $(".wrap").height();
+			var wrapW = $(".wrap").width();
+			var moveTime = 150;
+			var xLength = parseInt(wrapW/moveSize);
+			var yLength = parseInt(wrapH/moveSize);
+		
+			for(var i=0;i< parseInt(wrapW/moveSize);i++){
+				
+				for(var j=0;j< parseInt(wrapH/moveSize);j++){
+					arrC.push(false);
+				}
+
+				arrP.push(arrC);
+				arrC = [];
+			}
+
+			
+
+			for(var i=0;i<arrP.length;i++){
+				for(var j=0;j<arrP[i].length;j++){
+					$(".box").append($("<div class='div1'></div>"));
+
+				}
+			}
+
+			setInterval(function(){
+				for(var i=0;i<arrP.length;i++){
+					for(var j=0;j<arrP[i].length;j++){
+						if(arrP[i][j]){
+
+							$(".box").find("div").eq( j*xLength +i ).css("background-color","red");
+							console.log(i + " : " + j + " : " + arrP[i][j]);
+
+						}else{
+							$(".box").find("div").eq( j*xLength +i ).css("background-color","#fff");
+						}
+					}
+				}
+			},moveTime);
+
+			// alert(wrapW/moveSize + " " + wrapH/moveSize);
+			
+			// alert($(".box").find(".div1").size());
+
+			$(".move").each(function(i,e){
+
+				$(e).css("left",i * moveSize);
+
+				console.log( $(e).prev().height());
+
+				
+
+			});
+
+			
+
+			$(".move").eq($(".move").size()-1).move();
+			
+			$.addDiv();
+			
+
+
+
+
+
+
+		});
+
+	</script>
+</head>
+<body>
+
+	<div class="wrap">
+		
+		<div class="move">0</div>
+
+	</div>
+
+	<div class="box"></div>
+
+</body>
+</html>

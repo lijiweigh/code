@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>-webkit-box</title>
+
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #eaedf1;
+		}
+		.box{
+			margin: 30px auto;
+			width: 280px;
+			height: 188px;
+			background-color: #fff;
+			display: flex;
+			-webkit-flex-direction: column;
+		}
+		.user{
+			flex: 1;
+			display: flex;
+			-webkit-align-items: center;
+		}
+
+		.user img{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			/*flex: 1;*/
+			margin: 0 20px;
+			
+		}
+
+		
+		
+		.user .details{
+			/*flex: 1;*/
+			
+		}
+
+
+		.list{
+			display: flex;
+			list-style: none;
+			/*flex: 1;*/
+			height: 64px;
+		}
+		.list li{
+			height: 64px;
+			flex: 1;
+			text-align: center;
+			color: #fff;
+		}
+		.list li span{
+			display: block;
+			width: 20px;
+			height: 20px;
+			background-color: #ccc;
+			margin: 10px auto;
+		}
+		.list li:nth-child(1){
+			background-color: red;
+		}
+		.list li:nth-child(2){
+			background-color: skyblue;
+		}
+		.list li:nth-child(3){
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="user">
+			<img src="img/A74.jpg">
+			<div class="details">
+				<h3>user name</h3>
+				<p>details</p>
+			</div>
+		</div>
+		<ul class="list">
+			<li><span></span>12345</li>
+			<li><span></span>22233</li>
+			<li><span></span>67675</li>
+		</ul>
+	</div>
+</body>
+</html>

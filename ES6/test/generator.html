@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>generator</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	function* fn(){
+		console.log("aaaaaaaaaaa")
+		yield 1111111
+		console.log("bbbbbbbbbbbb")
+		yield 22222222222
+		return "Cccccccccccccc"
+	}
+
+	let g = fn()
+
+	for(let item of g){
+		console.log(item)
+	}
+
+	console.log(g.next())
+
+	function* fn2(x){
+		let a = 2 * (yield x)
+		let b = a * (yield a)
+		return b
+	}
+	let g2 = fn2(5)
+	g2.next()
+	g2.next(5)
+	let result = g2.next(9)
+	console.log(result.value)
+
+	function* fn3(){
+		while(true){
+			try{
+				yield console.log("yield")
+				u = u
+				console.log("continue")
+			}catch(e){
+				console.log(e)
+			}
+		}
+	}
+
+	let g3 = fn3()
+	console.log(g3.next())
+	g3.throw(new Error("a"))
+	// g3.next()
+	// g3.throw(new Error("b"))
+
+	let arr = [20,66,[5,8,[7,3],55],78]
+
+	function* fn4(){
+		// yield* 4 // error  yield* 后面必须是有iterator接口的对象
+	}
+
+	fn4().next()
+
+	function* iterTree(tree) {
+	  if (Array.isArray(tree)) {
+	    for(let i=0; i < tree.length; i++) {
+	      yield* iterTree(tree[i]);
+	    }
+	  } else {
+	    yield tree;
+	  }
+	}
+
+	for(let item of iterTree(arr)){
+		console.log(item)
+	}
+
+	function* fn5(){
+		this.a = 1
+		yield this.b = 2
+		yield this.c = 3
+	}
+
+	function F(){
+		return fn5.call(fn5.prototype)
+	}
+
+	let f = new F()
+	console.log(f.next())
+	console.log(f.next())
+	console.log(f.a,f.b,f.c)
+
+
+</script>
+</body>
+</html>

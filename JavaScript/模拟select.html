@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟select</title>
+
+	<style type="text/css">
+		.text{
+			width: 300px;
+			height: 30px;
+			border: 1px orange solid;
+			line-height:30px;
+			text-align: left; 
+			text-indent: 0.5em;
+			-webkit-user-modify:read-write;
+		}
+		.list{
+			width: 300px;
+			border: 1px orange solid;
+			border-top: none;
+			display: none;
+		}
+		.item{
+			height: 30px;
+			line-height:30px;
+			text-align: left; 
+			text-indent: 0.5em;
+			cursor: pointer;
+		}
+		.item:hover{
+			background-color: orange;
+		}
+		.active{
+			background-color: orange;
+		}
+
+	</style>
+
+
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var text = document.getElementById("text");
+			var list = document.getElementById("list");
+			var items = document.querySelectorAll(".item");
+
+
+			for(var i=0;i<items.length;i++){
+				items[i].index = i;
+			}
+
+		
+			// alert(text.innerHTML.length);
+			// alert([1,5,2,6].sort(function(a,b){
+			// 	return a-b;
+			// }));
+
+			text.onclick = function(ev){
+				var ev = ev || event;
+
+				var num = [];
+
+				list.style.display = "block";
+
+				for(var i=0;i<items.length;i++){
+
+					items[i].onclick = function(ev2){
+						var ev2 = ev2 || event;
+						// alert(ev2.shiftKey);
+						if(ev2.shiftKey){
+
+							if(hasclass(this,"active")){
+								for(var i= 0;i<items.length;i++){
+										removeclass(items[i],"active");
+									}
+								text.innerHTML = "";
+							}else{
+								for(var i= 0;i<items.length;i++){
+										removeclass(items[i],"active");
+									}
+								if(num.length>0){
+
+									var min = num.sort(function(a,b){
+										return a - b;
+									})[0];
+
+									num.push(this.index);
+
+									if(this.index > min){
+										var max = this.index;
+
+									}else{
+										var max = min;
+										min = this.index;
+									}
+
+									text.innerHTML = "";
+									var str = [];
+
+									
+
+									for(var i = min;i<=max;i++){
+										addclassname(items[i],"active");
+										str.push(items[i].innerHTML);
+									}
+
+									text.innerHTML =str.toString();
+								}else{
+									addclassname(this,"active");
+									num.push(this.index);
+									text.innerHTML = this.innerHTML;
+								}
+							}
+							
+							
+
+
+
+						}else if(ev2.ctrlKey){
+							if(hasclass(this,"active")){
+								removeclass(this,"active");
+								if(text.innerHTML){
+									var start = text.innerHTML.indexOf(this.innerHTML);
+									var length = this.innerHTML.length;
+									if(start == 0){
+										var str1 = text.innerHTML.substring(0,start);
+										var str2 = text.innerHTML.substring(start + length + 1,text.innerHTML.length);
+									}else{
+										var str1 = text.innerHTML.substring(0,start - 1);
+										var str2 = text.innerHTML.substring(start + length,text.innerHTML.length);
+									}
+									
+									text.innerHTML = str1 + str2;
+								}
+								
+
+							}else{
+								addclassname(this,"active");
+								// text.innerHTML = text.innerHTML.length > 0 ? text.innerHTML + "," +this.innerHTML :  this.innerHTML;
+								if(text.innerHTML.length > 0){
+									text.innerHTML = text.innerHTML + "," +this.innerHTML;
+								}else{
+									text.innerHTML = this.innerHTML;
+								}
+							}
+
+						}else{
+							if(hasclass(this,"active")){
+								for(var i= 0;i<items.length;i++){
+										removeclass(items[i],"active");
+								}
+								text.innerHTML = "";
+							}else{
+								for(var i= 0;i<items.length;i++){
+										removeclass(items[i],"active");
+								}
+								addclassname(this,"active");
+								text.innerHTML = this.innerHTML;
+							}
+						}
+
+
+
+
+						return;
+					}
+				}
+				return;
+
+			}
+
+		}
+
+		function hasclass(obj,attr){
+			if(obj.className){
+				var arr = obj.className.split(" ");
+				for(var i = 0;i<arr.length;i++){
+					if(arr[i] == attr){
+						return true;
+					}
+				}
+				
+			}
+		}
+
+		function addclassname(obj,attr){
+			var hasclass = false;
+			if(obj.className){
+				var arr = obj.className.split(" ");
+				for(var i = 0;i<arr.length;i++){
+					if(arr[i] == attr){
+						hasclass = true;
+						break;
+					}
+				}
+				if(!hasclass){
+					obj.className += " " + attr;
+				}
+			}else{
+				obj.className = attr;
+			}
+
+			
+
+		}
+
+		function removeclass(obj,attr){
+			if(!obj.className){
+
+			}else if(obj.className.indexOf(attr) < 0){
+
+			}else{
+				var arr = obj.className.split(" ");
+				var newclass = [];
+				for(var i = 0;i<arr.length;i++){
+					if(arr[i] != attr){
+						newclass.push(arr[i]);
+					}
+				}
+				obj.className = newclass.toString();
+			}
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<div class="text" id="text"></div>
+	<div class="list" id="list">
+		<div class="item">name</div>
+		<div class="item">sex</div>
+		<div class="item">phone</div>
+		<div class="item">address</div>
+		<div class="item">score</div>
+	</div>
+
+</body>
+</html>

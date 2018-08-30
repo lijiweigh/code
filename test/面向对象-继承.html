@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	// 1 原型链
+	function superType(){
+		this.property = true;
+	}
+
+	superType.prototype.getSuperValue = function(){
+		return this.property;
+	}
+
+	function subType(){
+		this.subProperty = false;
+	}
+
+	subType.prototype = new superType();
+
+	subType.prototype.getSubValue = function(){
+		return this.subProperty;
+	}
+
+	var ins1 = new subType();
+	// alert(ins1.getSubValue());
+	// alert(ins1.getSuperValue());
+
+	// 2 借用构造函数
+	function superType2(name){
+		this.name = name;
+		this.colors = ["red","green","blue"];
+	}
+
+	function subType2(){
+		superType2.call(this);
+		this.age = 20;
+	}
+
+	var ins2 = new subType2();
+
+	// alert(ins2.colors);
+	ins2.colors.push("pink");
+	// alert(ins2.colors);
+
+	var ins22 = new subType2();
+	// alert(ins22.colors);
+
+	// 3 组合继承
+
+	function superType3(name){
+		this.name = name;
+		this.colors = ["red","green","blue"];
+	}
+
+	superType3.prototype.sayName = function(){
+		alert(this.name);
+	}
+
+	function subType3(name,age){
+		//继承属性
+		superType3.call(this,name);
+		this.age = age;
+	}
+
+	//继承方法
+	subType3.prototype = new superType3();
+
+	subType3.prototype.sayAge = function(){
+		alert(this.age);
+	}
+
+	// 4 原形式继承
+	function object(o){
+		function F(){};
+		F.prototype = o;
+		return new F();
+	}
+
+	var person = {
+		"name" : "Tom",
+		"friends" : ["mike","Amy","Jack"]
+	}
+
+	var anotherPerson = object(person);
+	anotherPerson.name = "greg";
+	anotherPerson.friends.push("rob");
+
+	var anotherPerson2 = object(person);
+	anotherPerson2.name = "linda";
+	anotherPerson2.friends.push("barbie");
+
+	// alert(person.friends);
+	// alert(anotherPerson.friends);
+
+	// 5 寄生式继承
+
+	function CreateAnther(original){
+		var clone = object(original);
+		clone.sayHi = function(){
+			alert("hi");
+		}
+
+		return clone;
+	}
+
+	// 6 寄生组合式继承 解决组合继承每次都会调用两次超类型构造函数的问题
+	function inheritPrototype(subType,superType){
+		var prototype = object(superType.prototype);
+		prototype.constructor = subType;
+		subType.prototype = prototype;
+	}
+
+	function superType4(name){
+		this.name = name;
+		this.colors = ["red","green","blue"];
+	}
+
+	superType4.prototype.sayName = function(){
+		alert(this.name);
+	}
+
+	function subType4(name,age){
+		superType4.call(this,name);
+		this.age = age;
+	}
+
+	inheritPrototype(subType4,superType4);
+
+
+	
+
+</script>
+</body>
+</html>

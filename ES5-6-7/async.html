@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	async function fn(){
+		let good = await Promise.resolve("good");
+		console.log(good);
+		// let error = await Promise.reject("error");
+		// console.log(error);
+		let lucky = await Promise.resolve("lucky");
+		console.log(lucky);
+		return 124;
+	}
+
+	fn().then((resolve)=>console.log(resolve)).catch((error)=>console.log(error));
+
+	// console.log([1,2,3].prototype);   undefined
+
+</script>
+</body>
+</html>

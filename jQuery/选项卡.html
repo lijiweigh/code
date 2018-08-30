@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<style type="text/css">
+		
+		.btn{
+			display: inline-block;
+			width: 50px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.btn.active{
+			background: red;
+		}
+
+		.text{
+			height: 200px;
+			width: 200px;
+			border:1px solid orange;
+			display: none;
+		}
+
+		.text.active{
+			display: block;
+		}
+
+	</style>
+
+	<script src="E:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		// window.onload = function(){
+
+		// 	var aSpan = document.getElementsByTagName("span");
+
+		// 	var aDiv = document.getElementsByTagName("div");
+
+		// 	//alert(hasClass(aDiv[0],"texxt"));
+
+		// 	//toggleClass(aDiv[0],"text");
+
+		// 	for(var i=0;i<aSpan.length;i++){
+
+		// 		aSpan[i].index = i;
+
+		// 		aSpan[i].onclick = function(){
+
+		// 			for(var j = 0;j<aSpan.length;j++){
+		// 				removeClass(aSpan[j],"active");
+		// 				removeClass(aDiv[j],"active");
+
+		// 				addeClass(this,"active");
+		// 				addeClass(aDiv[this.index],"active");
+		// 			}
+
+		// 		}
+		// 	}
+
+		// 	function removeClass(obj,name){
+
+		// 		if(hasClass(obj,name)){
+
+		// 			var regExp = /\s+/;
+
+		// 			var allClass = obj.className.split(regExp);
+
+		// 			for(var i=0;i<allClass.length;i++){
+		// 				if(allClass[i] == name){
+		// 					allClass[i] = "";
+		// 				}
+		// 			}
+
+		// 			obj.className = allClass.join(" ");
+
+		// 		}
+
+		// 	}
+
+		// 	function addeClass(obj,name){
+
+		// 		if(hasClass(obj,name)){
+
+					
+		// 		}else{
+		// 			obj.className += " " + name;
+		// 		}
+
+		// 	}
+
+		// 	function toggleClass(obj,name){
+
+		// 		if(hasClass(obj,name)){
+
+		// 			removeClass(obj,name)
+
+		// 		}else{
+		// 			addeClass(obj,name)
+		// 		}
+
+		// 	}
+
+		// 	function hasClass(obj,name){
+
+		// 		var regExp = /\s+/;
+
+		// 		var allClass = obj.className.split(regExp);
+
+		// 		for(var i=0;i<allClass.length;i++){
+
+		// 			if(allClass[i] == name){
+		// 				return true;
+		// 			}
+
+		// 		}
+
+		// 		return false;
+
+
+		// 	}
+
+		// }
+
+
+		$(function(){
+
+			$("span").click(function(){
+
+				$("span").css("background","#fff");
+				$(this).css("background","red");
+
+				$("div").css("display","none");
+				$("div").eq($(this).index()).css("display","block");
+
+			});
+
+
+		});
+
+	</script>
+</head>
+<body>
+
+	<span class="btn active">1</span>
+	<span class="btn">2</span>
+	<span class="btn">3</span>
+
+	<div class="text active">111111111111111</div>
+	<div class="text">222222222222222</div>
+	<div class="text">333333333333333</div>
+
+</body>
+</html>

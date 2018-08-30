@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>网格拖拽</title>
+
+	<style type="text/css">
+		
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+		.clearfix{
+			zoom:1;
+		}
+
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.main{
+			width: 500px;
+			height: 500px;
+			position: relative;
+			margin: 50px auto;
+		}
+
+		.main div{
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			float: left;
+			width: 50px;
+			height: 50px;
+		}
+
+		.move{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+	</style>
+
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var nowX = 0;
+			var nowY = 0;
+			var size = 50;
+			var numX = 0;
+			var numY = 0;
+
+
+			for(var i=0;i<100;i++){
+				$(".main").append($("<div>"));
+			}
+
+			var divArr = $(".main").find("div");
+
+			for(var i=0;i<10;i++){
+
+				for(var j=0;j<9;j++){
+					divArr.eq(j + i*10).css("border-right","none");
+				
+				}
+
+			}
+
+			for(var i=0;i<9;i++){
+
+				for(var j=0;j<10;j++){
+				
+					divArr.eq(j + i*10).css("border-bottom","none");
+				}
+
+			}
+
+			$.fn.extend({
+				moveDiv : function(){
+
+					var disX = 0;
+					var disY = 0;
+
+					var disXP = $(".main").offset().left;
+					var disYP = $(".main").offset().top;
+
+					var This = $(this);
+
+					This.on("mousedown",function(ev){
+
+						disX = ev.pageX - This.offset().left;
+
+						disY = ev.pageY - This.offset().top;
+
+						$(document).on("mousemove",function(ev){
+
+							nowX = ev.pageX - disX - disXP;
+
+							nowY = ev.pageY - disY - disYP;
+
+							This.css("left", nowX );
+
+							This.css("top", nowY );
+						});
+
+						$(document).on("mouseup",function(){
+
+							$(".move").sit();
+
+							$(this).off();
+						});
+
+						return false;
+
+					});
+
+				}
+			});
+
+			$.fn.extend({
+
+				sit : function(){
+
+					numX = parseInt(nowX / size);
+					numY = parseInt(nowY / size);
+					if( (nowX % size) > size/2 ){
+						numX++;
+					}
+
+					if( (nowY % size) > size/2 ){
+						numY++;
+					}
+
+					$(".move").css("left",numX * size);
+					$(".move").css("top",numY * size);
+
+				}
+
+			});
+
+			$(".move").moveDiv();
+
+
+
+
+
+
+
+
+
+		});
+
+	</script>
+</head>
+<body>
+
+	<div class="main clearfix">
+		
+		<span class="move"></span>
+
+	</div>
+
+</body>
+</html>

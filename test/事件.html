@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件</title>
+</head>
+<body>
+
+<button type="button" id="btn">click</button>
+<a href="#" id="alink">aaaaaaaaaa</a>
+
+<input type="text" id="textinput">
+	
+<script type="text/javascript">
+	/*
+	 event属性
+
+	 属性/方法			说明
+	 bubbles			表明事件是否冒泡
+	 cancelable			表明是否可以取消事件的默认行为
+	 currentTarget		其事件处理程序当前正在处理事件的那个元素
+	 defaultPrevented	表示是否调用了preventDefault()
+	 detail				与事件相关的细节信息
+	 eventPhase			调用事件处理程序的阶段：1表示捕获阶段，2表示“处于目标，3表示冒泡阶段
+	 preventDefault() 	取消事件的默认行为，如果cancelable是true，则可以使用			IE <= 8中为 return false;   或 returnValue = false;
+	 stopImmediatePropagation()   取消事件的进一步捕获或冒泡，同时阻止任何事件处理程序被调用
+	 stopPropagation()	取消事件的进一步捕获或冒泡，如果bubbles为true，则可以使用这个方法   IE中为 ev.cancelBubble = true
+	 target    			事件的目标 		IE 中为ev.srcElement
+	 trusted			为true表示事件是浏览器生成的。为false表示事件是由开发人员通过JavaScript创建的
+	 type				被触发的事件的类型
+	 view				与事件关联的抽象视图。等同于发生事件的window对象
+	 */
+
+	 var btn = document.getElementById("btn");
+	 var alink = document.getElementById("alink");
+
+	 // this 始终等于 currentTarget,他们都等于绑定事件的那个元素, 而target表示事件的实际目标，即通触发事件的那个目标
+
+	 // btn.onclick = function(ev){
+	 // 	var ev = ev || window.event;
+	 // 	alert(ev.currentTarget == this);
+	 // 	alert(ev.target == this);
+	 // 	alert(ev.currentTarget == ev.target);
+	 // }
+
+	 // document.body.onclick = function(ev){
+	 // 	var ev = ev || window.event;
+	 // 	alert(ev.currentTarget == document.body);
+	 // 	alert(this == document.body);
+	 // 	alert(ev.target == btn);
+	 // }
+
+	 alink.onclick = function(ev){
+	 	var ev = ev || window.event;
+	 	// ev.preventDefault();
+	 	//ev.returnValue = false;
+	 	// return false;
+	 }
+
+	 var eventUtil = {
+
+	 	addHandler : function(element,type,handler){
+	 		if(element.addEventListener){
+	 			element.addEventListener(type,handler,false);
+	 		}else if(element.attachEvent){
+	 			element.attachEvent("on" + type,handler);
+	 		}else{
+	 			element["on"+type] = handler;
+	 		}
+	 	},
+
+	 	removeHandler : function(element,type,handler){
+	 		if(element.removeEventListener){
+	 			element.removeEventListener(type,handler,false);
+	 		}else if(element.detachEvent){
+	 			element.detachEvent("on" + type,handler);
+	 		}else{
+	 			element["on"+type] = null;
+	 		}
+	 	},
+
+	 	getEvent : function(ev){
+	 		return ev || window.event;
+	 	},
+
+	 	getTarget : function(ev){
+	 		return ev.target || ev.srcElement;
+	 	},
+
+	 	preventDefault : function(ev){
+	 		if(ev.preventDefault){
+	 			ev.preventDefault();
+	 		}else if(typeof ev.returnValue != "undefined"){
+	 			ev.returnValue = false;
+	 		}else{
+	 			return false;
+	 		}
+	 	},
+
+	 	stopPropagation : function(ev){
+	 		if(ev.stopPropagation){
+	 			ev.stopPropagation();
+	 		}else{
+	 			ev.cancelBubble = true;
+	 		}
+	 	},
+
+	 	// 在 onmouseout 和 onmouseover 中有代表相关元素的属性，IE9+ 为relatedTarget IE8及以下，onmouseout为toElement onmouseover 为fromElement
+	 	getRelatedTarget : function(ev){
+	 		if(ev.relatedTarget){
+	 			return ev.relatedTarget;
+	 		}else if(ev.toElement){
+	 			return ev.toElement;
+	 		}else if(ev.fromElement){
+	 			return ev.fromElement;
+	 		}
+	 	}
+
+
+	 };
+
+	
+
+	 /*
+		事件类型
+		1 UI类型
+
+		load		当页面完全加载后再window上触发，在图像加载完毕后在<img>元素上触发，当所有框架加载完毕后再框架集上触发，当嵌入的内容加载完毕是在<object>元素上触发
+		unload 		当页面完全卸载后再window上触发（在页面跳转时），其他类似于load，
+		abort		当用户停止下载过程时，如果嵌入的内容没有加载完，则在<object>元素上触发
+		error		当JavaScript错误时在window上触发，在图像无法加载在<img>元素上触发，当不是所有框架都可以时在框架集上触发，当嵌入的内容无法加载时在<object>元素上触发
+		select  	当用户选择文本框（<input> <textarea>）中的一个或多个字符时触发
+		resize		当窗口或框架的大小变化时在window或框架集上触发
+		scroll		当用户滚动带滚动条的元素中的内容时，在该元素上触发
+
+
+		2 焦点事件
+		blur 		在元素失去焦点时触发，这个事件不冒泡
+		focus		在元素获得焦点时触发，这个事件不冒泡
+		focusin  	在元素获得焦点时触发，这个事件冒泡
+		focusout  	在元素失去焦点时触发，这个事件冒泡
+
+		3 鼠标与滚轮事件
+
+		click 		在用户点击主鼠标按钮或按下回车键时触发
+		dbclick		双击鼠标时触发
+		mousedown	在用户按下了任意鼠标按钮时触发
+		mouseenter	在鼠标光标从元素外部首次移动到元素范围之内时触发。不冒泡。而且在光标移动到后代元素上不会触发
+		mouseleave	在位于元素上方的鼠标光标移动到元素范围之外时触发。不冒泡。而且在光标移动到后代元素上不会触发
+		mousemove	当鼠标指针在元素内部移动时重复触发
+		mouseout	在鼠标位于一个元素上方，然后用户将其移入另一个元素时触发，移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的子元素。
+		mouseover 	在鼠标位于一个元素外部，然后用户将其首次移入另一个元素边界之内时触发
+		除了mouseenter 和mouseleave，所有鼠标事件都会冒泡，也可以取消
+
+		ev.button  0 表示鼠标主键被按下 1表示鼠标中键 2表示鼠标次键被按下   IE8及以下又更复杂的
+
+		鼠标滚轮 onmousewheel 
+		ev.wheelDelta  向上滚一次为120 向下滚动一次为-120
+		火狐： DOMMouseScroll事件  
+		ev.detail	向上滚动一次为-3 向下滚动一次为3
+		
+		4 键盘和文本事件
+
+		keydown 	当用户按下键盘上的任意按键时触发，如果按住不放则重复触发
+		keypress	当用户按下键盘上的字符键时触发， 如果按住不放则重复触发 输入法在英文状态下按下字母键就会触发，中文状态下不触发 按下数字键都会触发
+		keyup		当用户释放键盘上的按键时触发
+
+		5 变动事件
+		DOMSubtreeModified 			在DOM结构中发生任何变化时触发。这个事件在其他任何事件触发后都会触发
+		DOMNodeInserted				在一个节点作为子节点被插入到另一个节点中时触发
+		DOMNodeRemoved				在一个节点从其父节点中被移除时触发
+
+		6 HTML5事件
+		contextmenu			右键菜单
+		beforeunload		在卸载（关闭）页面前触发  IE6，IE7，IE8 中 刷新页面、关闭浏览器之后、页面跳转之后都会执行；IE9 刷新页面 会执行，页面跳转、关闭浏览器不能执行；firefox(包括firefox3.6) 关闭标签之后、页面跳转之后、刷新页面之后能执行，但关闭浏览器不能执行；Safari 刷新页面、页面跳转之后会执行，但关闭浏览器不能执行；Opera、Chrome 任何情况都不执行
+		*/
+		
+		// window.onbeforeunload = function (ev){
+		// 	var ev = ev || window.event;
+		// 	var message = "are you sure?";
+		// 	ev.returnValue = message;
+		// 	return message;
+		// }
+	/*
+		
+		DOMContentLoaded	文档被加载和解析，并且DOM被完全构造，但链接的资源（例如图像，样式表和子框架（subframes））可能尚未被加载。
+		hashchange			URL的参数列表（以及#后面的所有字符串）改变时触发 必须绑定在window	有ev.oldURL 和 ev.newURL 分别保存变化前后的完整URL IE没有这两个属性，只能通过 location来访问
+
+	 */
+
+	 var textinput = document.getElementById("textinput");
+	 textinput.onkeypress = function(){
+	 	console.log(new Date().toLocaleString());
+	 	var ospan = document.createElement("sapn");
+	 	ospan.innerHTML = "LLL";
+	 	document.body.appendChild(ospan);
+	 }
+
+	 document.onDOMSubtreeModified = function(){
+	 	console.log(1);
+	 }
+	 // alert(document.onDOMNodeInserted);
+	 // alert("oninput" in textinput);
+	
+
+</script>
+</body>
+</html>

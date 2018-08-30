@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div class="img" id="imgP"> 
+        
+        <img id="thisimg" :src="imgsrc" alt="">
+          
+      </div>
+
+  <script>
+
+    let thisimg = document.getElementById("thisimg");
+
+    function getPos(obj) {
+		
+      var pos = {left:0, top:0};
+      
+      while (obj) {
+        pos.left += obj.offsetLeft;
+        pos.top += obj.offsetTop;
+        obj = obj.offsetParent;
+      }
+      
+      return pos;
+      
+    }
+
+  console.log(getPos(thisimg))
+  </script>
+</body>
+</html>

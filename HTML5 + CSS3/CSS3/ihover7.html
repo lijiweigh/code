@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ihover7</title>
+	<style type="text/css">
+		.hole{
+			width: 600px;
+			height: 400px;
+			margin:50px auto;
+			background: url(img/tuzi.png) center center /cover no-repeat;
+			position: relative;
+			overflow: hidden;
+			perspective: 600px;
+		}
+
+		.left,.right{
+			width: 600px;
+			height: 400px;
+			position: absolute;
+			background: rgba(0,0,0,.5);
+			transition: .5s;
+			transform: skew(-57deg);
+		}
+		.left{
+			left: -160%;
+		}
+		.right{
+			left: 160%;
+		}
+		.hole:hover .left{
+			left: -50%;
+		}
+		.hole:hover .right{
+			left: 50%;
+
+		}
+		.text{
+			width: 100%;
+			height: 200px;
+			background: orange;
+			position: absolute;
+			top: 100px;
+			transform-style: preserve-3d;
+			transform: rotate(-33deg) rotateX(90deg);
+			transition: .5s .5s;
+		}
+		.hole:hover .text{
+			transform: rotate(0) rotateX(0);
+		}
+	</style>
+</head>
+<body>
+	<div class="hole">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="text"></div>
+	</div>
+</body>
+</html>

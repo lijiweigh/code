@@ -1,0 +1,136 @@
+.h_css {
+  color: red;
+  background-color: #ccc;
+}
+h1 {
+  color: red;
+  background-color: #ccc;
+}
+h2 {
+  color: orange;
+  background-color: #666;
+  box-sizing: border-box;
+}
+.mixin_hover:hover {
+  border: 5px solid yellow;
+}
+h2:hover {
+  border: 5px solid yellow;
+}
+.box:hover {
+  border: 3px solid #0000ff;
+}
+.box2:hover {
+  border: 5px solid #008000;
+}
+.mixClss {
+  color-1: #ff0000;
+  color-2: #ff0000;
+  padding-2: 2;
+}
+.class {
+  /*.mix_pipei(all);*/
+  border-top-left-radius: 6px;
+}
+p {
+  font-size: 30px;
+}
+h1:hover,
+h2:hover {
+  color: #ccc;
+}
+h1.box2 {
+  font-size: 25px;
+}
+.box2 h1 {
+  background-color: #999;
+}
+.a3.a1 .a2 {
+  color: red;
+}
+.b1.b1,
+.b1.b2,
+.b1.b3,
+.b2.b1,
+.b2.b2,
+.b2.b3,
+.b3.b1,
+.b3.b2,
+.b3.b3 {
+  border: none;
+}
+.b1 .b2 .b3.b1 .b2 .b3 {
+  border: none;
+}
+.a {
+  font-size: 40px;
+  color: #e1e3e5;
+}
+/*import*/
+/*@import "../css/1.css";*/
+/*.im{
+	font-size: @new;
+}*/
+/*@import (reference) "1.less";
+.im{
+	font-size: @new;
+	.newClass();
+}*/
+/*@import (less) "1.less";
+.im{
+	font-size: @new;
+	.newClass();
+}
+*/
+.c1 {
+  color: #555555;
+  background-color: black;
+}
+.l {
+  width: 10px;
+  width: 20px;
+  width: 30px;
+  width: 40px;
+  width: 50px;
+}
+.h {
+  box-shadow: 0 0 20px #555, inset 0 0 10px #ccc;
+}
+.h2 {
+  background: #fff no-repeat, center url();
+}
+.e {
+  width: 100px%3D100px;
+}
+/*Div{ filter: ~"ms:alwaysHasItsOwnSyntax.For.Stuff()"; }
+
+Div{ filter: "ms:alwaysHasItsOwnSyntax.For.Stuff()"; }*/
+.r {
+  font-family: "wryahei";
+}
+.f {
+  font-family: "microsoft yahei";
+}
+/*p{
+	color: argb(1,1,1,1)
+}*/
+.aa {
+  border: 1px #cccccc solid;
+}
+.avera {
+  width: 25px;
+  height: 50px;
+}
+/*@import "1.less";*/
+/*.new{
+	.newClass();
+}
+*/
+@new:20px;
+
+.newClass{
+	color: pink;
+}
+.n {
+  /*font-size: @new;*/
+}

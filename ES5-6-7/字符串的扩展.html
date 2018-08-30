@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	// codePointAt()可以正确识别四个字节的字符  charCodeAt()不能
+	let s = "𠮷a";
+	console.log( s.codePointAt(0) );	// 10进制  输出 𠮷 的Unicode码
+	console.log( s.codePointAt(1) );	// 输出 𠮷 的后两个字节的Unicode码
+	console.log( s.codePointAt(2) );	// 输出 a  的Unicode码
+	console.log( s.charCodeAt(0) );
+	console.log( s.codePointAt(0).toString(16) );  // 转换成16进制
+
+	// 为了更好地遍历四个字节的字符 可以用 for of
+	for(let c of s){
+		console.log(c);
+	}
+	// 可以用 codePointAt() 测试字符是否是四个字节
+
+	let isFourByte = (c) => c.codePointAt(0) > 0xffff;
+
+	console.log(isFourByte("𠮷"));
+
+	// fromCodepoint() 作用与codePointAt() 相反
+
+	// at() 方法对应 charAt()  但他能识别四个字节的字符
+	console.log( s.charAt(0) );
+	// console.log( s.at(0) );   //只是提案，未实行
+
+
+	// includes()：返回布尔值，表示是否找到了参数字符串。
+	// startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+	// endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
+	//这三个方法都支持第二个参数，表示开始搜索的位置。
+
+	let s2 = "abcdefg";
+
+	console.log(s2.includes("c"));
+	console.log(s2.startsWith("a"));
+	console.log(s2.endsWith("g"));
+
+	//repeat方法返回一个新字符串，表示将原字符串重复n次。
+	console.log("abc".repeat(2)); //参数如果是小数，会被取整。如果repeat的参数是负数或者Infinity，会报错
+
+	//ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全。
+
+	console.log("x".padStart(5,"ab"));
+	console.log("y".padEnd(4,"ba"));
+
+	//padStart和padEnd一共接受两个参数，第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。
+	//如果原字符串的长度，等于或大于指定的最小长度，则返回原字符串。如果用来补全的字符串与原字符串，
+	//两者的长度之和超过了指定的最小长度，则会截去超出位数的补全字符串。如果省略第二个参数，默认使用空格补全长度。
+
+
+	// 模板字符串
+	let person = {
+		name : "tom",
+		age : 20
+	};
+
+	console.log(`my name is ${person.name}, i am ${person.age} years old.`);
+	// 如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。
+	console.log(`
+		hello,
+		world!
+	`);
+	console.log("------------");
+	console.log(`
+		hello,
+		world!
+	`.trim());
+
+
+</script>
+
+</body>
+</html>

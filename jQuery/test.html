@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            width: 3000px;
+            height: 1000px;;
+        }
+        .box{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            /*left: 2000px;*/
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        
+    </div>
+
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+//    console.log($(".box").offset().left);
+//
+//    if(document.body.scrollTop){
+//        console.log("body")
+//        $(document.body).scrollTop(500);
+//    }else{
+//        console.log($(document.documentElement).scrollTop())
+//
+//        document.documentElement.scroll(0,200);
+//    }
+//
+//    var callbacks = $.Callbacks("memory");  // once memory unique stopOnFalse
+//
+//    function fn(a){
+//        console.log(a);
+//    }
+//
+//
+//    callbacks.add(fn)
+//    callbacks.fire("abbc");
+//    callbacks.add(function (a) {
+//        console.log(a + " again")
+//    })
+
+//    $.ajax({
+//        type:"GET",
+//        ulr:"test.html",
+//        data:"",
+//        success:function(data){
+//            console.log(data)
+//        }
+//
+//    })
+
+//    $(".box").load("1.txt #div")
+//    $.post("1.txt",function(data){
+//        $(".box").html(data)
+//    });
+
+//    $.getScript("1.txt")
+
+    console.log($.param({name:"tom",age:20,sex:"male"}));
+
+</script>
+</body>
+</html>

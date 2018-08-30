@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件对象</title>
+	<style type="text/css">
+		body{
+			height: 5000px;
+			width: 2000px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="box">
+		<ul id="ul1">
+			<li>aaaaaaaaaaaaaaaaaaa</li>
+			<li>bbbbbbbbbbbbbbbbbbb</li>
+			<li>ccccccccccccccccccccccc</li>
+		</ul>
+
+		<button id="btn1" type="button">click</button>
+	</div>
+
+
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	
+	// event.currentTarget  在事件冒泡阶段中的当前DOM元素   currentTarget的匹配`this`关键字。就是绑定事件的那个对象
+	// event.target  最初触发事件的DOM元素。  这是注册事件时的对象，或者它的子元素。通常用于比较 event.target 和 this 来确定事件是不是由于冒泡而触发的。经常用于事件冒泡时处理事件委托。  真正触发事件的那个元素，不一定是绑定事件时的那个元素，可能是他的子元素
+	// event.relatedTarget 在事件中涉及的其它任何DOM元素。对于 mouseout 事件，它指向被进入的元素；对于 mousein 事件，它指向被离开的元素。
+
+	// $("#box").on("click",function(ev){
+	// 	console.log(ev.currentTarget)
+	// 	console.log(ev.currentTarget === this)   // true
+	// 	console.log(ev.target)
+	// 	console.log(ev.target === this)
+
+	// })
+
+	// event.data 当前执行的处理器被绑定的时候，包含可选的数据传递给jQuery.fn.bind。
+	// $("#btn1").on("click",{name : "Tom"},function(ev){
+	// 	console.log(ev.data.name)
+	// })
+
+	// event.isDefaultPrevented()  根据事件对象中是否调用过 event.preventDefault() 方法来返回一个布尔值。
+	$("#btn1").on("click",function(ev){
+		console.log(ev.namespace)
+		console.log(ev.isDefaultPrevented())
+		ev.preventDefault()
+		console.log(ev.isDefaultPrevented())
+	})
+
+	// event.isImmediatePropagationStopped() 根据事件对象中是否调用过 event.stopImmediatePropagation() 方法来返回一个布尔值。
+	// event.isPropagationStopped()  根据事件对象中是否调用过 event.stopPropagation() 方法来返回一个布尔值。
+
+	// event.pageX  鼠标相对于文档的左边缘的位置。
+	// event.pageY  鼠标相对于文档的上边缘的位置。
+
+	// event.preventDefault() 阻止默认事件行为的触发。
+
+	// event.stopImmediatePropagation()  阻止剩余的事件处理函数执行并且防止事件冒泡到DOM树上。除了阻止元素上其它的事件处理函数的执行，这个方法还会通过在内部调用 event.stopPropagation() 来停止事件冒泡。如果仅仅想要停止事件冒泡到前辈元素上，而让这个元素上的其它事件处理函数继续执行，我们可以使用event.stopPropagation() 来代替。
+
+	// event.stopPropagation()  防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。我们可以用 event.isPropagationStopped() 来确定这个方法是否(在那个事件对象上)调用过了。这个方法对 trigger() 来自定义的事件同样有效。注意，这不会阻止同一个元素上的其它事件处理函数的运行
+
+	// event.timeStamp  这个属性返回事件触发时距离1970年1月1日的毫秒数。这可以很方便的检测某个jQuery函数的性能。
+
+	// event.type 返回触发的事件类型
+
+	// event.which  针对键盘和鼠标事件，这个属性能确定你到底按的是哪个键或按钮。event.which 将 event.keyCode 和 event.charCode 标准化了。推荐用 event.which 来监视键盘输入。
+
+
+
+	// $(document).on("click",function(ev){
+	// 	alert(ev.pageX + " , " + ev.pageY)
+	// })
+
+	// document.onclick = function(ev){
+	// 	let e = ev || event
+	// 	alert(e.clientX + " , " + e.clientY)
+	// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

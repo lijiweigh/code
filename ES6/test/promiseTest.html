@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>promise</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+	setTimeout(()=>console.log("000000000000"),0)
+	
+	// 异步加载图片
+	function loadImage(url){
+		return new Promise(function(resolve,reject){
+			let img = new Image()
+			img.onload = function(){
+				return resolve(img)
+			}
+
+			img.onerror = function(){
+				return reject(new Error("can not load image,url : " + url ) )
+			}
+
+			img.src = url
+		})
+	}
+
+	loadImage("C:/code/jQuery/img/new2/1.jpg")
+	.then(img=>document.body.appendChild(img))
+	.catch(e=>console.log(e))
+
+	let p1 = new Promise(function(resolve,reject){
+		// throw new Error("error")
+		// let x = x
+	})
+
+	// setTimeout(() => console.log(124),2000)
+	// p1.then(x=>console.log(x))
+	// 	.catch(e=>{
+	// 		console.log(e)
+	// 		y = y
+	// 	})
+	// 	.then(suc=>console.log("success"))
+	// 	.catch(e => console.log(e))
+	// 	.finally(()=>console.log("finally"))
+
+	let p2 = new Promise(function(resolve,reject){
+		setTimeout(()=>{
+			resolve(1000)
+		},1000)
+	})
+
+	let p3 = new Promise(function(resolve,reject){
+		setTimeout(()=>{
+			resolve(2000)
+		},2000)
+	})
+
+	// Promise.all([p2,p3]).then((value)=>console.log(value)).catch((e)=>console.log(e))
+
+	// Promise.race([p2,p3]).then(v=>console.log(v)).catch(e=>console.log(e))
+
+	let p5 = Promise.resolve( new Promise(resolve=>resolve("55555555555555") ))
+	p5.then(v=>console.log(v))
+
+	let obj1 = {
+		then(resolve){
+			resolve("then")
+		}
+	}
+
+	let p6 = Promise.resolve(obj1)
+	p6.then(v=>console.log(v))
+
+	// let p7 = Promise.reject( new Promise( (resolve,reject) => reject("6666666") ) )
+	// p7.catch(e=>console.log(e))
+
+	let p8 = new Promise((resolve,reject)=>{
+		resolve("888888888888888")
+	})
+
+	p8.then(e=>console.log(e))
+
+	let p9 = Promise.resolve("9999999999")
+	p9.then(v=>console.log(v))
+
+	let p10 = new Promise((resolve,reject)=>{
+		try{
+			y = y
+			console.log("after error")
+		}catch(e){
+			console.log(e)
+		}
+		
+		// y = y
+	})
+
+	p10.then(()=>console.log("aaa"))
+
+</script>
+</body>
+</html>

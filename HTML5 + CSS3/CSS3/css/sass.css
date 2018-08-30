@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+
+ul li {
+  background-color: orange;
+}
+ul .item_3 {
+  background-color: #c00;
+}
+
+ul li {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.item_1 {
+  background-color: #ccc;
+}
+.item_2 {
+  background-color: #fff;
+}
+
+.item_5 {
+  font-size: 30px;
+}
+
+.box {
+  box-shadow: 0 0 20px skyblue;
+}
+
+.font, .item li {
+  font-size: 50px;
+}
+
+.item li {
+  color: pink;
+}
+
+.box {
+  background-image: url(E:/code/HTML5 + CSS3/CSS3/img/tu.jpg);
+}
+
+.item_1 {
+  margin-top: 10px;
+}
+
+.item_2 {
+  margin-top: 20px;
+}
+
+.item_3 {
+  margin-top: 30px;
+}
+
+.item_4 {
+  margin-top: 40px;
+}
+
+.item_5 {
+  margin-top: 50px;
+}
+
+.item_6 {
+  margin-top: 60px;
+}
+
+.item {
+  color: red;
+}
+
+.item {
+  color: orange;
+}
+
+.item {
+  color: yellow;
+}
+
+.item {
+  color: green;
+}
+
+.item {
+  color: blue;
+}
+
+.item {
+  color: pink;
+}
+
+.item {
+  color: purple;
+}
+
+/*# sourceMappingURL=sass.css.map */

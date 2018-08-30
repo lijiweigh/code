@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>点击修改内容</title>
+
+	<style type="text/css">
+		.content{
+			display: inline-block;
+			/*width: 100px;*/
+			margin-right: 20px;
+			color: orange;
+		}
+		.change{
+			display: inline-block;
+		}
+		span{
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		.ok,.cancel{
+			display: none;
+		}
+		input{
+			display: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+
+			//<span class="ok">确定</span><span class="cancel">取消</span>
+			var content = document.querySelector(".content");
+			var change = document.querySelector(".change");
+			var text = document.getElementsByTagName("span")[0];
+			var cha = document.getElementsByTagName("span")[1];
+			var ok = document.getElementsByTagName("span")[2];
+			var cancel = document.getElementsByTagName("span")[3];
+			var input = document.getElementsByTagName("input")[0];
+			
+			var old = "";
+			
+			// cha.onclick = function(){
+			// 	this.style.display = "none";
+			// 	ok.style.display = "inline";
+			// 	cancel.style.display = "inline";
+			// 	old = text.innerHTML;
+			// 	text.style.display = "none";
+			// 	input.style.display = "block";
+			// 	input.value = "";
+			// }
+
+			// ok.onclick = function(){
+			// 	if(input.value !=""){
+			// 		text.innerHTML = input.value;
+			// 		ok.style.display = "none";
+			// 		cancel.style.display = "none";
+			// 		text.style.display = "inline";
+			// 		input.style.display = "none";
+			// 		cha.style.display = "inline";
+			// 	}else{
+			// 		alert("不能为空");
+			// 	}
+			// }
+
+			// cancel.onclick = function(){
+			// 	text.innerHTML = old;
+			// 	ok.style.display = "none";
+			// 	cancel.style.display = "none";
+			// 	text.style.display = "inline";
+			// 	input.style.display = "none";
+			// 	cha.style.display = "inline";
+			// }	
+
+			// cha.onclick = modify(cha,ok,cancel,text,input);
+			// ok.onclick = confirm(ok,text,cancel,text,input,cha);
+			// cancel.onclick = canc(cancel,text,ok,input,cha);
+			fn("modify",cha,ok,cancel,text,input,"");
+			fn("ok",ok,"",cancel,text,input,cha);
+			fn("cancel",cancel,ok,"",text,input,cha);
+
+		};
+
+		function fn(type,obj,okk,cancell,textt,inputt,chaa){
+			if(type=="modify"){
+				obj.onclick = function(){
+					this.style.display = "none";
+					okk.style.display = "inline";
+					cancell.style.display = "inline";
+					old = textt.innerHTML;
+					textt.style.display = "none";
+					inputt.style.display = "block";
+					inputt.value = "";
+				}
+			}else if(type == "ok"){
+				obj.onclick = function(){
+					if(inputt.value !=""){
+						textt.innerHTML = inputt.value;
+						this.style.display = "none";
+						cancell.style.display = "none";
+						textt.style.display = "inline";
+						inputt.style.display = "none";
+						chaa.style.display = "inline";
+					}else{
+						alert("不能为空");
+					}
+				}
+			}else{
+				obj.onclick = function(){
+					textt.innerHTML = old;
+					okk.style.display = "none";
+					this.style.display = "none";
+					textt.style.display = "inline";
+					inputt.style.display = "none";
+					chaa.style.display = "inline";
+				}	
+			}
+			
+
+			
+
+			
+
+		}
+
+		// function modify(obj,obj1,obj2,obj3,obj4){
+		// 	obj.style.display = "none";
+		// 	obj1.style.display = "inline";
+		// 	obj2.style.display = "inline";
+		// 	old = obj3.innerHTML;
+		// 	obj3.style.display = "none";
+		// 	obj4.style.display = "block";
+		// 	obj4.value = "";
+		// }
+
+		// function confirm(obj,obj3,obj2,obj4,obj5){
+		// 	if(obj4.value !=""){
+		// 		obj3.innerHTML = obj4.value;
+		// 		obj.style.display = "none";
+		// 		obj2.style.display = "none";
+		// 		obj3.style.display = "inline";
+		// 		obj4.style.display = "none";
+		// 		obj5.style.display = "inline";
+		// 	}else{
+		// 		alert("不能为空");
+		// 	}
+		// }
+
+		// function canc(obj,obj3,obj1,obj4,obj5){
+		// 	obj3.innerHTML = old;
+		// 	obj1.style.display = "none";
+		// 	obj.style.display = "none";
+		// 	obj3.style.display = "inline";
+		// 	obj4.style.display = "none";
+		// 	obj5.style.display = "inline";
+		// }
+
+	</script>
+</head>
+<body>
+	<div class="item1">
+		<div class="content"><span>112345</span><input type='text' maxlength="20" /></div><div class="change"><span class="cha">修改</span><span class='ok'>确定</span><span class='cancel'>取消</span></div>
+	</div>
+</body>
+</html>

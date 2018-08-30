@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片翻转</title>
+
+	<style type="text/css">
+		.hole{
+			width: 600px;
+			height: 400px;
+			margin: 50px auto;
+			perspective: 600px;
+			/*transition: all 1s;*/
+		}
+		.pai{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			/*perspective: 200px*/
+			transition: 5s;
+			transform-style: preserve-3d;
+			background: orange;
+		}
+		.z,.f{
+			width: 100%;
+			height: 100%;	
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform-style: preserve-3d;
+			display: block;
+		}
+		.z{
+			transform: translateZ(100px);
+		}
+		.f{
+			/*transform: translateZ(-10px) rotateY(180deg);*/
+			transform: translateZ(-100PX);
+			transform: rotateY(180deg);
+				
+		}
+		.hole:hover .pai{
+			transform: rotateY(180deg);
+			
+		}
+		/*.hole:hover .z{
+			transform: translateZ(50px);
+		}*/
+	</style>
+
+</head>
+<body>
+	<div class="hole">
+		<div class="pai">
+			<img src="img/tu.jpg" class="z">
+			<img src="img/tutu.jpg" class="f">
+		</div>
+	</div>
+</body>
+</html>

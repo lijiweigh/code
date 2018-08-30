@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+        /*.wrap{*/
+            /*width: 500px;*/
+            /*height: 500px;*/
+            /*border: 1px solid red;*/
+            /*position: relative;*/
+        /*}*/
+
+        /*.content{*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+            /*border: 1px solid orange;*/
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*margin: auto;*/
+        /*}*/
+        /*.wrap .box,.wrap .box2{*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+            /*border: 1px solid #cccccc;*/
+        /*}*/
+
+        /*.content ~ .box{*/
+            /*background-color: red;*/
+        /*}*/
+        .content{
+            width: 100%;
+            float: left;
+        }
+
+        .main{
+            height: 200px;
+            margin-left: 210px;
+            margin-right: 220px;
+            background-color: red;
+        }
+
+        .left{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin-left: -100%;
+            background-color: green;
+        }
+
+        .right{
+            float: right;
+            width: 200px;
+            height: 200px;
+            margin-left: -200px;
+            background-color: orange;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <div class="main"></div>
+</div>
+<div class="left"></div>
+<div class="right"></div>
+
+<!--<div class="wrap">-->
+        <!--<div class="content"></div>-->
+        <!--<div class="box">box</div>-->
+        <!--<div class="box">box</div>-->
+        <!--<div class="box2">box2</div>-->
+        <!--<div class="box2">box2</div>-->
+        <!--<div class="box">box</div>-->
+    <!--</div>-->
+
+    <!--<form target="_blank" action="1.html">-->
+
+        <!--<input type="submit" value="new">-->
+
+        <!--<input type="button" value="new22" onclick="window.open('1.html','_blank')">-->
+
+        <!--<input type="text" id="text"/>-->
+    <!--</form>-->
+
+<script>
+//    alert(NaN == NaN)
+
+//window.open("1.html","_blank")
+
+//    function f1(n){
+//
+//        if(n === 0 || n === 1){
+//            return 1;
+//        }
+//
+//        return f1(n - 1) + f1(n - 2);
+//
+//    }
+//
+//    function f2(n){
+//        var n1 = 1;
+//        var n2 = 1;
+//        var n3 = 2;
+//
+//        for(var i = 3;i <= n;i++){
+//            n3 = n1 + n2;
+//            n1 = n2;
+//            n2 = n3;
+//        }
+//
+//        return n3;
+//    }
+//
+//    function f3(){
+//
+//        var cache = [0,1];
+//
+//        return function _f3(n) {
+//            if(typeof cache[n] === "number"){
+//                return cache[n];
+//            }
+//           cache[n] = _f3(n-1) + _f3(n-2);
+//            return cache[n];
+//        }
+//
+//    }
+//
+//    var f33 = f3();
+//
+//    var t1 = new Date().getTime();
+//    var result = f2(50);
+//    var t2 = new Date().getTime();
+//    console.log(result,t2 - t1);
+
+//    function f4(){
+//        var i = 0;
+//        this.i = 0;
+//        return function (){
+//            console.log(i++);
+//        }
+//    }
+
+//    var foo1 = f4();
+//    var foo2 = f4();
+//    foo1();
+//    foo1();
+//    foo2();
+//    console.log(foo1);
+//    console.log(foo2);
+//    console.log(i);
+
+//    function f5(){
+//
+//        var i = 0;
+//
+//        (function () {
+//            i++;
+//            console.log(i);
+//        })();
+//
+//        (function () {
+//            i++;
+//            console.log(i);
+//        })();
+//        console.log(i);
+//
+//    }
+
+//    f5();
+
+//    var a = 10;
+//    a.p = 10;
+//    console.log(typeof a.p)  // undefined
+//    function fn(){}
+//    var fn;
+//    console.log(fn)
+//    console.log(f in window)
+//    var f = 0;
+//    console.log("35" % "5")
+//    console.log("akdfjkfjdkfaj".substring())
+
+//    var text = document.getElementById("text");
+//
+//    function trim(str){
+////        var reg = /^\s*|\s*$/g;
+//        var reg = /\s*/g;
+//        str = str.replace(reg,"");
+//        return str;
+//    }
+//
+//    console.log("(" + trim("  abc  abb  ") + ")");
+//
+//    if("oninput" in text){
+//        text.oninput = function () {
+//            var reg = /^\d*$/g;
+//            var str = text.value;
+//            if(!reg.test(str)){
+//                text.style.color = "red";
+//            }else{
+//                text.style.color = "#000";
+//
+//            }
+//        }
+//    }
+//
+//    var divs = "";
+//    for(var i = 0;i<5;i++){
+////        var div = document.createElement("div");
+////        div.innerHTML = "div" + i;
+////        document.body.appendChild(div);
+//        var div = "<div>text"+ i +"</div>";
+//        divs += div;
+//    }
+//    document.body.innerHTML += divs;
+
+</script>
+</body>
+</html>

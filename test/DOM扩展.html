@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dom扩展</title>
+</head>
+<body>
+	<div id="box">aaa</div>
+
+
+<script type="text/javascript">
+
+	document.body.innerHTML += "<div class='div'>123</div>";
+	//outerHTML 在读模式，会获取调用这个属性的元素及其所有子节点的HTML便签，在写模式，会用根据指定的字符串创建DOM树，并用他替换自己
+	console.log(document.body.outerHTML);
+
+	// document.body.outerHTML = "<body><div class='div'>456</div></body>";
+
+	// insertAdjacentHTML() 接收两个参数 第一个只能是以下四个参数之一 ： beforebegin afterbegin beforeend afterend 第二个参数为要插入的HTML字符串
+	var obox = document.getElementById("box");
+	obox.insertAdjacentHTML("beforebegin","<p>beforebegin</p>");  // 在obox之前插入
+	obox.insertAdjacentHTML("afterbegin","<p>afterbegin</p>");  // 在obox第一个子元素之前插入
+	obox.insertAdjacentHTML("beforeend","<p>beforeend</p>");  // 在obox最后一个子元素之后插入
+	obox.insertAdjacentHTML("afterend","<p>afterend</p>");  // 在obox之后插入
+	
+
+	// 通过类名获取元素  返回的是nodeList对象
+	document.getElementsByClassName("box active");
+
+	// classList() 方法
+	var odiv = document.getElementsByClassName("div")[0];
+	// div.classList.add("box");  // 添加 box 类 
+	// div.classList.contains("active");    // 检测是否拥有 active 类
+	// div.classList.remove("box");  // 删除 box 类
+	// div.classList.toggle("active");  //  如果有 active 类 ，则删除，没有则添加
+
+	// 焦点管理
+	var acitveE = document.activeELement;  // 获得当前获得了焦点的元素
+	console.log(document.hasFocus());   // 表示当前文档是否获得了焦点 
+
+	// 
+	console.log( document.readyState );  // loading 正在加载文档， complete 已经加载完文档
+
+	// 兼容模式
+	console.log( document.compatMode );  // CSS1Compat 标准模式  BackCompat  混杂模式
+
+	// 自定义属性  HTML5规定 自定义属性的格式为 data-name 以这个格式定义的自定义属性可以通过dataset获取
+
+	// 获取自定义属性  获取和设置时不用加前缀 data-
+	var data_myName = odiv.dataset.myName;
+	// 设置
+	odiv.dataset.newname = "Mike";  // 以驼峰形式命名 如 newName  则标签中会以 data-new-name形式保存
+
+	// 检测一个节点是不是另一个节点的子节点
+	console.log(document.documentElement.contains( document.body ));
+
+	//innerText 只包含节点内的文本，不包含节点元素，节点元素会被忽略掉，只保留文本，用它来设置时，设置的字符串会全部转为文本，不会被解析为节点,outerText 的作用与outerHTML相似
+	console.log(document.body.innerText);
+	obox.innerText = "<p>innerText</p>";
+	console.log(document.body.textContent);
+
+</script>
+</body>
+</html>

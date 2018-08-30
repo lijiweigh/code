@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>location</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	/*
+		location所有属性：
+		属性名		例子						说明
+		hash  		"#contents"				返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串
+		host		"www.wrox.com:80"		返回服务器名称和端口号（如果有）
+		hostname	"www.wrox.com"			返回不带端口号的服务器名称
+		href		"http://www.wrox.com"	返回当前加载页面的完整URL。toString()也返回这个值
+		pathname	"/wileyCDA"				返回URL中的目录和（或）文件名
+		port		"8080"					返回URL中指定的端口号。如果没有则返回空字符串
+		protocol	"http:"					返回页面使用的协议。通常是http: 或https:
+		search		"?q=javascript"			返回URL的查询字符串。这个字符串以问号开头
+	*/	
+
+
+	// 解析查询字符串
+
+	function searchString(){
+		var str = (location.search.length > 0 ? location.search.substring(1) : "");
+
+		var args = {};
+		var name = "";
+		var value = "";
+		var item = null;
+		var items = (str.length ? str.split("&") : []);
+
+		for(var i =0;i<items.length;i++){
+			item = items[i].split("=");
+			name = decodeURIComponent(item[0]);
+			value = decodeURIComponent(item[1]);
+			if(name.length){
+				args[name] = value;
+			}
+		}
+
+		return args;
+	}
+
+	console.log(searchString());
+
+	//位置操作
+
+	// 以下三个方式结果都一样
+	// location.assign("http://www.baidu.com");
+	// location.href = "http://www.baidu.com";
+	// window.location = "http://www.baidu.com";
+
+	//使用location 下的方法改变URL都会在历史记录中改变，除非使用replace()
+
+	location.replace("http://www.google.com");
+
+	//重新加载页面 reload()
+	location.reload();	 //如果自上次以来没有改变，则从缓存中加载
+	location.reload(true);		//不论什么情况都强制从服务器中重新加载
+
+</script>
+</body>
+</html>

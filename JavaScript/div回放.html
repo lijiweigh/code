@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>div回放</title>
+
+	<style type="text/css">
+		.div1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+		}
+		.btn{
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px orange solid;
+			background-color: skyblue;
+			cursor: pointer;
+			color: #fff;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var btn = document.getElementById("btn");
+			var div1 = document.getElementById("div1");
+
+			var pos = {
+				left:[],
+				top:[]
+			};
+
+			// alert(div1.offsetLeft);
+
+			div1.onmousedown = function(ev){
+				var ev = ev || event;
+				 var posX = ev.clientX - div1.offsetLeft;
+				 var posY = ev.clientY - div1.offsetTop;
+
+				 pos["left"] = [];
+				 pos["top"] = [];
+
+				 document.onmousemove = function(ev){
+				 	var ev = ev || event;
+
+				 	var x = ev.clientX - posX;
+				 	var y = ev.clientY - posY;
+
+				 	pos["left"].unshift(x);
+				 	pos["top"].unshift(y);
+
+				 	div1.style.left = x + "px";
+				 	div1.style.top = y + "px"; 
+
+				 }
+
+				 document.onmouseup = function(){
+				 	document.onmousemove = document.onmouseup = null;
+				 	console.log(pos);
+				 }
+
+			}
+
+			btn.onclick = function(){
+				clearInterval(btn.timer);
+
+				var length = pos["left"].length;
+				var index = 0;
+
+				btn.timer = setInterval(function(){
+
+					div1.style.left = pos["left"][index] + "px";
+					div1.style.top = pos["top"][index] + "px";
+
+					index++;
+					if(index == length){
+						clearInterval(btn.timer);
+					}
+
+				},20);
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="btn" id="btn">回放</div>
+	<div class="div1" id="div1"></div>
+
+</body>
+</html>

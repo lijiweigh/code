@@ -1,0 +1,382 @@
+body {
+  background-color: #eee;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+
+/* search */
+.search {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: rgba(255, 0, 0, 0);
+  color: #fff;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+}
+.search span {
+  width: 50px;
+  height: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+.search .box {
+  margin: 10px 50px 0;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  color: red;
+  line-height: 30px;
+}
+.search .box span {
+  font-size: 20px;
+  width: 30px;
+  margin-left: 10px;
+}
+.search .box form {
+  height: 100%;
+  min-width: 100px;
+  max-width: 62%;
+}
+.search .box input {
+  color: #666;
+}
+
+.bottom {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+}
+.bottom .bg {
+  position: relative;
+  height: 100%;
+}
+.bottom .bg img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.bottom a {
+  float: left;
+  width: 20%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  color: red;
+}
+
+.carousel {
+  touch-action: none;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel ul.imgs {
+  width: 800%;
+}
+.carousel ul.imgs li {
+  width: 12.5%;
+  float: left;
+}
+.carousel ul.imgs li a, .carousel ul.imgs li img {
+  width: 100%;
+}
+.carousel ul.point {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  margin-left: -47px;
+}
+.carousel ul.point li {
+  width: 5px;
+  height: 5px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  float: left;
+  margin-right: 5px;
+}
+.carousel ul.point li.active {
+  background: #fff;
+}
+
+.banner {
+  position: relative;
+  top: -10px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.banner .round_left {
+  border-top-left-radius: 10px;
+}
+.banner .round_right {
+  border-top-right-radius: 10px;
+}
+.banner img {
+  float: left;
+  width: 33.33333333333333333%;
+}
+
+.nav {
+  position: relative;
+  top: -10px;
+  width: 100%;
+  padding-top: 10px;
+  background-image: linear-gradient(to bottom, pink, white);
+}
+.nav a {
+  width: 20%;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.nav a img {
+  width: 70%;
+}
+
+.fast {
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0 5px;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+  top: -10px;
+}
+.fast .left {
+  width: 80px;
+}
+.fast .left img {
+  width: 90%;
+}
+.fast .mid {
+  text-align: left;
+  height: 100%;
+  margin: 0 30px 0 80px;
+  overflow: hidden;
+}
+.fast .mid .hot {
+  color: red;
+  margin-right: 5px;
+}
+.fast .right {
+  width: 30px;
+}
+
+.fuli {
+  position: relative;
+  top: -5px;
+  width: 100%;
+}
+.fuli img {
+  width: 100%;
+}
+
+.seckill {
+  background-color: #fff;
+  overflow: hidden;
+  touch-action: none;
+}
+.seckill .top {
+  height: 30px;
+  padding: 5px;
+  line-height: 30px;
+}
+.seckill .top strong {
+  color: red;
+  font-size: 18px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.seckill .top span, .seckill .top em {
+  color: #000;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.seckill .top i {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.seckill .top .b {
+  font-weight: bold;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.seckill .top .time {
+  border: 1px solid #eee;
+  padding: 0 2px;
+  vertical-align: middle;
+}
+.seckill .top .sec {
+  right: 15px;
+  color: red;
+  position: relative;
+}
+.seckill .top .sec:after {
+  position: absolute;
+  content: ">";
+  display: inline-block;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  top: 50%;
+  margin-top: -6px;
+  right: -15px;
+  font-size: 10px;
+}
+.seckill .list {
+  width: 100%;
+}
+.seckill .list ul {
+  width: 800%;
+  position: relative;
+}
+.seckill .list li {
+  float: left;
+  width: 2.6875%;
+  padding: 0 10px;
+}
+.seckill .list li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.seckill .list li a img {
+  width: 100%;
+}
+.seckill .list li a p {
+  font-size: 16px;
+  color: red;
+  margin-top: 5px;
+}
+.seckill .list li a del {
+  display: inline-block;
+  font-size: 14px;
+  color: #ccc;
+}
+.seckill .list .seeall {
+  width: 10px;
+  font-size: 10px;
+  color: #666;
+  position: absolute;
+  top: 13px;
+  background-color: #eee;
+  right: 0;
+}
+.seckill .list .seeall:before {
+  content: "<";
+  width: 10px;
+  height: 10px;
+  font-size: 8px;
+  line-height: 10px;
+  text-align: center;
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  color: #fff;
+  top: -13px;
+}
+
+.qingkong {
+  width: 100%;
+}
+.qingkong img {
+  width: 100%;
+}
+
+.recommend .top {
+  background-color: #f6f6f6;
+  width: 100%;
+}
+.recommend .top img {
+  width: 100%;
+}
+.recommend .list {
+  background-color: #fff;
+  text-align: center;
+}
+.recommend .list li {
+  float: left;
+  width: 25%;
+  border: 1px solid #eef;
+  margin: -1px;
+  padding-bottom: 10px;
+}
+.recommend .list li strong {
+  font-size: 18px;
+  font-weight: normal;
+}
+.recommend .list li p {
+  font-size: 12px;
+  color: #666;
+}
+.recommend .list li img {
+  width: 80%;
+}
+
+.yiyuan {
+  width: 100%;
+  position: relative;
+  top: -15px;
+}
+.yiyuan > img {
+  width: 100%;
+}
+.yiyuan .list {
+  width: 100%;
+}
+.yiyuan .list img {
+  width: 50%;
+  float: left;
+}
+
+.everyday {
+  position: relative;
+  top: -15px;
+}
+.everyday .top img {
+  width: 100%;
+  background-color: #f6f6f6;
+}
+.everyday .list {
+  background-color: #fff;
+}
+.everyday .list .item {
+  width: 25%;
+  float: left;
+  text-align: center;
+  border: 1px solid #eef;
+  margin: -1px;
+  padding: 5px 0;
+}
+.everyday .list .item span {
+  display: inline-block;
+  width: 100%;
+  background-image: linear-gradient(to right, #ff2a2a, #f139d2);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 16px;
+}
+.everyday .list .item p {
+  font-size: 12px;
+  color: #666;
+}
+.everyday .list .item img {
+  width: 80%;
+}

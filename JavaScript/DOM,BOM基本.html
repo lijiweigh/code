@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dom,bom基本</title>
+
+	<style type="text/css">
+		#text1{
+			color: #999;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var otext1 = document.getElementById("text1");
+			var obtn1 = document.getElementById("btn1");
+
+			otext1.onfocus = function(){
+				if(this.value == "请输入内容"){
+					this.value = "";
+					this.style.color = "#000";
+				}
+			}
+
+			otext1.onblur = function(){
+				if(this.value == ""){
+					this.value = "请输入内容";
+					this.style.color = "#999";
+				}
+			}
+
+			obtn1.onclick = function(){
+				otext1.select();
+			}
+
+			otext1.focus();
+
+		}
+	</script>
+</head>
+<body>
+
+	<input type="text" name="" id="text1" value="请输入内容">
+	<input type="button" id="btn1" value="全选">
+
+
+
+</body>
+</html>

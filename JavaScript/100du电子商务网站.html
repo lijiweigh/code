@@ -1,0 +1,3020 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>100du电子商务网站</title>
+
+	<link href="img/100du/100du.ico" rel="shortcut icon" />
+
+	<style type="text/css">
+		/*reset*/
+		body,h1,h2,h3,h4,h5,p,dl,dd,ul,ol,form,input,textarea,th,td,select { margin:0; padding:0; }
+		em { font-style:normal; }
+		li { list-style:none; }
+		a { text-decoration:none; }
+		img { border:none; vertical-align:top; }
+		table { border-collapse:collapse; }
+		input,textarea { outline:none; }
+		textarea { resize:none; overflow:auto; }
+		body { font-size:12px; font-family:"微软雅黑"; }
+
+		/*reset end*/
+
+		/*public*/
+
+		body{
+			width: 960px;
+			margin: 0 auto;
+			padding-bottom: 30px;
+		}
+
+		a:hover{
+			text-decoration: underline;
+		}
+
+		.section{
+			
+		}
+
+		.border_{
+			border:1px solid #e5e5e5;
+
+			border-radius: 6px;
+
+		}
+
+		.clearfix{
+			zoom:1;
+		}
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.gradient{
+			background-image: linear-gradient(#fff 0%,#fefefe 50%,#f9f9f9 100%);
+		}
+
+		.whatshot, .hotshop, .lucky, .recommend, .subway, .bbs, .advice, .shaoke, .help, .mediasound{
+			/*background-color: red;*/
+			width: 348px;
+		}
+
+		.load, .qiangjuan, .tadayrec, .shop360, .zhekou, .jiameng, .side .ad{
+			/*background-color: orange;*/
+			width: 238px;
+		}
+
+		.fr{
+			float: right;
+		}
+
+		.fl{
+			float: left;
+		}
+
+		.border_, .ad{
+			margin-top: 10px;
+		}
+		.main_side .border_{
+			margin-right: 10px;
+		}
+
+		.ad{
+			border-radius: 6px;
+		}
+
+		.triangle_red_up{
+			display: inline-block;
+			position: absolute;	
+			width: 0;
+			height: 0;
+			border-left:4px solid transparent;
+			border-right:4px solid transparent;
+			border-bottom: 4px solid red;
+		}
+
+		.triangle_red_down{
+			display: inline-block;
+			position: absolute;	
+			width: 0;
+			height: 0;
+			border-left:4px solid transparent; 
+			border-right:4px solid transparent;
+			border-top: 4px solid red;
+		}
+
+		.triangle_gray_down{
+			display: inline-block;
+			position: absolute;	
+			width: 0;
+			height: 0;
+			border-left:4px solid transparent; 
+			border-right:4px solid transparent;
+			border-top: 4px solid gray;
+		}
+
+		.title_top{
+			position: relative;
+			height: 38px;
+			line-height: 38px;
+			padding-left: 12px;
+			font-weight: bold;
+		}
+
+		.title_top span:nth-child(1){
+			color: #cc0d13;
+		}
+		.title_top span:nth-child(2){
+			color: #010000;
+		}
+
+		.title_top img{
+			position: absolute;
+			right: 12px;
+			top: 13px;
+		}
+
+		.load .title_top{
+			height: 35px;
+			line-height: 35px;
+		}
+
+		.btntop, .btnitem, .btnlist{
+			margin: 0 12px;
+		}
+
+		.btntop{
+			height: 22px;
+			border-bottom: 1px solid #dadada;
+			/*position: relative;*/
+		}
+
+		.btntop span{
+			display: inline-block;
+			height: 22px;
+			width: 66px;
+			color: #666;
+			border-radius: 3px 3px 0 0;
+			position: relative;
+			border-left: 1px solid #dadada;
+			border-top: 1px solid #dadada;
+			/*top: -1px;*/
+			text-align: center;
+			line-height: 22px;
+			cursor: pointer;
+			float: left;
+			margin-top: -1px;
+		}
+
+		.btntop span:nth-child(1){
+			/*left: 6px;*/
+			margin-left: 6px;
+			
+		}
+
+		.btntop span:nth-child(2){
+			/*left: 73px;*/
+			
+		}
+
+		.btntop span:nth-child(3){
+			/*left: 140px;*/
+			border-right: 1px solid #dadada;
+			
+		}
+
+		.btntop .active{
+			color: #333;
+			border-bottom: 1px solid #fff;
+		}
+
+		.btntop a{
+			/*left: 47px;
+			top: 10px;*/
+			left: 71%;
+			top: 42%;
+		}
+
+		.btnitem{
+			
+			height: 30px;
+		}
+
+		.btnitem span{
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			color: #999999;
+			float: left;
+		}
+
+		.btnitem span:nth-child(1){
+			width: 141px;
+		}
+		.btnitem span:nth-child(2){
+			width: 30px;
+		}
+		.btnitem span:nth-child(3){
+			width: 43px;
+		}
+
+		.btnlist{
+
+		}
+
+		.btnlist .list{
+
+		}
+
+
+		.btnlist .list a, .btnlist .list span, .btnlist .list em{
+			height: 27px;
+			
+			line-height: 27px;
+			text-align: center;
+		}
+
+
+		.btnlist .list a{
+			display: inline-block;
+			border-top: 1px dashed #cbcbca;
+			float: left;
+			
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.btnlist .list span{
+			
+			color: #c75d61;
+		}
+
+		.btnlist .list em{
+			margin: 0 5px;	
+			color: #767676;
+		}
+
+
+
+		.btnlist .list a:nth-child(1){
+			text-indent: 11px;
+			background: url(img/100du/point.png) no-repeat 5px 12px ;
+			width: 141px;
+			color: #333;
+			text-align: left;
+		}
+
+		.btnlist .list a:nth-child(2){
+			width: 30px;
+			color: #d80000;
+
+		}
+
+		.btnlist .list a:nth-child(3){
+			width: 43px;
+			color: #999;
+		}
+
+
+		.hotshop, .subway{
+			border-top: none;
+		}
+		
+		.topbtn2{
+			height: 33px;
+			border-bottom: 1px solid #e5e5e5;
+		}
+
+		.topbtn2 .btn{
+			width: 172px;
+			border-radius: 6px 6px 0 0;
+			border-top: 1px solid #e5e5e5;
+			border-right: 1px solid #e5e5e5;
+			float: left;
+			margin-top: -1px;
+			position: relative;
+
+		}
+		
+		.topbtn2 .btn:nth-child(2){
+			border-right: none;
+			margin-left: 2px;
+			border-left: 1px solid #e5e5e5;
+		}	
+
+		.topbtn2 .active{
+			
+			border-bottom: 1px solid #fff;
+		}
+
+
+
+		.topbtn2 .btn span:nth-child(2){
+			color: #2b2d2d;
+			margin-left: 15px;
+
+		}
+
+		.topbtn2 .btn span:nth-child(1){
+			color: #666;
+			margin-left: 22px;
+		}
+
+		.topbtn2 .active span:nth-child(1){
+			color: #cc0d13;
+		}
+
+		.topbtn2 .btn span{
+			line-height: 33px;
+			/*position: absolute;*/
+		}
+
+		.topbtn2 .btn a{
+			left: 153px;
+			top: 14px;
+
+		}
+
+		.imgtext{
+			position: relative;
+		}
+
+		.imgtext img{
+			
+			position: absolute;
+		}
+
+		.imgtext .text{
+			position: absolute;
+		}
+
+		.imgtext a{
+			color: #bb0d0d;
+		}
+
+		.imgtext p{
+			color: #6e6e6e;
+		}
+
+		/*public end */
+
+		.header{
+			height: 30px;
+			border-radius: 6px;
+		}
+
+		.city{
+			color: #666;
+			padding-left: 20px;
+			line-height: 30px;
+		}
+		.city .active{
+			color: #d60d03;
+		}
+		.city a{
+			color: #999;
+			border: 1px solid #e5e5e5;
+			box-shadow: 1px 1px 0 #efefef;
+			margin-left: 4px;
+			width: 39px;
+			height: 18px;
+			display: inline-block;
+			text-align: center;
+			margin-top: 5px;
+			line-height: 18px;
+		}
+		.city a:hover{
+			background-color: #eee;
+		}
+		.city .active:hover{
+			background-color: #fff;
+		}
+
+		.dianpu{
+			color: #d5d5d5;
+			
+			word-spacing: 7px;
+			padding-right: 30px;
+		}
+		.dianpu a{
+			color: #666;
+			width: 78px;
+			height: 12px;
+			display: inline-block;
+			text-indent: 20px;
+			margin-top: 9px;
+			line-height: 12px;
+		}
+
+		.dianpu a:hover{
+			text-decoration: underline;
+		}
+
+		.dianpu a:nth-child(1){
+			background:url(img/100du/header_bg.png) no-repeat;
+		}
+
+		.dianpu a:nth-child(2){
+			background:url(img/100du/header_bg.png) no-repeat 0 -12px;
+		}
+
+		.nav{
+			height: 100px;
+			padding: 0 9px;
+		}
+
+		.nav a{
+			display: inline-block;
+			cursor: pointer;
+			float: left;
+			margin-top: 10px;
+			color: #333;
+			text-align: center;
+			padding-top: 50px;
+		}
+		.icon{
+			width: 48px;
+			height: 48px;
+			
+			height: 20px;
+			width: 66px;
+		}
+
+		.nav a:nth-child(1){
+			background: url(img/100du/nav_bg.png) no-repeat 0 0;
+			
+		}
+		.nav a:nth-child(2){
+			background: url(img/100du/nav_bg.png) no-repeat -66px 0;
+			
+		}
+		.nav a:nth-child(3){
+			background: url(img/100du/nav_bg.png) no-repeat -132px 0;
+			
+		}
+		.nav a:nth-child(4){
+			background: url(img/100du/nav_bg.png) no-repeat -198px 0;
+			
+		}
+		.nav a:nth-child(5){
+			background: url(img/100du/nav_bg.png) no-repeat -264px 0;
+			
+		}
+		.nav a:nth-child(7){
+			background: url(img/100du/nav_bg.png) no-repeat -330px 0;
+			
+		}
+		.nav a:nth-child(8){
+			background: url(img/100du/nav_bg.png) no-repeat -396px 0;
+			
+		}
+		.nav a:nth-child(9){
+			background: url(img/100du/nav_bg.png) no-repeat -462px 0;
+			
+		}
+		.nav a:nth-child(10){
+			background: url(img/100du/nav_bg.png) no-repeat -528px 0;
+			
+		}
+		.nav a:nth-child(11){
+			background: url(img/100du/nav_bg.png) no-repeat -594px 0;
+			
+		}
+
+		.nav a:nth-child(1):hover{
+			background: url(img/100du/nav_bg.png) no-repeat 0 -70px;
+			
+		}
+		.nav a:nth-child(2):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -66px -70px;
+			
+		}
+		.nav a:nth-child(3):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -132px -70px;
+			
+		}
+		.nav a:nth-child(4):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -198px -70px;
+			
+		}
+		.nav a:nth-child(5):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -264px -70px;
+			
+		}
+		.nav a:nth-child(7):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -330px -70px;
+			
+		}
+		.nav a:nth-child(8):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -396px -70px;
+			
+		}
+		.nav a:nth-child(9):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -462px -70px;
+			
+		}
+		.nav a:nth-child(10):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -528px -70px;
+			
+		}
+		.nav a:nth-child(11):hover{
+			background: url(img/100du/nav_bg.png) no-repeat -596px -70px;
+			
+		}
+
+
+		.logo{
+			width: 223px;
+			height: 62px;
+			background: url(img/100du/logo.png) no-repeat;
+			margin: 0 27px;
+		}
+
+		.search{
+			height: 114px;
+			position: relative;
+		}
+
+		.note{
+			width: 160px;
+			height: 122px;
+			padding: 1px 4px;
+			position: absolute;
+			left: 32px;
+			top: -4px;
+			z-index: 2;
+		}
+
+		.note img{
+			width: 158px;
+			height: 114px;
+		}
+
+		.searchcen{
+			height: 64px;
+			position: absolute;
+			top: 16px;
+			border-radius: 6px;
+			background: #e21c01;
+			width: 100%;
+			border: 1px solid #c40d0e;
+		}
+
+		.searchcen form{
+			
+		}
+
+		.searchcen input{
+			border: none;
+		}
+
+		.searchcen .btn{
+			width: 63px;
+			height: 26px;
+			display: inline-block;
+			background: url(img/100du/search.png);
+			border-radius: 6px;
+			position: absolute;
+			top: 17px;
+			left: 640px;
+		}
+
+		.searchcen .text{
+			width: 404px;
+			height: 20px;
+			line-height: 20px;
+			display: inline-block;
+			box-shadow: -1px -2px 1px #d8a59e;
+			color: #ea7a7a;
+			text-indent: 10px;
+			border-radius: 3px;
+			position: absolute;
+			top: 20px;
+			left: 226px;
+		}
+
+		.search .tab{
+			width: 82px;
+			height: 28px;
+			display: inline-block;
+			border: 1px solid #f1caba;
+			border-bottom: none;
+			border-radius: 6px 6px 0 0;
+			position: absolute;
+			color: #000;
+			line-height: 28px;
+			text-align: center;
+			left: 228px;
+			top: -30px;
+			z-index: 2;
+			background-color: #fff;
+		}
+
+		.searchcen > a:nth-child(2){
+			left: 313px;
+		}
+
+		.searchcen > a:nth-child(3){
+			left: 398px;
+		}
+
+		.searchcen > a:nth-child(4){
+			left: 483px;
+		}
+
+		.searchcen > a:nth-child(5){
+			left: 568px;
+		}
+
+		.search .active{
+			
+			border: 1px solid #c40d0e;
+			border-color: #e21c01;
+			background-color: #e21c01;
+			color: #fbfbfb; 
+		}
+
+		.search .jinqian{
+			width: 202px;
+			height: 30px;
+			position: absolute;
+			top: 15px;
+			right: 36px;
+			color: #fbfbfb;
+		}
+		.searchcen .jinqian a{
+			color: #fbfbfb;
+			float: left;
+		}
+
+		.roll{
+			position: absolute;
+			left: 226px;
+			top: 92px;
+			height: 13px;
+			width: 405px;
+		}
+		.roll span{
+			display: inline-block;
+			width: 50px;
+			height: 13px;
+			border-radius: 2px;
+			background: #e02c1d;
+			color: #fff;
+			font-size: 5px;
+			line-height: 13px;
+			text-align: center;
+			position: absolute;
+			
+		}
+		.roll .rolltext{
+			position: absolute;
+			left: 60px;	
+			top: 0px;
+			width: 290px;
+			height: 13px;
+			line-height: 13px;
+			
+		}
+
+		.roll .rolltext a:nth-child(1){
+			color: #d30703;
+		}
+		.roll .rolltext a:nth-child(2){
+			color: #999;
+		}
+		.roll .rolltext a:nth-child(3){
+			color: #000	;
+		}
+
+		.roll .triangle_red_up{
+			top: 0;
+			right: 0;
+		}
+		.roll .triangle_red_down{
+			bottom: 0;
+			right: 0;
+		}
+
+		.main{}
+
+		.main_side{}
+
+		.whatshot{
+			height: 418px;
+		}
+
+		.whatshot .title{
+			padding-left: 15px;
+			height: 42px;
+			font-size: 18px;
+			line-height: 42px;
+			color: #d90000;
+			text-shadow: 0 0 1px #eb9c9c;
+			background: url(img/100du/whatshot.png) no-repeat 113px 0; 
+		}
+
+		.whatshot .title sup{
+			position: relative;
+			top: -8px;
+		}
+
+		.whatshot img{
+			width: 320px;
+			height: 287px;
+			margin-left: 15px;
+		}
+
+		.whatshotbot{
+			
+			background: url(img/100du/whatshot.png) no-repeat 15px -42px;
+			height: 90px;
+			padding-left: 100px;
+		}
+
+		.whatshotbot .content{
+			height: 60px;
+			width: 233px;
+			padding-top: 13px;
+		}
+
+		.whatshotbot .content a{
+			display: inline-block;
+			height: 20px;
+			line-height: 20px;
+			color: #4d4d4d;
+			padding-left: 8px;
+			background: url(img/100du/point.png) no-repeat 0 center;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 100%;
+		}
+
+		.hotshop{
+			height: 418px;
+		}
+
+		.main_side .ad{
+			height: 88px;
+		}
+
+		.lucky{
+			height: 498px;
+			
+		}
+
+		.recommend{
+			height: 498px;
+			
+		}
+
+		.subway{
+			height: 328px;
+			
+		}
+
+		.subway .img{
+			overflow: hidden;
+			width: 348px;
+			height: 294px;
+			border-radius: 6px;
+		}
+
+		.subway img{
+			width: 352px;
+			height: 298px;
+			display: inline-block;
+		}
+
+		.bbs{
+			height: 328px;
+		}
+
+		.advice{
+			height: 298px;
+		}
+
+		.advice .btntop,.advice .btnitem,.advice .btnlist{
+			margin: 0 15px;
+		}
+
+		.advice .btntop{
+			height: 24px;	
+		}
+
+		.advice .btntop span{
+			width: 98px;
+			height: 24px;
+		}
+
+		.advice .btntop span:nth-child(1){
+			margin-left: 10px;
+		}
+
+		.advice .btntop a{
+			left: 76%;
+		}
+
+		.advice .btnitem span{
+			height: 30px;
+
+		}
+
+		.advice .btnitem span:nth-child(1){
+			width: 265px;
+			
+		}
+
+		.advice .btnitem span:nth-child(2){
+			width: 53px;
+			
+		}
+
+		.advice .btnlist a:nth-child(1){
+			width: 265px;
+			
+		}
+
+		.advice .btnlist a:nth-child(2){
+			width: 53px;
+			
+		}
+
+		.advice .advicesearch{
+			width: 313px;
+			height: 61px;
+			position: relative;
+			margin: 0 15px;
+			line-height: 61px;
+			border-top: 1px dashed #cbcbca;
+		}
+
+		.advice .advicesearch span, .advice .advicesearch .input, .advice .advicesearch .btn{
+			position: absolute;
+		}
+
+		.advice .advicesearch span{
+			left: 10px;
+			top: 22px;
+			color: #595959;
+			width: 81px;
+			height: 13px;
+			line-height: 13px;
+			display: inline-block;
+			font-weight: bold;	
+		}
+
+		.advice .advicesearch .input{
+			left: 82px;
+			top: 17px;
+			width:180px;
+			height: 20px;
+			line-height: 20px;
+			border: 1px solid #9c9c9c;
+			color: #9c9c9c;
+			padding: 0 4px;
+		}
+
+		.advice .advicesearch .btn{
+			right: 7px;
+			top: 18px;
+			width: 23px;
+			height: 23px;
+			border:none;
+			background: url(img/100du/advice_search.png) no-repeat;
+		}
+
+		.shaoke{
+			height: 298px;
+		}
+
+		.help{
+			height: 248px;
+		}
+
+		.mediasound{
+			height: 248px;
+		}
+
+		.load{
+			height: 138px;
+		}
+
+		.qiangjuan{
+			height: 238px;
+		}
+
+		.qiangjuan, .advice{
+			position: relative;
+			/*padding: 0 12px;*/
+		}
+
+		.tadayrec{
+			height: 418px;
+		}
+
+		.shop360{
+			height: 178px;
+		}
+
+		.zhekou{
+			height: 348px;
+		}
+
+		.jiameng{
+			height: 368px;
+		}
+
+		.footer{
+			height: 78px;
+		}
+
+		.side .ad.border_{
+			height: 88px;
+
+		}
+		.side .ad{
+			height: 180px;
+			
+		}
+
+		.loadcontent{
+			height: 79px;
+			position: relative;
+			color: #595959;
+			padding: 0 12px;
+		}
+
+		.loadcontent span, .loadcontent input{
+			position: absolute;
+		}
+		
+		.loadcontent .user{
+			height: 37px;
+			
+			line-height: 37px;
+			position: relative;
+		}
+
+		.loadcontent .password{
+			height: 32px;
+			line-height: 32px;
+			
+			position: relative;
+		}
+
+		.loadcontent .regist{
+			height: 33px;
+			border-top: 1px solid #f2f2f2;
+		}
+
+		.loadcontent .password .submit{
+			display: inline-block;
+			height: 26px;
+			width: 56px;
+			border:none;
+			background: url(img/100du/login.png) no-repeat;
+
+		}
+
+		.loadcontent  span{
+			height: 12px;
+			line-height: 12px;
+			color: #595959;
+			display: inline-block;
+
+		}
+
+		.loadcontent .password span{
+			left: 8px;
+			top: 6px;
+			word-spacing: 9px;
+			width: 49px;
+		}
+
+		.loadcontent .regist a{
+			background: url(img/100du/point.png) no-repeat 18px 15px;
+			display: inline-block;
+			width: 107px;
+			line-height: 33px;
+			height: 33px;
+			color: #666;
+			text-indent: 26px;
+			float: left;
+		}
+
+		.user input:nth-of-type(1), .password input:nth-of-type(1){
+			height: 17px;
+			width: 87px;
+			border: 1px solid #e5e5e5;
+			background: #f7f7f7;
+			display: inline-block;
+			left: 54px;
+			line-height: 17px;
+			padding: 0 5px;
+			font-size: 12px;
+		}
+
+		.user input:nth-of-type(1){
+			top: 14px;
+		}
+
+
+		.password input:nth-of-type(1){
+			top: 4px;
+		}
+
+		.password input:nth-of-type(2){
+			top: 2px;
+			left: 164px;
+		}
+
+		.user input:nth-of-type(2){
+			position: absolute;
+			top: 18px;
+			left: 165px;
+
+		}
+
+		.user .first{
+			left: 8px;
+			top: 17px;
+			width: 49px;
+		}
+
+		.user .second{
+			position: absolute;
+			left: 182px;
+			top: 17px;
+			width: 36px;
+			height: 12px;
+			line-height: 12px;
+			color: #595959;
+			display: inline-block;
+
+		}
+
+		.hotshop{
+			background: url(img/100du/more.png) no-repeat 296px 390px
+		}
+		
+		.hotshop .imgtext{
+			margin: 15px 15px 28px;
+			border-radius: 6px;
+			height:86px;
+			background: url(img/100du/hot.png) no-repeat top right;
+		}
+
+		.hotshop .imgtext .text{
+			left: 127px;
+			top: 7px;
+		}
+
+		.hotshop .imgtext .text p{
+
+			margin-top: 11px;
+		}
+
+		.hotshop .imgtext .sheng{
+			left: 72px;
+			top: 50px;
+		}
+
+		.tadayrec .imgtext{
+			margin: 0 12px 10px;
+			height: 83px;
+			position: relative;
+			border-bottom: 1px dashed #cbcbca;
+		}
+		.tadayrec .imgtext .text{
+			position: absolute;
+			top: 8px;
+			left: 108px;
+		}
+
+		.tadayrec .imgtext .text p{
+
+			margin-top: 11px;
+		}
+
+		.zhekou .imgtext{
+			margin: 0 12px 0;
+			height: 83px;
+			position: relative;
+			border-bottom: 1px dashed #cbcbca;
+		}
+		.zhekou .imgtext .text{
+			position: absolute;
+			top: 8px;
+			left: 108px;
+		}
+
+		.zhekou .imgtext .text p{
+
+			margin-top: 11px;
+		}
+
+		.zhekou .btnlist .list a{
+			display: inline-block;
+			width: 208px;
+			height: 27px;
+			border-bottom: 1px dashed #cbcbca;
+			border-top: none;
+		}
+
+		.zhekou .btnlist .last a:last-child{
+			border:none;
+		}
+
+		.jiameng .imghole{
+			height: 151px;
+			margin: 0 12px;
+			border-bottom: 1px dashed #cbcbca;
+			position: relative;
+		}
+
+		.jiameng .imgtext{
+			position: absolute;
+			width: 96px;
+		}
+
+		.jiameng .imgtext .text{
+			position: absolute;
+			top: 83px;
+		}
+
+		.jiameng .imgtext .text p{
+			margin-top: 9px;
+		}
+
+		.jiameng .imghole .right{
+			right: 0;
+		}
+
+		.jiameng .btnlist .list a:nth-child(1) {
+			display: inline-block;
+		    text-indent: 11px;
+		    background: url(img/100du/point.png) no-repeat 5px 12px;
+		    width: 215px;
+		    color: #333;
+		    text-align: left;
+		    border-top: none;
+		    border-bottom: 1px dashed #cbcbca;
+		}
+
+		.jiameng .btnlist .last a{
+			border:none;
+		}
+
+
+		.shop360 img{
+			padding: 0 12px;
+		}
+
+		.shop360 .textbot{
+			height: 28px;
+			line-height: 28px;
+			padding: 0 12px;
+			color: #333;
+		}
+
+		.tophead{
+			position: relative;
+		}
+
+		.tophead .eng, .tophead .cn,  .tophead .num{
+			position: absolute;
+			display: inline-block;
+		}
+
+		.tophead .eng{
+			color: #ea2b31;
+			font-family: arial; 
+			left: 24px;
+			top: 24px;
+			width: 104px;
+			height: 12px;
+			line-height: 12px;
+			font-weight: bold;
+		}
+
+		.tophead .cn{
+			font-size: 24px;
+			color: #333;
+			text-shadow: 0 0 1px #5d5d5d;
+			left: 24px;
+			top: 36px;
+			width: 104px;
+			height:26px; 
+			line-height: 26px;
+		}
+
+		.tophead .num{
+			font-size: 36px;
+			color: #ec1c16;
+			text-shadow: 0 0 0 1px #f6aead;
+			font-family: arial; 
+			left: 128px;
+			top: 26px;
+			width: 135px;
+			height: 38px;
+			line-height: 38px;
+			font-weight: bold;
+		}
+
+
+		.lucky .tophead{
+			background: url(img/100du/luckyday_bg.png) no-repeat right top;
+			height: 71px;
+		}
+
+		.recommend .tophead{
+			background: url(img/100du/recommend_bg.png) no-repeat right top;
+			height: 70px;
+		}
+
+		.lucky .content{
+			margin: 0 24px;
+		}
+
+		.lucky .content .theme{
+			height: 117px;
+			border-top: 2px solid #f3f3f2;
+			position: relative;
+		}
+
+		.lucky .content .theme img{
+			position: absolute;
+			left: 0;
+			top: 14px;
+		}
+
+		.lucky .content .theme .themetext{
+			position: absolute;
+			left: 96px;
+			top: 14px;	
+		}
+
+		.lucky .content .theme .themetext .month, .lucky .content .theme .themetext .day{
+			width: 23px;
+			height: 23px;
+			line-height: 23px;
+			text-align: center;
+			display: inline-block;
+			border: 1px solid #d5d5d5;
+			float: left;
+			margin-top: 2px;
+			border-radius: 3px;
+			color: #d01812;
+			font-weight: bold;	
+		}
+
+		.lucky .content .theme .themetext .day{
+			margin-left: 4px;
+		}
+
+		.lucky .content .theme .themetext .xxx{
+			color: #333;
+			font-weight: bold;
+			margin-top: 5px;
+			margin-left: 7px;
+			display: inline-block;
+		}
+
+		.lucky .content .theme .themetext p{
+			color: #999;
+			margin: 8px 0 0 2px;
+		}
+
+		.lucky .content .calendar{
+			height: 308px;
+			position: relative;
+
+		}
+
+		.lucky .content .calendar .week{
+			height: 34px;
+			background-image: linear-gradient(#f7f7f6,#fff);
+		}
+
+		.lucky .content .calendar span{
+			display: inline-block;
+			width: 40px;
+			text-align: center;
+			float: left;
+			margin-right: 3px;
+		}
+
+		.lucky .content .calendar .week span{
+			
+			height: 34px;
+			line-height: 34px;
+			color: #333;
+			text-shadow: 0 0  1px #c9c9c9;
+
+			
+			font-weight: bold;
+			
+		}
+		.lucky .content .calendar .day span{
+			height: 40px;
+			line-height: 40px;
+			margin-bottom: 2px;
+			box-sizing: border-box;
+		}
+
+		.lucky .content .calendar .day .gray{
+			background-color: #f8f8f8;
+			color: #ccc;
+		}
+
+		.lucky .content .calendar .day .bright{
+			background-color: #ededed;
+			color: #666;
+		}
+
+		.lucky .content .calendar .last{
+			margin-right: 0;
+		}
+
+		.lucky .content .calendar .day .img{
+			background: url(img/100du/lucky_small.png) no-repeat;
+		}
+
+		.lucky .content .calendar .day .active{
+			border: 2px solid #d30408;
+		}
+
+		.lucky .content .calendar .prompt{
+			width: 319px;
+			height: 106px;
+			position: absolute;
+			border: 1px solid #c0c0c0;
+			box-shadow: 4px 6px 0 0 #bfbfbf;
+			left: 88px;
+			top: 128px;
+			background-color: #fff;
+		}
+
+		.triangle{
+			position: absolute;
+			left: -8px;
+			top: 48px;
+		}
+
+		.lucky .content .calendar .prompt .theme img{
+			width: 85px;
+			height: 85px;
+			border:2px solid #dbdbdb;
+			box-sizing: border-box;
+			position: absolute;
+			left: 15px;
+			top: 10px;
+		}
+
+		.lucky .content .calendar .prompt .themetext{
+			position: absolute;
+			top: 12px;
+			left: 103px;
+			height: 92px;
+			width: 202px;
+		}
+
+		.lucky .content .calendar .prompt .themetext .month{
+			font-size: 16px;
+			border:none;
+			color: #ccc;
+			font-weight: bold;
+			border-radius: 0;
+			display: inline-block;
+			width: 40px;
+			height: 16px;
+			line-height: 16px;
+			position: absolute;
+			top: 0;
+			left: 3px;
+			text-align: left;
+			margin: 0;
+		}
+
+		.lucky .content .calendar .prompt .themetext .xxx{
+			display: inline-block;
+			font-size: 12px;
+			height: 12px;
+			width: 158px;
+			line-height: 12px;
+			position: absolute;
+			top: 2px;
+			left: 38px;
+			color: #333;
+			text-align: left;
+			margin: 0;
+		}
+
+		.lucky .content .calendar .prompt .themetext p{
+			position: absolute;
+			left: 0;
+			top: 20px;
+			width: 202px;
+			margin: 0;
+		}
+
+		.lucky .content .calendar .prompt a{
+			display: inline-block;
+			position: absolute;
+			width: 23px;
+			height: 23px;
+			background: url(img/100du/advice_search.png) no-repeat;
+			left: 281px;
+			top: 74px;
+		}
+
+		.lucky .content .calendar .prompt{
+			display: none;
+		}
+
+		.recommend .imgs{
+			width: 318px;
+			height: 180px;
+			background-color: #f8f8f8;
+			position: relative;
+			border-radius: 3px;
+			margin-left: 15px;
+		}
+
+		.recommend .imgs img{
+			position: absolute;
+			display: inline-block;
+		}
+
+		.recommend .imgs .big{
+			width: 224px;
+			height: 132px;
+			left: 12px;
+			top: 12px;
+		}
+
+		.recommend .imgs .small{
+			width: 60px;
+			height: 36px;
+			border: 3px solid #fff;
+			right: 12px;
+		}
+
+		.recommend .imgs .active{
+			border-color: #d6191d
+		}
+
+		.recommend .imgs img:nth-child(2){
+			top: 12px;
+		}
+
+		.recommend .imgs img:nth-child(3){
+			top: 61px;
+		}
+
+		.recommend .imgs img:nth-child(4){
+			top: 111px;
+		}
+
+		.recommend .imgs .text{
+			position: absolute;
+			left: 14px;
+			bottom: 13px;
+			color: #000;
+		}
+
+		.itemscontent{
+			margin:0 15px;
+		}
+
+		.itemscontent .items a, .itemscontent .items span{
+			display: inline-block;
+			float: left;
+		}
+
+		.itemscontent .items .num{
+			color: #e70b00;
+			font-weight: bold;
+		}
+
+		.itemscontent .items span{
+			color: #dfdfdf;
+		}
+
+		.itemscontent .items .title{
+			color: #454545;
+			text-overflow:ellipsis;
+			width: 196px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.itemscontent .items .mid{
+			padding: 0 6px;
+		}
+
+		.recommend .itemscontent{
+			padding: 11px 8px 0 12px;
+		}
+
+		.recommend .itemscontent .items{
+			height: 27px;
+		}
+
+		.recommend .itemscontent .items a, .recommend .itemscontent span{
+			height: 27px;
+			line-height: 27px;
+		}
+
+		.bbs .itemscontent .items{
+			margin-bottom: 3px;
+			border-radius: 3px;
+			background-color: #f1f1f1;
+		}
+
+		.bbs .itemscontent .items a, .bbs .itemscontent span{
+			height: 30px;
+			line-height: 30px;
+			display: inline-block;
+
+		}
+
+		.bbs .itemscontent .items .num{
+			width: 36px;
+			text-align: center;
+		}
+
+		.bbs .itemscontent .items .date{
+			color: #666;
+		}
+
+		.bbs .itemscontent .items .title{
+			width: 213px;
+		}
+
+		.bbs .itemscontent .active{
+			position: relative;
+			height: 70px;
+			background-color: #d90000;
+			border-radius: 3px;
+		}
+
+		.bbs .itemscontent .active a, .bbs .itemscontent .active span{
+			display: none;
+		}
+
+		.bbs .itemscontent .active img{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			display: inline-block;
+			left: 10px;
+			top: 10px;
+		}
+		
+		.bbs .itemscontent .active h3, .bbs .itemscontent .active h2, .bbs .itemscontent .active h4{
+			color: #fff;
+			position: absolute;
+			display: inline-block;
+		}
+
+		.bbs .itemscontent .active h3{
+			font-size: 13px;
+			width: 176px;
+			height: 13px;
+			line-height: 13px;
+			left: 71px;
+			top: 15px;
+		}
+
+		.bbs .itemscontent .active h4{
+			font-size: 11px;
+			width: 76px;
+			height: 11px;
+			line-height: 11px;
+			left: 71px;
+			top: 42px;
+		}
+
+		.bbs .itemscontent .active h2{
+			font-size: 20px;
+			width: 49px;
+			height: 20px;
+			line-height:20px;
+			right: 4px;
+			bottom: 0px;
+		}
+
+		.bbs .itemscontent .com img, .bbs .itemscontent .com h2,.bbs .itemscontent .com h3,.bbs .itemscontent .com h4{
+			display: none;
+		}
+
+		.shaoke .pics{
+			margin: 0 17px 0 15px;
+			position: relative;
+		}
+
+		.shaoke .pics img{
+			float: left;
+			margin: 0 2px 1px 0;
+			display: inline-block;
+		}
+
+		.shaoke .pics .last{
+			margin-right: 0;
+		}
+
+		.shaoke .pics .size1{
+			width: 78px;
+			height: 78px;
+		}
+
+		.shaoke .pics .size2{
+			width: 156px;
+			height: 78px;
+		}
+
+		.shaoke .pics .size3{
+			width: 77px;
+			height: 78px;
+		}
+
+		.shaoke .pics .mask{
+			position: absolute;
+			top: 0;
+			left: 160px;
+			width: 132px;
+			height: 62px;
+			background:rgba(0,0,0,0.3);
+			padding: 8px 12px;
+			display: none;
+		}
+
+		.shaoke .pics .mask p{
+			
+			height: 18px;
+			line-height: 18px;
+			color: #fff;
+		}
+
+		.shaoke .pics .text{
+			position: absolute;
+			left: 0;
+			top: 0;
+			color: #fff;
+			padding-left: 16px;
+			width: 62px;
+			height: 78px;
+		}
+
+		.shaoke .pics .text h2{
+			height: 34px;
+			line-height: 34px;
+			display: inline-block;
+		}
+
+		.shaoke .pics .text p{
+			height: 18px;
+			line-height: 18px;
+			display: inline-block;
+		}
+
+		.help .tel, .help .userhelp{
+			margin: 0 17px 0 15px;
+		}
+
+		.help .tel{
+			height: 93px;
+			border-bottom: 1px solid #ededee;
+		}
+
+		.help .tel p{
+			display: inline-block;
+			margin-top: 10px;
+			margin-bottom: 7px;
+			line-height: 18px;
+			color: #333;
+			margin-left: 5px;
+			text-indent: 2em;
+		}
+
+		.help .tel .phone{
+			display: inline-block;
+			width: 172px;
+			height: 18px;
+			line-height: 18px;
+			background: url(img/100du/tel.png) no-repeat 7px 0;
+			text-indent: 28px;
+			color: #bd1111;
+			text-shadow: 0 0 1px #e7aaaa;
+			font-weight: bold;
+		}
+
+		.help .tel .msn{
+			display: inline-block;
+			width: 125px;
+			height: 17px;
+			line-height: 17px;
+			background: url(img/100du/msn.png) no-repeat 0 0;
+			text-indent: 23px;
+			color: #333;
+			text-shadow: 0 0 1px #c9c9c9;
+			font-weight: bold;
+		}
+
+
+
+		.help .userhelp .user, .help .userhelp .shanghu{
+			height: 116px;
+			float: left;
+		}
+
+		.help .userhelp .shanghu{
+			width: 134px;
+			
+		}
+
+		.help .userhelp .user{
+			height: 116px;
+			width: 170px;
+			margin: 20px 0 0 10px;
+		}
+
+		.help .userhelp h3{
+			color: #292929;
+			font-weight: bold;
+
+		}
+
+		.help .userhelp a{
+			
+			line-height: 18px;
+			text-indent: 12px;
+			background: url(img/100du/point.png) no-repeat 4px 11px;
+			display: inline-block;
+			color: #292929;
+		}	
+
+		.mediasound .item{
+			margin-left: 15px;
+			margin-right: 26px;
+			height: 43px;
+
+		}
+
+		.mediasound .item img{
+			height: 31px;
+			width: 88px;
+			margin-top: 13px;
+		}
+
+		.mediasound .item p{
+			margin-top: 11px;
+			line-height: 18px;
+			color: #292929;
+			display: inline-block;
+			width: 208px;
+			margin-left: 5px;
+		}
+
+		.footer{
+			background: #f9f9f9;
+		}
+
+		.footer .link{
+			/*width: 540px;*/
+			height: 12px;
+			margin: 11px 0 0 213px;
+
+		}
+
+		.footer .link a{
+			display: inline-block;
+			color: #454545;
+			line-height: 12px;
+		}
+
+		.footer .link span{
+			display: inline-block;
+			padding: 0 9px 0 11px;
+			color: #919191;
+		}
+
+		.footer .copyright p{
+			color: #767676;
+			height: 12px;
+			line-height: 12px;
+			margin: 12px 0 0 280px;
+			/*width: 415px;*/
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="header gradient clearfix">
+		
+		<div class="city fl">
+			切换城市：
+			<a href="#" class="active">北京</a>
+			<a href="#">上海</a>
+			<a href="#">福州</a>
+			<a href="#">广州</a>
+			<a href="#">青岛</a>
+		</div>
+
+		<div class="dianpu fr">
+			<a href="#">加盟100度</a>
+			|
+			<a href="#">店铺管理</a>
+		</div>
+
+	</div>
+
+	<div class="nav">
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		
+		<a href="#" class="logo"></a>
+		
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		<a href="#" class="icon">
+			美食
+		</a>
+		
+	</div>
+
+	<div class="search border_ gradient">
+		
+		<div class="note">
+				<img src="img/100du/note.png">
+			</div>
+		<div class="searchcen">
+			<a href="#" class="tab active">搜店</a>
+			<a href="#" class="tab">地址</a>
+			<a href="#" class="tab">优惠券</a>
+			<a href="#" class="tab">全文</a>
+			<a href="#" class="tab">视频</a>
+			<form action="#">
+				<input type="text"  class= "text" name="" value="例如：荷棠鱼坊烤鱼 或 樱花日本料理">
+				<input type="submit" class="btn" name="" value="">
+			</form>
+
+			<p class="clearfix jinqian">
+				<a href="#">金钱豹、</a>
+				<a href="#">大江南、</a>
+				<a href="#">湘水之珠、</a>
+				<a href="#">德瑀楼</a>
+				<a href="#">荷棠鱼坊烤鱼、</a>
+				<a href="#">SOHO尚都、</a>
+				<a href="#">湘味楼...</a>
+			</p>
+		</div>
+
+		<div class="roll clearfix">
+			<span>UPDATE</span>
+			<p class="rolltext"><a href="#">萱萱</a> <a href="#">5分钟前</a> <a href="#">写了一篇新文章：那些灿烂华美的瞬间…</a></p>
+			<a href="#" class="triangle_red_up"></a>
+			<a href="#" class="triangle_red_down"></a>
+		</div>
+
+	</div>
+
+	<div class="main clearfix">
+		
+		<div class="main_side fl">
+			
+			<div class="section clearfix">
+				
+				<div class="border_ whatshot fl">
+					
+					<div class="title">
+						WHAT<sup>,</sup>HOT
+					</div>
+
+					<img src="img/100du/video.png">
+
+					<div class="whatshotbot">
+						
+						<div class="content">
+							<a href="#">现场实录，杭州机场州机场州场州机场州场州机场州机场州机障</a>
+							<a href="#">现场实录，杭州机场故障</a>
+							<a href="#">现场实录，杭州机场州机场故障</a>
+						</div>
+						
+
+					</div>
+
+
+				</div>
+
+				<div class="border_ hotshop fl">
+					
+					<div class="topbtn2 clearfix">
+						<div class="btn active">
+							
+							<span>HOT SHOP</span>
+							<span>红店铺</span>
+							<a href="#" class="triangle_red_down"></a>
+
+						</div>
+						<div class="btn">
+							
+							<span>EW SHOP</span>
+							<span>新开张</span>
+							<a href="#" class="triangle_gray_down"></a>
+
+						</div>
+					</div>
+
+
+					<div class="content">
+						
+						<div class="imgtext gradient clearfix">
+							<img class="img" src="img/100du/pic.png">
+							<img class="sheng" src="img/100du/省.png">
+							<div class="text">
+								
+								<a href="#">
+									欲走时代就开始垃圾
+								</a>
+
+								<p>
+									区域：朝阳<br/>
+									人均：180元<br/>
+									人气：12122<br/>
+								</p>
+
+							</div>
+						</div>
+
+						<div class="imgtext gradient clearfix">
+							<img src="img/100du/pic.png">
+							<div class="text">
+								
+								<a href="#">
+									欲走时代就开始垃圾
+								</a>
+
+								<p>
+									区域：朝阳<br/>
+									人均：180元<br/>
+									人气：12122<br/>
+								</p>
+
+							</div>
+						</div>
+
+						<div class="imgtext gradient clearfix">
+							<img src="img/100du/pic.png">
+							<div class="text">
+								
+								<a href="#">
+									欲走时代就开始垃圾
+								</a>
+
+								<p>
+									区域：朝阳<br/>
+									人均：180元<br/>
+									人气：12122<br/>
+								</p>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="ad">
+				<img src="img/100du/ad3.png">
+			</div>
+
+			<div class="section clearfix">
+				
+				<div class="border_ lucky fl">
+					
+					<div class="tophead">
+						
+						<span class="eng">LUCK YODAY</span>
+						<span class="cn">每日活动</span>
+						<span class="num">2014.2</span>
+
+					</div>
+
+					<div class="content">
+						
+						<div class="theme">
+							
+							<img src="img/100du/lucky_big.png">
+
+							<div class="themetext">
+								
+								<div class="top clearfix">
+									<span class="month">07</span>
+									<span class="day">21</span>
+									<span class="xxx">本日主题XXXXX</span>
+								</div>
+
+								<p>
+									迟到的荣誉看的监控机房课老师速度快放假萨福克快乐的首付款看的考虑是否健康了速度
+								</p>
+
+							</div>
+
+						</div>
+
+						<div class="calendar">
+							
+							<div class="week clearfix">
+								<span>MON</span>
+								<span>TUE</span>
+								<span>WED</span>
+								<span>THU</span>
+								<span>FRI</span>
+								<span>SAT</span>
+								<span class="last">SUN</span>
+							</div>
+
+
+							<div class="day clearfix">
+								
+								<span class="gray">29</span>
+								<span class="gray">30</span>
+								<span class="bright">1</span>
+								<span class="bright">2</span>
+								<span class="bright">3</span>
+								<span class="bright">4</span>
+								<span class="last bright">5</span>
+
+								<span class="bright">6</span>
+								<span class="bright">7</span>
+								<span class="bright">8</span>
+								<span class="bright">9</span>
+								<span class="bright">10</span>
+								<span class="bright">11</span>
+								<span class="last bright">12</span>
+
+								<span class="bright">13</span>
+								<span class="bright">14</span>
+								<span class="bright">15</span>
+								<span class="bright">16</span>
+								<span class="bright">17</span>
+								<span class="bright">18</span>
+								<span class="last bright">19</span>
+
+								<span class="bright">20</span>
+								<span class="bright img active">21</span>
+								<span class="bright">22</span>
+								<span class="bright">23</span>
+								<span class="bright img">24</span>
+								<span class="bright">25</span>
+								<span class="last bright">26</span>
+
+								<span class="bright">27</span>
+								<span class="bright">22</span>
+								<span class="bright">29</span>
+								<span class="bright">30</span>
+								<span class="bright">31</span>
+								<span class="bright">1</span>
+								<span class="last bright">2</span>
+
+								<span class="gray">3</span>
+								<span class="gray">4</span>
+								<span class="gray">5</span>
+								<span class="gray">6</span>
+								<span class="gray">7</span>
+								<span class="gray">8</span>
+								<span class="last gray">9</span>
+							</div>
+
+							<div class="prompt">
+								<img src="img/100du/prompt_triangle.png" class="triangle">
+
+								<div class="theme">
+									
+									<img src="img/100du/lucky_big.png">
+
+									<div class="themetext">
+										
+										<div class="top clearfix">
+											<span class="month">TUE</span>
+											
+											<span class="xxx">本日主题XXXXX</span>
+										</div>
+
+										<p>
+											迟到的荣誉看的监控机房课老师速度快放假萨福克快乐的首付款看的考虑是否健康了速度
+										</p>
+
+									</div>
+
+								</div>
+
+								<a href="#"></a>
+							</div>	
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="border_ recommend fl">
+					
+					<div class="tophead">
+						
+						<span class="eng">RECOMMEND</span>
+						<span class="cn">精彩推荐</span>
+					</div>
+
+					<div class="imgs">
+						
+						<img src="img/100du/pic1.png" class="big">
+
+						
+						<img src="img/100du/pic1_.png" class="active small">
+						<img src="img/100du/pic2_.png" class="small">
+						<img src="img/100du/pic3_.png" class="small">
+						
+
+						<div class="text">
+							爸爸去哪儿~
+						</div>
+					</div>
+
+					<div class="itemscontent">
+						
+						<div class="items clearfix">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+						<div class="items">
+							
+							<a href="#" class="num">01</a>
+							<span class="mid">|</span>
+							<a href="#" class="title">包你没见过丰富见过丰富见过丰富的是地方</a>
+							<span class="date">08/07/22</span>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="section clearfix">
+				
+				<div class="border_ subway fl">
+					
+					<div class="topbtn2 clearfix">
+						<div class="btn active">
+							
+							<span>SUBWAY</span>
+							<span>地铁交通</span>
+							<a href="#" class="triangle_red_down"></a>
+
+						</div>
+						<div class="btn">
+							
+							<span>MAP</span>
+							<span>生活圈</span>
+							<a href="#" class="triangle_gray_down"></a>
+
+						</div>
+
+						<div class="img">
+							
+							<img src="img/100du/subway.png">
+
+						</div>
+						
+					</div>
+
+				</div>
+
+				<div class="border_ bbs fl">
+					
+
+				<div class="title_top">
+					<span>BBS</span> <span>论坛</span>
+					<img src="img/100du/more.png">
+				</div>
+
+				<div class="itemscontent">
+						
+						<div class="items clearfix active">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+						<div class="items clearfix com">
+							<img src="img/100du/bbs.png">
+							<h3>画皮之————日剧中的手机</h3>
+							<h4>阿瑞斯</h4>
+							<h2>ONE</h2>
+							<a href="#" class="num">01</a>
+							
+							<a href="#" class="title">包你没见过丰是地方</a>
+							<span class="date">世说新语</span>
+
+						</div>
+
+
+
+						
+				</div>
+
+				</div>
+
+			</div>
+
+			<div class="ad">
+				<img src="img/100du/ad3.png">
+			</div>
+
+			<div class="section clearfix">
+				
+				<div class="border_ advice fl">
+					
+
+					<div class="title_top">
+						<span>LIFESTYLE ADVICE</span> <span>知道分子</span>
+						<img src="img/100du/more.png">
+					</div>
+
+					<div class="btntop">
+						<span class="active text">
+							有人在问
+							<a href="#" class="triangle_red_down"></a>
+						</span>
+						<span  class="">
+							有人知道
+							<a href="#" class="triangle_gray_down"></a>
+						</span>
+						<span class="">
+							热门问题							
+							<a href="#" class="triangle_gray_down"></a>
+						</span>
+					</div>
+
+					<div class="btnitem clearfix">
+						<span>标题</span>
+						
+						<span>状态</span>
+						
+
+					</div>
+
+					<div class="btnlist">
+						<div class="list clearfix">
+							<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+							
+							<a href="#">345</a>
+						</div>
+
+						<div class="list clearfix">
+							<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+							
+							<a href="#">345</a>
+						</div>
+
+						<div class="list clearfix">
+							<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+							
+							<a href="#">345</a>
+						</div>
+
+						<div class="list clearfix">
+							<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+							
+							<a href="#">345</a>
+						</div>
+
+						<div class="list clearfix">
+							<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+							
+							<a href="#">345</a>
+						</div>
+
+					</div>	
+
+					<div class="advicesearch">
+						<span>搜搜就知道：</span>
+						<form action="#">
+							<input type="text" name="" placeholder="输入关键词" class="input">
+							<input type="submit" name="" class="btn" value="">
+
+
+						</form>
+					</div>	
+
+
+				</div>
+
+				<div class="border_ shaoke fl">
+					
+
+					<div class="title_top">
+						<span>HOT</span> <span>红人烧客</span>
+						<img src="img/100du/more.png">
+					</div>
+
+					<div class="pics clearfix">
+						<div class="mask">
+							<p>用户名：啊啊啊</p>
+							<p>地区：朝阳</p>
+							<p>人气：1234</p>
+						</div>
+						<div class="text">
+							
+							<h2>HOT</h2>
+							<p>潮流服饰</p>
+							<p>任我行</p>
+
+						</div>
+						<img class="sizs1" src="img/100du/1.png">
+						<img class="sizs1" src="img/100du/2.png">
+						<img class="sizs2 last" src="img/100du/3.png">
+						<img class="sizs1" src="img/100du/4.png">
+						<img class="sizs1" src="img/100du/5.png">
+						<img class="sizs3" src="img/100du/6.png">
+						<img class="sizs3 last" src="img/100du/7.png">
+						<img class="sizs1" src="img/100du/8.png">
+						<img class="sizs1" src="img/100du/9.png">
+						<img class="sizs3" src="img/100du/10.png">
+						<img class="sizs3 last" src="img/100du/11.png">
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+			<div class="section clearfix">
+				
+				<div class="border_ help fl">
+					
+
+					<div class="title_top">
+						<span>HELP</span> <span>在线帮助</span>
+						<img src="img/100du/more.png">
+					</div>
+
+
+					<div class="tel">
+						
+						<p>您有任何问题，速度快放假时空大家的方空大家的方空大家的方空大家的方空大家的方式可交付离开</p>
+						<div class="telnum clearfix">
+							
+							<span class="phone fl">4006-100-516</span>
+							<span class="msn fl">100du.com@live.cn</span>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="userhelp clearfix">
+						
+						<div class="user">
+							
+							<h3>用户帮助</h3>
+							<a href="#">金币是什么</a>
+							<a href="#">怎么查看我的等级</a>
+							<a href="#">怎么赚积分</a>
+
+						</div>
+						<div class="shanghu">
+							
+							<div class="user">
+							
+							<h3>商户帮助</h3>
+							<a href="#">金币是什么</a>
+							<a href="#">怎么查看我的等级</a>
+							<a href="#">怎么赚积分</a>
+
+						</div>
+
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="border_ mediasound fl">
+					
+					<div class="title_top">
+						<span>100DU IN THE MEDIA</span> <span>媒体声音</span>
+						<img src="img/100du/more.png">
+					</div>
+
+					<div class="item">
+						
+						<img src="img/100du/100du.png">
+
+						<p>互联网上的视频上的视频上的视频上的</p>
+
+					</div>
+
+					<div class="item">
+						
+						<img src="img/100du/100du.png">
+
+						<p>互联网上的视频上的视频上的视频上视频橱窗</p>
+
+					</div>
+
+					<div class="item">
+						
+						<img src="img/100du/100du.png">
+
+						<p>互联网上的视频上上的视频上的视频上的视频橱窗</p>
+
+					</div>
+
+					<div class="item">
+						
+						<img src="img/100du/100du.png">
+
+						<p>互联网上的视频上的视频上的视频上的视频橱窗</p>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="side fl">
+			
+			<div class="border_ load">
+				
+				<div class="title_top gradient">
+					<span>LOAD</span> <span>登录</span>
+					
+				</div>
+
+				<div class="loadcontent">
+					<div class="user">
+						
+						<span class="first">用户名：</span>
+						<input type="text" name="">
+						<input type="checkbox" name="" id="checkbox1">
+						<label class="second" for="checkbox1">记住我</label>
+
+					</div>
+
+					<div class="password">
+						
+						<span>密 码：</span>
+						<input type="password" name="">
+						<input type="submit" name="" value="" class="submit">
+
+					</div>
+
+					<div class="regist clearfix">
+						
+						<a href="#">新用户注册</a>
+						<a href="#">忘记密码</a>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="ad border_">
+				<img src="img/100du/ad1.png">
+			</div>
+
+			<div class="ad">
+				<img src="img/100du/ad2.png">
+			</div>
+
+			<div class="border_ qiangjuan">
+				
+				<div class="title_top">
+					<span>COUPONS</span> <span>抢卷儿</span>
+					<img src="img/100du/more.png">
+
+				</div>
+
+				<div class="btntop">
+					<span class="active text">
+						人气
+						<a href="#" class="triangle_red_down"></a>
+					</span>
+					<span  class="">
+						推荐
+						<a href="#" class="triangle_gray_down"></a>
+					</span>
+					<span class="">
+						最新
+						<a href="#" class="triangle_gray_down"></a>
+					</span>
+				</div>
+
+				<div class="btnitem clearfix">
+					<span>商店名</span>
+					<span>省</span>
+					<span>打印</span>
+
+				</div>
+
+				<div class="btnlist">
+					<div class="list clearfix">
+						<a href="#">老北门匿名都快放假快乐</a>
+						<a href="#">12%</a>
+						<a href="#">345</a>
+					</div>
+
+					<div class="list  clearfix">
+						<a href="#">老北门匿名都快放假快乐</a>
+						<a href="#">12%</a>
+						<a href="#">345</a>
+					</div>
+
+					<div class="list clearfix">
+						<a href="#">老北门匿名都快放假快乐</a>
+						<a href="#">12%</a>
+						<a href="#">345</a>
+					</div>
+
+					<div class="list clearfix">
+						<a href="#">老北门匿名都快放假快乐</a>
+						<a href="#">12%</a>
+						<a href="#">345</a>
+					</div>
+
+					<div class="list clearfix">
+						<a href="#">老北门匿名都快放假快乐</a>
+						<a href="#">12%</a>
+						<a href="#">345</a>
+					</div>
+
+				</div>		
+
+			</div>
+
+			<div class="border_ tadayrec">
+				
+				<div class="title_top">
+					<span>SHOP</span> <span>今日推荐</span>
+					<img src="img/100du/more.png">
+				</div>
+
+				<div class="imgtext clearfix">
+					<img class="img" src="img/100du/todayrec.png">
+					
+					<div class="text">
+						
+						<a href="#">
+							欲走时代就开始垃
+						</a>
+
+						<p>
+							区域：朝阳<br/>
+							人均：180元<br/>
+							
+						</p>
+
+					</div>
+				</div>
+
+				<div class="imgtext clearfix">
+					<img class="img" src="img/100du/todayrec.png">
+					
+					<div class="text">
+						
+						<a href="#">
+							欲走时代就开始垃
+						</a>
+
+						<p>
+							区域：朝阳<br/>
+							人均：180元<br/>
+							
+						</p>
+
+					</div>
+				</div>
+
+				<div class="imgtext clearfix">
+					<img class="img" src="img/100du/todayrec.png">
+					
+					<div class="text">
+						
+						<a href="#">
+							欲走时代就开始垃
+						</a>
+
+						<p>
+							区域：朝阳<br/>
+							人均：180元<br/>
+							
+						</p>
+
+					</div>
+				</div>
+
+				<div class="imgtext clearfix">
+					<img class="img" src="img/100du/todayrec.png">
+					
+					<div class="text">
+						
+						<a href="#">
+							欲走时代就开始垃
+						</a>
+
+						<p>
+							区域：朝阳<br/>
+							人均：180元<br/>
+							
+						</p>
+
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="border_ shop360">
+				
+				<div class="title_top">
+					<span>360<sup>o</sup> SHOP</span> <span>全景逛店</span>
+					<img src="img/100du/more.png">
+				</div>
+
+				<img src="img/100du/360shop.png">
+
+				<div class="textbot">苹果雪梨排骨汤</div>
+
+			</div>
+
+			<div class="border_ zhekou">
+				
+				<div class="title_top">
+					<span>SHOP</span> <span>折扣店</span>
+					<img src="img/100du/more.png">
+				</div>
+
+				<div class="imgtext clearfix">
+					<img class="img" src="img/100du/todayrec.png">
+					
+					<div class="text">
+						
+						<a href="#">
+							欲走时代就开始垃
+						</a>
+
+						<p>
+							区域：朝阳<br/>
+							人均：180元<br/>
+							
+						</p>
+
+					</div>
+				</div>
+
+				<div class="btnlist">
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>	
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix last">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+				</div>	
+
+			</div>
+
+			<div class="border_ jiameng">
+				
+				<div class="title_top">
+					<span>COUPONS</span> <span>最新加盟</span>
+					<img src="img/100du/more.png">
+				</div>
+
+				<div class="imghole">
+					
+					<div class="imgtext clearfix">
+						<img class="img" src="img/100du/jiameng.png">
+					
+						<div class="text">
+						
+							<a href="#">
+								欲走时代就开始垃
+							</a>
+
+							<p>
+								区域：朝阳<br/>
+								人均：180元<br/>
+							
+							</p>
+
+						</div>
+					</div>
+
+					<div class="imgtext clearfix right">
+						<img class="img" src="img/100du/jiameng.png">
+					
+						<div class="text">
+						
+							<a href="#">
+								欲走时代就开始垃
+							</a>
+
+							<p>
+								区域：朝阳<br/>
+								人均：180元<br/>
+							
+							</p>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="btnlist">
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>	
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					<div class="list clearfix last">
+						<a href="#"><em>[</em><span>美食</span><em>]</em>老北门匿名都快放假快乐</a>
+						
+						
+					</div>
+
+					
+
+				</div>	
+
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+	<div class="footer border_">
+		<div class="link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">关于我们</a>
+		</div>
+
+		<div class="copyright">
+			
+			<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2008&nbsp;&nbsp;www.100du.com&nbsp;&nbsp;100度享乐网&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP证070374号</p>
+
+		</div>
+		
+		
+
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片时间倒计时</title>
+
+	<style type="text/css">
+		body{
+			/*background-color: #000;*/
+		}
+		.out{
+			width:1000px;
+			height: 200px;
+			/*background: #000 no-repeat;*/
+			margin: 50px auto;
+			/*padding: 5px;*/
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			/*border: 10px solid #fff;*/
+			position: relative;
+			height: 172px;
+			overflow: hidden;
+		}
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		li{
+			/*float: left;*/
+			/*height: 172px;*/
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			/*top: -344px;	*/
+		}
+		img{
+			display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var num1 = document.querySelectorAll(".time1 .number");
+			var num2 = document.querySelectorAll(".time2 .number");
+			var li1 = document.querySelectorAll(".time1 li");
+			var li2 = document.querySelectorAll(".time2 li");
+
+			var str1 = "<img src='img/time/0.jpg'><img src='img/time/1.jpg'><img src='img/time/2.jpg'><img src='img/time/3.jpg'><img src='img/time/4.jpg'><img src='img/time/5.jpg'><img src='img/time/6.jpg'><img src='img/time/7.jpg'><img src='img/time/8.jpg'><img src='img/time/9.jpg'><img src='img/time/0.jpg'>";
+			var str2 = "<img src='img/time/0.jpg'><img src='img/time/1.jpg'><img src='img/time/2.jpg'><img src='img/time/3.jpg'><img src='img/time/4.jpg'><img src='img/time/5.jpg'><img src='img/time/0.jpg'>";
+			var str3 = "<img src='img/time/0.jpg'><img src='img/time/1.jpg'><img src='img/time/2.jpg'><img src='img/time/0.jpg'>";
+			var str4 = "<img src='img/time/0.jpg'><img src='img/time/1.jpg'><img src='img/time/2.jpg'><img src='img/time/3.jpg'><img src='img/time/0.jpg'>";
+
+			// for(var i=0;i<li1.length;i++){
+				
+			// 	li2[i].style.top = getstyle(li1[0],"height");
+			// }
+
+			num1[0].innerHTML = str3;
+			num1[1].innerHTML = str1;
+			num1[2].innerHTML = str2;
+			num1[3].innerHTML = str1;
+			num1[4].innerHTML = str2;
+			num1[5].innerHTML = str1;
+
+			// alert(0%2);
+
+			for(var i =0;i<num1.length;i++){
+				num1[i].style.height = 172 * num1[i].querySelectorAll("img").length + "px";
+				num1[i].style.width = "122px";
+				num1[i].style.display = "block";
+			}
+
+			for(var i=0;i<li1.length;i++){
+				
+				li1[i].style.left = parseInt(getstyle(li1[0],"width"))*i + "px";
+
+				// li2[i].style.left = parseInt(getstyle(li1[0],"width"))*i + "px";
+			}
+			var bright = 1;
+
+			var timer = null;
+			setInterval(function(){
+				var now = new Date();
+				var next = new Date();
+				next.setTime(now.getTime() + 1000);
+				var hour1 = now.getHours();
+				var minute1 = now.getMinutes();
+				var second1 = now.getSeconds();
+
+				var hour2 = next.getHours();
+				var minute2 = next.getMinutes();
+				var second2 = next.getSeconds();
+				console.log(second1);
+
+				var str1 = settwo(hour1) +"" + settwo(minute1) + "" + settwo(second1);
+				// var str2 = settwo(hour2) +"" + settwo(minute2) + "" + settwo(second2);
+				if(str1[0]==2){
+					num1[1].innerHTML = str4;
+				}else{
+					num1[1].innerHTML = str1;
+				}
+
+				if(bright){
+					li1[2].innerHTML = "<img src='img/time/space.jpg'>";
+					li1[5].innerHTML = "<img src='img/time/space.jpg'>";
+					bright = 0;
+				}else{
+					
+					li1[2].innerHTML = "<img src='img/time/colon.jpg'>";
+					li1[5].innerHTML = "<img src='img/time/colon.jpg'>";
+					bright = 1;
+				}
+
+				for(var i=num1.length-1;i>=0;i--){
+					if(str1[i] == 1 && parseInt(getstyle(num1[i],"top"))!=-172){
+						 num1[i].style.top = 0;
+					}
+					
+					// console.log("i="+i);
+					if(str1[i] == 0 && parseInt(getstyle(num1[i],"top")) < 0  ){
+						var index = i;
+						var j = (num1[i].querySelectorAll("img").length-1);
+						move(num1[i],"top",-172*j+"px",10,function(){
+							// num1[index].style.top = 0;
+							// console.log(index+ " "+j);
+							
+						});
+						// num1[index].style.top = 0;
+					}else{
+						// console.log(num1[i].loc = -172*str1[i]+"px");
+
+						move(num1[i],"top",-172*str1[i]+"px",10,function(){
+							
+						});
+					}
+
+						
+					
+					
+					
+					
+				}
+				console.log("yimiao")
+				// console.log(next);
+
+
+			},500);
+
+
+
+
+			// alert(num.length);
+		}
+
+		function settwo(num){
+			return num < 10 ? "0" + num : ""+num;
+		}
+
+		function move(obj,attr,to,speed,dofunction){
+			// if( parseInt(getstyle(obj,attr)) == parseInt(to) ){
+			// 	return;
+			// }
+			if( parseInt(getstyle(obj,attr)) > parseInt(to) ){
+				speed = -speed;
+			}
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				obj.style[attr] = parseInt(getstyle(obj,attr)) + speed +"px";
+
+				if( ( (speed > 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) < speed)) || ( (speed < 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) > speed)) ){
+
+					obj.style[attr] = to;
+					dofunction && dofunction();
+					clearInterval(obj.timer);
+				}
+
+				
+			},10);
+		}
+
+		function getstyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+		}
+	</script>
+</head>
+<body>
+
+	<div class="out">
+		<div class="time">
+			<ul class="clearfix time1">
+				<li class="number" loc="1"></li>
+				<li class="number" loc="1"></li>
+				<li loc="1"><img src="img/time/colon.jpg"></li>
+				<li class="number" loc="1"></li>
+				<li class="number" loc="1"></li>
+				<li loc="1"><img src="img/time/colon.jpg"></li>
+				<li class="number" loc="1"></li>
+				<li class="number" loc="1"></li>
+			</ul>
+			<!-- <ul class="clearfix time2" >
+				<li><img src="img/time/1.jpg" class="number"></li>
+				<li><img src="img/time/1.jpg" class="number"></li>
+				<li><img src="img/time/colon.jpg"></li>
+				<li><img src="img/time/1.jpg" class="number"></li>
+				<li><img src="img/time/1.jpg" class="number"></li>
+				<li><img src="img/time/colon.jpg"></li>
+				<li><img src="img/time/1.jpg" class="number"></li>
+				<li><img src="img/time/1.jpg" class="number"></li>
+			</ul> -->
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>animation</title>
+	<style type="text/css">
+		.box1,.box2,.box3,.box4{
+			width: 100px;
+			height: 100px;
+			background: orange;
+			margin: 50px auto;
+			position: absolute;
+			/*transition: 谁（要动的属性） 时间  延时（可选） 运动方式（linear、ease...）;*/
+            /*animation: js中的函数名  时间  延时（可选） 运动方式（linear、ease...）;*/
+            animation: move 2s linear;
+            animation-iteration-count: infinite;
+             /*
+            animation-name: move;       名称
+            animation-duration: 5s;     执行时间
+            animation-timing-function: initial;     运动类型（linear、ease...）
+            animation-delay: initial;       延迟
+
+            animation-iteration-count: initial;     循环次数  可选  number | infinite
+            animation-direction: initial;       是否反向运动  alternate
+            animation-fill-mode: initial;
+                设置或检索动画时间之外的状态
+                none | forwards | backwards | both
+                不设置 | 结束时 | 开始时 | 结束或开始的状态
+            animation-play-state: initial;      动画状态 running | paused
+
+        */
+
+		}
+
+		/*@keyframes move{
+			from{
+				width: 100px;
+			}
+			to{
+				width: 600px;
+			}
+		}*/
+		@keyframes move{
+			0%{
+				left: 0;
+			}
+			100%{
+				left: 100%;
+			}
+		}
+		.box2{
+			margin-top: 250px;
+			animation: move 2s linear .3s infinite;
+		}
+		.box3{
+			margin-top: 450px;
+			animation: move 2s linear .6s infinite;
+		}
+		.box4{
+			margin-top: 650px;
+			animation: move 2s linear .9s infinite;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<div class="box4"></div>
+</body>
+</html>

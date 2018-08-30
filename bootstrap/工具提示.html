@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<title>工具提示</title>
+
+	<style type="text/css">
+		body{
+			padding: 100px;
+			height: 2000px;
+			position:relative;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+</head>
+<body>
+	<div class="container">
+		<div class="btn-group">
+			<button type="button" class="btn btn-info" data-toggle="tooltip" title="click" data-placement="top">click</button>
+			<button type="button" class="btn btn-info" data-toggle="tooltip" title="click" data-placement="top">click</button>
+			<button type="button" class="btn btn-info" data-toggle="tooltip" title="click" data-placement="top">click</button>
+			<button type="button" class="btn btn-info" data-toggle="tooltip" title="click" data-placement="top">click</button>
+		</div>
+
+		<div class="btn-group ">
+			<button type="button" class="btn btn-info"  title="click" >click</button>
+			<button type="button" class="btn btn-info"  title="click" >click</button>
+			<button type="button" class="btn btn-info"  title="click" >click</button>
+			<button type="button" class="btn btn-info"  title="click" >click</button>
+		</div>
+		
+	</div>
+
+	<script type="text/javascript">
+		$("[data-toggle='tooltip']").tooltip({
+			container: "body"
+		});
+	</script>
+	
+
+	<!-- <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="left">left</button>
+	<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="top">top</button>
+	<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" id="bottom" title="bottom">bottom</button>
+	<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="right">right</button>
+
+	<script type="text/javascript">
+		
+		// $("[data-toggle='tooltip']").tooltip();
+		$("[data-placement='top']").tooltip({
+			placement:"bottom",
+			selector: "#bottom"
+		});
+
+
+	</script> -->
+</body>
+</html>

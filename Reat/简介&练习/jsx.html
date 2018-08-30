@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="box"></div>
+
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+
+<script type="text/jsx">
+
+    const arr = ["js","jQuery","reat","vue","zepto"];
+
+   // 1.创建虚拟dom
+    let ul = (<ul>
+            {
+                arr.map( (item,index) => <li key={index}>{item}</li> )
+            }
+            </ul>);
+
+    let ul2 = React.createElement("div",{id : "aaaa"},"aaaa");
+
+    /*var ul = (<ul>
+            {arr.map(function(item,index){
+                return <li>{item}</li>
+            })}
+            </ul>)*/
+   // 2.添加虚拟dom
+    ReactDOM.render(ul,document.getElementById("box"));
+//    ReactDOM.render(ul2,document.getElementById("box"));
+
+</script>
+
+
+</body>
+</html>

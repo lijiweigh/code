@@ -1,0 +1,206 @@
+.page_to_top{
+	-webkit-animation:to_top 0.6s both ease;
+	animation:to_top 0.6s both ease;
+}
+
+.page_from_bottom{
+	-webkit-animation:from_bottom 0.6s both ease;
+	animation:from_bottom 0.6s both ease;
+}
+
+.page_to_right{
+	-webkit-animation:to_right 0.6s both ease;
+	animation:to_right 0.6s both ease;
+}
+
+.page_from_left{
+	-webkit-animation:from_left 0.6s both ease;
+	animation:from_left 0.6s both ease;
+}
+
+.page_to_bottom{
+	-webkit-animation:to_bottom 0.6s both ease;
+	animation:to_bottom 0.6s both ease;
+}
+
+.page_from_top{
+	-webkit-animation:from_top 0.6s both ease;
+	animation:from_top 0.6s both ease;
+}
+
+.page_to_left{
+	-webkit-animation:to_left 0.6s both ease;
+	animation:to_left 0.6s both ease;
+}
+
+.page_from_right{
+	-webkit-animation:from_right 0.6s both ease;
+	animation:from_right 0.6s both ease;
+}
+
+.btn_bottom{
+	-webkit-animation:btn_bottom 1s both ease infinite;
+	animation:btn_bottom 1s both ease infinite;
+}
+
+.scale_up{
+	-webkit-animation:scale_up 0.6s both ease;
+	animation:scale_up 0.6s both ease;
+}
+
+.move_round{
+	-webkit-animation:move_round 1s both ease;
+	animation:move_round 1s both ease;
+}
+
+.rotate_90{
+	-webkit-animation:rotate_90 1s both ease;
+	animation:rotate_90 1s both ease;
+}
+
+.rotate_to_bottom{
+	-webkit-animation:rotate_to_bottom 1.5s both ease;
+	animation:rotate_to_bottom 1.5s both ease;
+	transform-origin: 50% 0;
+}
+
+@keyframes rotate_to_bottom{
+	from {transform:rotateX(-90deg) translateY(-100%);}
+	to {}
+}
+@-webkit-keyframes rotate_to_bottom{
+	from {transform:rotateX(-90deg) translateY(-100%);}
+	to {}
+}
+
+@keyframes rotate_90{
+	from {transform:rotateY(90deg);}
+	to {}
+}
+@-webkit-keyframes rotate_90{
+	from {transform:rotateY(90deg);}
+	to {}
+}
+
+@keyframes move_round{
+	0%{transform: translateY(-80%);opacity: 0.1;}
+	5%{transform: translateY(-80%);opacity: 0.3;}
+	35%{transform: translateY(10%);opacity: 0.8;}
+	60%{transform: translateY(-30%);opacity: 0.8;}
+	65%{transform: translateY(-20%);opacity: 0.8;}
+	100%{transform: translateY(0%);opacity: 1;}
+}
+@-webkit-keyframes move_round{
+	0%{transform: translateY(-80%);opacity: 0.1;}
+	5%{transform: translateY(-80%);opacity: 0.3;}
+	35%{transform: translateY(10%);opacity: 0.8;}
+	60%{transform: translateY(-30%);opacity: 0.8;}
+	65%{transform: translateY(-20%);opacity: 0.8;}
+	100%{transform: translateY(0%);opacity: 1;}
+}
+
+@keyframes scale_up{
+	from {transform:scale(0.5);}
+	to {}
+}
+@-webkit-keyframes scale_up{
+	from {transform:scale(0.5);}
+	to {}
+}
+
+@keyframes btn_bottom{
+	0% {transform:translateY(100%); opacity: 0.2}
+	50% {transform:translateY(0);opacity: 1;}
+	100% {transform:translateY(-100%); opacity: 0.2}
+}
+@-webkit-keyframes btn_bottom{
+	0% {transform:translateY(100%); opacity: 0.2}
+	50% {transform:translateY(0);opacity: 1;}
+	100% {transform:translateY(-100%); opacity: 0.2}
+}
+
+
+
+@keyframes to_top{
+	from {}
+	to {transform:translateY(-100%);}
+}
+@-webkit-keyframes to_top{
+	from {}
+	to {transform:translateY(-100%);}
+}
+
+@keyframes from_bottom{
+	from {transform:translateY(100%);}
+	to {}
+}
+
+@-webkit-keyframes from_bottom{
+	from {transform:translateY(100%);}
+	to {}
+}
+
+
+
+@-webkit-keyframes to_bottom{
+	from {}
+	to {transform:translateY(100%);}
+}
+
+@keyframes to_bottom{
+	from {}
+	to {transform:translateY(100%);}
+}
+
+@-webkit-keyframes from_top{
+	from {transform:translateY(-100%);}
+	to {}
+}
+
+@keyframes from_top{
+	from {transform:translateY(-100%);}
+	to {}
+}
+
+
+
+@-webkit-keyframes to_left{
+	from {}
+	to {transform:translateX(-100%);}
+}
+
+@keyframes to_left{
+	from {}
+	to {transform:translateX(-100%);}
+}
+
+@-webkit-keyframes from_right{
+	from {transform:translateX(100%);}
+	to {}
+}
+
+@keyframes from_right{
+	from {transform:translateX(100%);}
+	to {}
+}
+
+
+@-webkit-keyframes to_right{
+	from {}
+	to {transform:translateX(100%);}
+}
+
+@keyframes to_right{
+	from {}
+	to {transform:translateX(100%);}
+}
+
+@-webkit-keyframes from_left{
+	from {transform:translateX(-100%);}
+	to {}
+}
+
+@keyframes from_left{
+	from {transform:translateX(-100%);}
+	to {}
+}

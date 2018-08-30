@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+.header{
+	position: relative;
+	padding: 12px 0 12px 0;
+}
+
+.header .logo{
+	margin:0 60px 0 0;
+
+}
+.header input{
+	position: absolute;
+	right: 118px;
+	top: -4px;
+	padding: 0 5px;
+
+}
+
+.header .icon a{
+	margin-left: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	/*position: absolute;
+	z-index: 2;*/
+}
+
+.nav .cw > a{
+	color: #000;
+	padding: 0;
+	margin-right: 32px;
+}
+
+.nav .more{
+	border-bottom: none;
+	position: relative;
+	display: block;
+}
+.nav .more .otha{
+	margin-right: 19px;
+
+}
+.nav .more .last,
+.nav .more .dingdan{
+	position: absolute;
+	right: 0;
+	font-size: 12px;
+}
+.nav .more .last{
+	right: 0;
+}
+.nav .more .dingdan{
+	right: 110px;
+}
+.nav .more div,
+.nav .more > a{
+	float: left;
+
+}
+.nav .more div{
+	display: inline-block;
+	width: 100px;
+	padding: 0;
+}
+.nav .more div > a:nth-child(1){
+	padding-left: 27px;
+}
+
+.nav .more:before{
+	content: "";
+	display: none;
+	
+}
+
+.nav .more ul{
+	display: none;
+	padding: 0;
+	width: 200px;
+	background-color: #fff;
+	text-align: left;
+}
+.nav .more ul a{
+	text-align: left;
+	text-indent: 2em;
+}
+
+.nav .cw  .more div .iconfont{
+	float: none;
+}
+
+
+
+.banner .img{
+	float: left;
+	box-sizing: border-box;
+	width: 60%;
+	padding-top: 30px;
+}
+.banner .img img{
+	/*height: 100%;*/
+}
+
+.banner .content{
+	float: right;
+	width: 40%;
+	box-sizing: border-box;
+	/*padding: 100px 100px 0 0;*/
+}
+
+.bannernav{
+	height: 24px;
+	background: #fff;
+	color: #000;
+	padding-left: 0;
+	
+	margin: 0 auto;
+}
+
+.rexiao .out{
+	width: 20%;
+	margin-right: 2%;
+	float: left;
+	
+}
+
+.rexiao{
+	padding-left: 7%;
+	width: 93%;
+}
+.rexiao .out:nth-child(4){
+	margin-right: 0%;
+}
+
+.xiamian{
+	padding-left: 7%;
+}
+
+.xiamian .itembot{
+	display: inline-block;
+	width: 23.25%;
+	padding: 0;	
+	float: left;
+	border: none;
+	height: auto;
+	margin-bottom: 60px;
+}
+.xiamian .itembot ul{
+	display: block;
+	padding: 10px 0 0 0;
+	position: static;
+	margin-top: 40px;
+}
+
+.xiamian .earth{
+	/*margin: 220px 0 20px 0 ;*/
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	/*right: 40px;*/
+	bottom: 15px;
+	/*margin-bottom: 0;*/
+}
+
+.xiamian > ul{
+	display: inline-block;
+	position: absolute;
+	right: 80px;
+	bottom: 15px;
+	margin-bottom: 0;
+}
+.xiamian > ul li{
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 0;
+}
+.xiamian >img{
+	position: absolute;
+	right: 0;
+	bottom: 19px;
+	margin: 0 30px 0 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pcshow{
+	display: inline-block;
+}
+html .pchide{
+	display: none; 
+}
+.cw{
+	width: 90%;
+	max-width: 1180px;
+	margin: 0 auto;
+	position: relative;
+}
+#pchide{
+	display: none; 
+}
+
+/*body{
+	background: orange;
+}*/

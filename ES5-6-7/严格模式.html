@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	"use strict";
+		
+	// var name = "tom";
+	// eval() 方法有自己的作用域
+	// eval("var name = 'mike';alert(name);");
+
+	//全局变量必须用var声明
+	name = "jerry";
+	// alert(name);
+
+	// 严格模式禁止this指向window
+	function fn(){
+		alert(this);
+	}
+
+	// fn();
+
+	// 对象不能有重名的属性
+	var person = {
+		name : "tom",
+		age : 15,
+		name : "mike"
+	};
+
+	console.log(person.name);
+
+	delete person.name;
+	console.log(person.name);
+
+</script>
+</body>
+</html>

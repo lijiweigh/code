@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        .wrap{
+            width:1000px;
+            height: 200px;
+            margin:50px auto;
+            border:1px solid #ccc;
+            list-style: none;
+            text-align: center;
+            line-height:100px;
+            padding:0;
+
+            display: flex;
+            display: -webkit-flex;
+            /*flex-direction: row-reverse;*/
+            /*flex-direction: column;*/
+            /*flex-wrap: wrap-reverse;*/
+            flex-flow: row nowrap;
+            /*justify-content: flex-end;*/
+            /*justify-content: flex-start;*/
+            /*justify-content: center;*/
+            /*justify-content: space-around;*/
+            align-items: flex-end;
+            align-items: center;
+            
+        }
+
+        .wrap li:nth-child(odd){
+            background-color: red;
+        }
+        .wrap li:nth-child(even){
+            background-color: orange;
+        }
+        .wrap li{
+            width:100px;
+            height: 100px;
+            flex: 1;
+        }
+        .wrap li:nth-child(1),.wrap li:nth-child(2){
+            /*flex: 1;*/
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="wrap">
+        <li>
+           1
+        </li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+</body>
+</html>

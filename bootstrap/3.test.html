@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<title>3.test</title>
+
+	<style type="text/css">
+		body{
+			padding: 100px;
+			height: 2000px;
+			position:relative;
+		}
+
+		.wrap{
+			width: 600px;
+			height: 400px;
+		}
+
+		
+	</style>
+
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			$("a").click(function(e){
+				e.preventDefault();
+				// $(window).scrollTop( parseInt( $(window).scrollTop() ) );
+				// alert($(window).scrollTop());
+
+			});
+		})
+		
+	</script>
+
+</head>
+<body>
+	
+	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal">open</button>
+
+	<div class="modal fade" id="modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button  type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+					<h3 class="modal-title">modal-title</h3>
+				</div>
+
+				<div class="modal-body">
+					<p>Be sure to add aria-expanded to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of aria-expanded="false". If you've set the collapsible element to be open by default using the in class, set aria-expanded="true" on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.  Additionally, if your control element is targeting a single collapsible element – i.e. the data-target attribute is pointing to an id selector – you may add an additional aria-controls attribute to the control element, containing the id of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<br><br><br><br>
+
+	<ul class="nav nav-tabs  nav-justified">
+		<li class="active"><a href="#">one</a></li>
+		<li><a href="#">one</a></li>
+		<li class="dropdown">
+			<a type="button" class="btn btn-default" data-toggle="dropdown" href="#">
+				click
+				<span class="caret"></span>
+			</a>
+
+			<ul class="dropdown-menu">
+				<li class="dropdown-header">header</li>
+				<li><a href="#">option</a></li>
+				<li><a href="#">option</a></li>
+				<li class="divider"></li>
+				<li><a href="#">option</a></li>
+
+			</ul>
+		</li>
+		<li><a href="#">one</a></li>
+	</ul>
+
+	<br><br><br><br>
+
+	
+	<div id="myscroll">
+		<ul class="nav nav-pills nav-justified">
+			<li><a role="button" href="#one">one</a></li>
+			<li><a role="button" href="#two">two</a></li>
+			<li><a role="button" href="#three">three</a></li>
+			<li><a role="button" href="#four">four</a></li>
+		</ul>
+	</div>
+	
+
+	<ul class="media-list" style="position:relative;height: 200px;overflow-y: scroll" data-spy="scroll" data-target="#myscroll">
+		<li class="media" style="height: 200px;" id="one">
+			<div class="media-left media-middle">
+				<!-- <img src="img/new/1.jpg" alt="" class="media-object"> -->
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">heading</h3>
+				<p>To easily add scrollspy behavior to your topbar navigation, add data-spy="scroll" to the element you want to spy on</p>
+			</div>
+		</li>
+
+		<li class="media" style="height: 200px;" id="two">
+			<div class="media-left media-middle">
+				<!-- <img src="img/new/1.jpg" alt="" class="media-object"> -->
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">heading</h3>
+				<p>To easily add scrollspy behavior to your topbar navigation, add data-spy="scroll" to the element you want to spy on</p>
+			</div>
+		</li>
+
+		<li class="media" style="height: 200px;" id="three">
+			<div class="media-left media-middle">
+				<!-- <img src="img/new/1.jpg" alt="" class="media-object"> -->
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">heading</h3>
+				<p>To easily add scrollspy behavior to your topbar navigation, add data-spy="scroll" to the element you want to spy on</p>
+			</div>
+		</li>
+
+		<li class="media" style="height: 200px;" id="four">
+			<div class="media-left media-middle">
+				<!-- <img src="img/new/1.jpg" alt="" class="media-object"> -->
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">heading</h3>
+				<p>To easily add scrollspy behavior to your topbar navigation, add data-spy="scroll" to the element you want to spy on</p>
+			</div>
+		</li>
+
+
+
+		
+	</ul>
+		
+
+	
+
+
+	<ul class="nav nav-tabs nav-justified">
+		<li class="active"><a href="#first" data-toggle="tab">first</a></li>
+		<li><a href="#second" data-toggle="tab">second</a></li>
+		<li><a href="#third" data-toggle="tab">third</a></li>
+		<li><a href="#forth" data-toggle="tab">forth</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="first">
+			nspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
+		</div>
+		<div class="tab-pane fade" id="second">
+			nspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
+		</div>
+		<div class="tab-pane fade" id="third">
+			nspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
+		</div>
+		<div class="tab-pane fade" id="forth">
+			nspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
+		</div>
+	</div>
+
+	<br><br><br><br>
+
+	<div class="btn-group">
+		<button type="button" class="btn btn-danger" data-toggle="tooltip" title="this is a title">click</button>
+	</div>
+
+	<script type="text/javascript">
+		$("[data-toggle='tooltip']").tooltip({
+			container : "body"
+		});
+	</script>
+
+	<br><br><br><br>
+
+	<a href="#"  role="button" class="btn btn-danger" data-toggle="popover" data-content="sdlkfjskfljsdkflsdjfklsdjfkl" title="title" data-trigger="focus">danger</a>
+
+	<script type="text/javascript">
+		$("[data-toggle='popover']").popover({
+			container : "body"
+		});
+	</script>
+
+	<br><br><br><br>
+
+	<div class="panel-group" id="myCollapse">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a href="#collapse1" data-toggle="collapse" data-parent="#myCollapse">collapse1</a>
+				</h3>
+			</div>
+
+			<div class="collapse panel-collapse in" id="collapse1">
+				<div class="panel-body">
+					<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a href="#collapse2" data-toggle="collapse" data-parent="#myCollapse">collapse2</a>
+				</h3>
+			</div>
+			<div class="panel-collapse collapse" id="collapse2">
+				<div class="panel-body">
+					<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a href="#collapse3" data-toggle="collapse" data-parent="#myCollapse">collapse3</a>
+				</h3>
+			</div>
+			<div class="panel-collapse collapse" id="collapse3">
+				<div class="panel-body">
+					<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		
+		<div class="carousel slide" id="myCarousel" data-ride="carousel">
+			
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<div class="carousel-inner">
+				
+				<div class="item active">
+					<img src="img/new/1.jpg" alt="">
+					<div class="carousel-caption">
+						<h3>title</h3>
+						<p>A slideshow component for cycling through elements, like a carousel. Nested carousels are not supported.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="img/new/2.jpg" alt="">
+					<div class="carousel-caption">
+						<h3>title</h3>
+						<p>A slideshow component for cycling through elements, like a carousel. Nested carousels are not supported.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="img/new/3.jpg" alt="">
+					<div class="carousel-caption">
+						<h3>title</h3>
+						<p>A slideshow component for cycling through elements, like a carousel. Nested carousels are not supported.</p>
+					</div>
+				</div>
+
+			</div>
+
+			<a href="#myCarousel" data-slide="prev" class="left carousel-control">
+				 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			</a>
+
+			<a href="#myCarousel" data-slide="next" class="right carousel-control">
+				 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</a>
+
+		</div>
+
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" role="button" class="navbar-brand">brand</a>
+			</div>
+
+			<div class="navbar-collapse collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#">option</a></li>
+					<li><a href="#">option</a></li>
+					<li><a href="#">option</a></li>
+					<li><a href="#">option</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+
+</body>
+</html>

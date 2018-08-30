@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>上移下移</title>
+
+	<style type="text/css">
+		
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		ul{
+			/*border: 1px solid red;*/
+			/*padding: 5px 0;*/
+			margin: 50px auto;
+			width: 150px;
+		}
+
+		li{
+			list-style: none;
+			height: 30px;
+			text-indent:5px;
+			background:#ccc;
+			/*background: red;*/
+			/*margin: 10px 0;*/
+			border-bottom: 1px solid #999;
+			/*padding: 0 5px;*/
+			color: #fff;
+		}
+
+		span{
+			display: inline-block;
+			width: 40px;
+			height: 100%;
+			line-height: 30px;
+			text-align: center;
+			text-decoration: none;
+			color: #fff;
+			cursor: pointer;
+			/*border:1px solid #999;*/
+			/*border-radius: 3px;*/
+			margin: 0 5px;
+		}
+
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var nextE = null;
+			var prevE = null;
+			var nextReg = /\bnext\b/;
+			var prevReg = /\bprev\b/;
+
+			$("li").each(function(i,e){
+
+
+
+				$(e).find("span").each(function(j,el){
+
+					$(this).on("click",function(){
+
+						
+
+						if( ($(this).parent().index() == 0 && prevReg.test( $(this).attr("class") )) || ($(this).parent().index() == $("li").size() - 1 && nextReg.test( $(this).attr("class") )) ){
+
+							return;
+						}else{
+
+							if( nextReg.test( $(this).attr("class") )){
+
+								
+
+								nextE = $(this).parent().next("li");
+
+								
+
+								$(this).parent().before( nextE );
+								//$(this).parent().insertAfter(nextE);
+
+
+							}else if( prevReg.test( $(this).attr("class") )){
+
+								
+
+								prevE = $(this).parent().prev("li");
+
+								
+
+								$(this).parent().after(prevE);
+
+								// $(this).parent().insertBefore( prev );
+
+							}
+
+						}
+
+						return false;
+
+					});
+
+				});
+
+			});
+
+
+
+
+
+		});
+
+	</script>
+
+
+</head>
+<body>
+
+	<ul class="oul">
+		<li>1<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>2<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>3<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>4<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>5<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>6<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>7<span class="prev">上移</span><span class="next">下移</span></li>
+		<li>8<span class="prev">上移</span><span class="next">下移</span></li>
+		
+		
+	</ul>
+
+</body>
+</html>

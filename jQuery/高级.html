@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>高级</title>
+
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+
+		}
+
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			padding: 10px;
+			border: 5px solid orange;
+			position: absolute;
+			/*display: none;*/
+		}
+
+		li{
+			list-style: none;
+		}
+	</style>
+
+
+	<script src="E:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+
+			// $(".box").get(0).style.background = "red";
+
+			//alert($(".box").get(0).offsetHeight);
+
+			//alert($(".box").outerHeight());
+
+			//alert($(".box").text());
+
+			// $(".box").on("click",{"name":"tom"},function(data){
+			// 	alert(1);
+			// })
+
+			// //var obox = $(".box").remove();
+
+			// var obox = $(".box").detach();
+
+			// $("body").append(obox);
+
+
+			//alert(  $("ul").parents()  );
+
+			//$("ul").parents("div").css("background","orange");
+
+			// $("ul").siblings().css("background","yellow");
+			// $("ul").nextAll().css("background","skyblue");
+
+			//$("ul").nextUntil("em").css("background","orange");
+
+			// $(".box").clone(true).appendTo($("span"));
+
+			//$("span").wrap($("<div>"));
+
+			//$("span").wrapAll($("<div>"));
+
+			//$("span").wrapInner($("<div>"));
+
+			//$("span").unwrap();
+
+			// $("p").add($("em")).css("background","red");
+
+			// $(".box").animate({width:300,height:300},2000,"linear",function(){
+
+			// 	alert("done!");
+
+			// });
+
+			// $(".box").animate({width:300},2000).delay(1000).animate({height:300},2000);
+
+			// $(".box").click(function(){
+
+			// 	// $(this).stop();
+			// 	// $(this).stop(true);
+			// 	//$(this).stop(true,true);
+			// 	$(this).finish();
+
+			// });
+
+			// $("ul").delegate("li","click",function(){
+			// 	$(this).css("background","red");
+
+			// 	$("ul").undelegate();
+			// });
+
+			// $("ul").on("click","li",{"name":"tom"},function(ev){
+			// 	alert(ev.data.name);
+			// 	$(this).css("background","red");
+			// })
+
+
+			// $("ul").on("click",{"name":"tom"},function(ev){
+			// 	//alert(ev.data.name);
+			// 	//$(this).css("background","red");
+
+			// 	// alert(ev.type);
+			// 	alert( $(ev.target).index() );
+			// })
+
+
+			//$("ul").trigger("click");
+
+
+			//var a = "   abc      ";
+
+			//alert($.type(a));
+
+			// alert("(" + $.trim(a) + ")");
+
+			//alert("(" + "  efg   ".replace(/^\s+|\s+$/g,"") + ")");
+
+			//var arr = ["a","b","d","g"];
+
+			//alert($.inArray("d",arr));
+
+			// function fn(){
+			// 	alert(this);
+			// }
+
+			// // fn();
+
+			// $.proxy(fn,document)();
+
+			// var myJQ = $.noConflict();
+
+			// var $ = 10;
+
+			// alert(myJQ(".box").width());
+
+			// var j = '{"name":"tom"}';
+			// alert($.parseJSON(j));
+
+			// $("li").pop();
+			// alert($.type($.makeArray($("li"))));
+			// alert($.type($("li")));
+
+
+
+			$.extend({
+
+				leftTrim : function(str){
+
+					return str.replace(/^\s+/,"");
+
+				}
+
+			});
+
+
+			//alert( "(" + $.leftTrim("   addd") + ")");	
+
+
+			$.fn.extend({
+
+				drag : function(){
+
+					var disX = 0;
+					var disY = 0;
+					var This = this;
+
+					$(this).mousedown(function(ev){
+
+						// alert(1);
+
+						disX = ev.pageX - $(this).offset().left;
+
+						disY = ev.pageY - $(this).offset().top;
+
+						$(document).mousemove(function(ev){
+
+							This.css("left",ev.pageX - disX);
+
+							This.css("top",ev.pageY - disY);
+
+							// console.log(2);
+
+						});
+
+						$(document).mouseup(function(){
+
+							$(this).off();
+
+						});
+
+					});
+					
+				}
+
+
+			});
+
+			$(".box").drag();
+
+		});
+
+
+		
+		
+
+		
+
+	</script>
+
+</head>
+<body>
+
+	<div class="box" id="box">
+		<!-- div
+		<div><span>
+			span
+		</span>
+		<span>
+			span
+		</span>
+		<span>
+			span
+		</span></div>
+
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+
+		</ul>
+
+		<p>pppppppppp</p>
+
+		<em>emeemememem</em> -->
+	</div>
+
+</body>
+</html>

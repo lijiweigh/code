@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>按钮控制商品列表上下移动</title>
+	<style type="text/css">
+		li{
+			list-style: none;
+
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			top: 50px;
+		}
+		.out{
+			width: 300px;
+			height: 500px;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}	
+		input{
+			display: block;
+			height: 50px;
+			text-align: center;
+			line-height: 100px;
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+		}
+		input:last-child{
+			bottom: 0;
+		}
+		li,img{
+			width: 300px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var ainp = document.getElementsByTagName("input");
+			var oul = document.getElementsByTagName("ul")[0];
+			var out = document.getElementsByTagName("div")[0];
+			var ulh = oul.currentStyle ? oul.currentStyle.height : getComputedStyle(oul).height;
+			var inph = ainp[0].currentStyle ? ainp[0].currentStyle.height : getComputedStyle(ainp[0]).height;
+			var outh = out.currentStyle ? out.currentStyle.height : getComputedStyle(out).height;
+
+			var dis = parseInt(ulh) - (parseInt(outh) - 2*parseInt(inph));
+			var istop = true;
+			oul.style.top = 0;
+			// console.log(inph);
+			// alert(dis );
+			ainp[0].onclick = function(){
+				clearInterval(this.timer);
+				this.timer = setInterval(function(){
+					if(dis - parseInt(inph) + parseInt(oul.style.top) < 5){
+						oul.style.top = -(dis - parseInt(inph)) +"px";
+						clearInterval(this.timer);
+						istop = true;
+					}else{
+						oul.style.top = parseInt(oul.style.top) - 5 +"px";
+					}
+				},30);
+			}
+			ainp[1].onclick = function(){
+				clearInterval(this.timer);
+				this.timer = setInterval(function(){
+					if(parseInt(inph) - parseInt(oul.style.top) < 5){
+						oul.style.top = dis + parseInt(inph) +"px";
+						clearInterval(this.timer);
+						istop = false;
+						console.log(1);
+					}else{
+						oul.style.top = parseInt(oul.style.top) + 5 + "px";
+						console.log(oul.style.top);
+					}
+				},30);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="out">
+		<input type="button" value="向上">
+		<ul class="inner">
+			<li><img src="img/1.jpg"></li>
+			<li><img src="img/2.jpg"></li>
+			<li><img src="img/3.jpg"></li>
+			<li><img src="img/4.jpg"></li>
+			
+		</ul>
+		<input type="button" value="向下">
+	</div>
+</body>
+</html>

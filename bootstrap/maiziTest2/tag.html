@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	
+	<title>麦子官网后台</title>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	
+		
+	
+</head>
+<body>
+	<!-- 导航 -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-nav">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">Maizi Admin</a>
+			</div>	
+
+			<div class="navbar-collapse collapse" id="navbar-nav">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;后台首页</a></li>
+					<li><a href="user.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理</a></li>
+					<li><a href="content.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;内容管理</a></li>
+					<li class="active"><a href="#"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签管理</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" >
+					<li class="dropdown">
+						<a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle">
+							admin
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="index.html"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;&nbsp;前台首页</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人主页</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;个人设置</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;账户中心</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;我的收藏</a></li>
+						</ul>
+					</li>
+					<li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+				</ul>
+			</div>	
+			
+		</div>
+	</nav>
+	<!-- 导航 -->
+	
+	<div class="body container">
+		<div class="page-header">
+			<h4>TAG标签管理</h4>
+		</div>
+
+		<div class="row">
+			<form action="">
+				<div class="col-md-10 form-group">
+					<input type="text" class="form-control" placeholder="请输入要加入的标签" id="tag_val">
+				</div>
+				<div class="col-md-2">
+					<input type="button" class="btn btn-default" value="添加" id="add_tag">
+				</div>
+			</form>
+			
+			<div class="col-md-12" id="tag_content">
+				<div class="alert alert-info alert-dismissable fade in pull-left mar_r15">
+					<button class="close" data-dismiss="alert">
+						<span>&times;</span>
+					</button>
+					bootstrap
+				</div>
+				<div class="alert alert-info alert-dismissable fade in pull-left mar_r15">
+					<button class="close" data-dismiss="alert">
+						<span>&times;</span>
+					</button>
+					麦子学院
+				</div>
+				<div class="alert alert-info alert-dismissable fade in pull-left mar_r15">
+					<button class="close" data-dismiss="alert">
+						<span>&times;</span>
+					</button>
+					前端课程
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<footer class="footer">
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2012-2015&nbsp;&nbsp;www.maiziedu.com&nbsp;&nbsp;蜀ICP备13014270号-4</p>
+	</footer>
+	<!-- footer -->
+	
+	
+</body>
+<script type="text/javascript">
+	$("#add_tag").click(function(){
+		if(!$("#tag_val").val()){
+			alert("添加的内容不能为空！");
+			return;
+		}
+
+		var nowText = $("#tag_content").html();
+		
+
+		nowText = "<div class='alert alert-info alert-dismissable fade in pull-left mar_r15'><button class='close' data-dismiss='alert'><span>&times;</span></button>" + $("#tag_val").val() + "</div>" + nowText;
+
+		$("#tag_content").html(nowText);
+		$("#tag_val").val("");
+
+	});
+</script>
+</html>

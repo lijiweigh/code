@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+	/*
+		拖拽元素事件 :  事件对象为被拖拽元素
+		dragstart ,  拖拽前触发 
+		drag ,拖拽前、拖拽结束之间，连续触发
+		dragend  , 拖拽结束触发
+
+		目标元素事件 :  事件对象为目标元素
+		dragenter ,  进入目标元素触发，相当于mouseover
+		dragover  ,进入目标、离开目标之间，连续触发
+		dragleave ,  离开目标元素触发，相当于mouseout
+		drop  ,  在目标元素上释放鼠标触发		要出发drop事件，则需在dragenter 和dragover 事件中阻止默认行为
+		
+		dataTransfer 对象 有两个方法，getDate(type) , setData(type,data), 第一个参数都接收一个字符串，表示数据类型，有两种，text 和 URL
+		setData() 在 dragstart事件中被调用，而getData() 只能在drop事件中调用
+
+		dataTransfer 有两个属性，dropEffect , effectAllowed
+	*/
+</script>
+</body>
+</html>

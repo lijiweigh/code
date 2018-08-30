@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var o = {
+        name:"abc",
+        age:20,
+        color:["red","green"]
+    }
+
+    var d = deep();
+    var n = d(o);
+    n.color[0] = "blue";
+    console.log(o);
+    console.log(n);
+
+    var arr = [2,3,5,[1,34]];
+    var arr2 = d(arr);
+    arr2[3][0] = 2222;
+    console.log(arr);
+    console.log(arr2);
+
+    function deep(){
+
+//        var getType = function(obj){
+//            var type = {}.toString.call(obj).slice(8,-1);
+//            return type;
+//        }
+
+        function getType(obj){
+            var type = {}.toString.call(obj).slice(8,-1);
+            return type;
+        }
+
+        return function (obj) {
+            var type = getType(obj);
+            var newO;
+            if(type === "Array"){
+                newO = [];
+            }else if(type === "Object"){
+                newO = {};
+            }else{
+                return obj;
+            }
+
+            for(var key in obj){
+                if( getType(obj[key]) === "Array" || getType(obj[key]) === "Object" ){
+                    newO[key] = arguments.callee(obj[key]);
+                }else{
+                    newO[key] = obj[key];
+                }
+            }
+
+            return newO;
+        }
+
+    }
+
+</script>
+</body>
+</html>

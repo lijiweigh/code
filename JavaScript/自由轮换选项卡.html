@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自由轮换选项卡</title>
+
+	<style type="text/css">
+		.hole{
+			width: 400px;
+			height: 300px;
+			margin: 50px auto;
+			border: 1px solid orange;
+			padding: 10px;
+		}
+		.title{
+			height: 50px;
+		}
+		.t1,.t2{
+			height: 50px;
+			line-height: 50px;
+			font-size: 25px;
+			background-color: #ccc;
+			display: inline-block;
+			float: left;
+		}
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.active{
+			background-color: orange;
+		}
+		.content,.c1,.c2{
+			width: 350px;
+			height: 250px;
+			
+			position: relative;
+		}
+		ul,li{
+			display: inline-block;
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			width: 1050px;
+			overflow: hidden;
+		}
+		img{
+			width: 350px;
+			height: 250px;
+			
+		}
+		li{
+			float: left;
+			overflow: hidden;
+		}
+		.text{
+			display: inline-block;
+			/*float: right;*/
+			width: 50px;
+			position: absolute;
+			top: 0;
+			right: -50px;
+		}
+		span{
+			display: inline-block;
+			width: 50px;
+			height: 30px;
+			/*font-size: 20px;*/
+			line-height: 30px;
+
+		}
+		.outul{
+			overflow: hidden;
+			width: 350px;
+			height: 250px;
+		}
+		.c2{
+			display: none;
+			
+	</style>
+		
+	<script type="text/javascript">
+		window.onload = function(){
+			var title = document.querySelectorAll(".title div");
+			var li = [ document.querySelectorAll(".c1 li"),document.querySelectorAll(".c2 li")];
+			var span = [document.querySelectorAll(".c1 span"), document.querySelectorAll(".c2 span")];
+			
+			var ul = document.querySelectorAll("ul");
+
+			
+
+			for(var i =0;i<ul.length;i++){
+				ul[i].style.width = li[i].length * 350 + "px";
+			}
+
+			for(var i =0;i<li.length;i++){
+				for(var j=0;j<li[i].length;j++){
+					li[i][j].index = j;
+				}
+			}
+
+			for(var i =0;i<span.length;i++){
+				for(var j=0;j<span[i].length;j++){
+					span[i][j].index = j;
+				}
+			}
+
+			for(var i=0;i<ul.length;i++){
+				for(var j=0;j<li[i].length;j++){
+					// ul.style.left = "-" + getComputedStyle(ul[i].width);
+				}
+			}
+
+			
+
+
+
+		}
+	</script>
+</head>
+<body>	
+
+	<div class="hole">
+
+		<div class="title clearfix">
+			<div class="t1 active">标题1</div>
+			<div class="t2">标题2</div>
+		</div>
+		<div class="content">
+			<div class="c1 clearfix">
+				<div class="outul">
+					<ul class="clearfix">
+						<li><img src="img/1.jpg"></li>
+						<li><img src="img/2.jpg"></li>
+						<li><img src="img/3.jpg"></li>
+						<li><img src="img/1.jpg"></li>
+					</ul>
+				</div>
+				
+				<div class="text">
+					<span class="active">图片1</span>
+					<span>图片2</span>
+					<span>图片3</span>
+				</div>
+			</div>
+
+
+			<div class="c2 clearfix">
+				<div class="outul">
+					<ul class="clearfix">
+						<li><img src="img/1.jpg"></li>
+						<li><img src="img/2.jpg"></li>
+						<li><img src="img/3.jpg"></li>
+						<li><img src="img/1.jpg"></li>
+					</ul>
+				</div>
+				<div class="text">
+					<span >图片1</span>
+					<span>图片2</span>
+					<span>图片3</span>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>background</title>
+	<style type="text/css">
+		div{
+			width: 800px;
+			height: 600px;
+			margin: 50px auto;
+			text-align: center;
+			padding: 50px;
+			border: 20px solid red;
+			line-height: 600px;
+			background: rgba(0,255,0,0.5);           文字不透明
+			background-color: #0f0;
+			opacity: 0.5;								文字透明
+
+			/*background: url(img/1.jpg) center center no-repeat #0f0;
+			background-size: cover;*/
+			background: url(img/2.png) top left no-repeat,url(img/2.png) top right no-repeat,url(img/1.jpg) center center no-repeat;
+
+			 /*
+                background-size:
+                    x y 百分比的值
+                    如果x给了值，y轴默认auto
+
+                    contain
+                        等比例缩小 来适应元素
+
+                    cover
+                        等比例放大 填满元素
+                    auto
+                        默认 跟没写一样
+                缩写
+                    size 要写在 position 之后 加 /
+
+               属性兼容性查看：http://caniuse.com/
+            */
+
+            background-origin: padding-box;
+            
+                background-origin: 背景图像绘制区域：
+                    content-box border-box padding-box
+            
+            background-clip: padding-box;
+             
+            background-clip: 背景绘制区域：
+                    content-box border-box padding-box
+            
+		}
+	</style>
+</head>
+<body>
+	<div>文字是不透明的</div>
+</body>
+</html>

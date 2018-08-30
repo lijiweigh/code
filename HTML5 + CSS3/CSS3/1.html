@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<style type="text/css">
+		.box,.box2,.box3{
+			width: 200px;
+			height: 200px;
+			background-color: skyblue;
+			overflow: hidden;
+			margin: 50px auto;
+			box-shadow: 10px 0 10px red,0 10px 10px orange,-10px 0 10px blue,0 -10px 10px green;
+			line-height: 200px;
+			text-align: center;
+			font-size: 30px;
+			color: orange;
+			text-shadow: 0 0 10px red;
+			/*box-shadow: inset 0 0 20px red;*/
+			border-radius: 50%;
+			background-image: linear-gradient( 170deg,skyblue 0,skyblue 50%,yellow 50%,orange 75%,red 100%);
+		}
+
+		.box::first-letter{
+			color: red;
+		}
+		.box::first-line{
+			font-size: 20px;
+		}
+		.box::selection{
+			color: red;
+		}
+
+		:target{
+			display:none;
+		}
+
+		ul{
+			list-style: none;
+			display: -webkit-box;
+			height: 500px;
+			border: 1px solid red;
+			-webkit-box-pack:center;
+			-webkit-box-align:center;
+			-webkit-box-direction:reverse;
+			/*-webkit-box-orient:vertical;*/
+		}
+		ul li{
+			/*-webkit-box-flex:1;*/
+			height: 100px;
+			width: 100px;
+			text-align: center;
+			line-height: 100px;
+			color: gray;
+			font-size: 30px;
+			text-shadow: 0 0 10px orange;
+		}
+		ul li:nth-child(odd){
+			background-color: red;
+			color: #eee;
+		}
+		ul li:nth-child(even){
+			background-color: yellow;
+			/*width: 100px;*/
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			height: 1000px;
+		}
+
+		img{
+			width: 500px;
+			display: block;
+			
+			margin: 50px auto;
+			-webkit-box-reflect: below 0 -webkit-linear-gradient(transparent,transparent 50%,rgba(255,255,255,.5));
+			
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<!-- <input type="text" list="abc">
+	<datalist id="abc">
+		<option value="110">报警</option>
+		<option value="120">急救</option>
+		<option value="122">查询</option>
+	</datalist> -->
+
+	<!-- <details>
+		<summary>more</summary>
+		123lejflkjflksjfskldjfslkjflfjslk
+	</details> -->
+
+	<!-- <audio controls preload autoplay muted loop>
+		<source src="E:\音乐\浪人情歌.mp3" type="audio/mp3">
+	</audio> -->
+
+	<!-- <video poster="img/1.jpg" controls>
+		<source src="E:\Despicable.Me.2010.mp4" type="video/mp4">
+	</video> -->
+
+	<!-- <input type="date"> -->
+	<!-- <input type="number" min="2" max="100" step="2"> -->
+	<!-- <input type="range" name=""  min="10" max="100" value="50"> -->
+
+	<!-- <div class="box" id="box1">
+		sdfasfsdfsafsdfsdjghj
+		fgjgjuyotyuuiytiertqwt34
+		5236967ghjfhdfhgdfjtrrtyryy
+
+	</div>
+
+	<a href="#box1">点击隐藏上面的div</a> -->
+
+	<!-- <div class="box2"></div>
+	<div class="box3">text-shadow</div> -->
+
+	<!-- <ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+	</ul> -->
+
+	
+	<img src="img/tu.jpg">
+	
+
+</body>
+</html>

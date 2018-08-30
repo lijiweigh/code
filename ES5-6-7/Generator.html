@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+
+<script type="text/javascript">
+	
+	function* fn(){
+		console.log(111);
+		yield "a";
+		console.log(222);
+		yield "b";
+		console.log(333);
+		return 5555;
+	}
+
+	let iterator = fn();
+	
+	// console.log(iterator.next());
+	// console.log(iterator.next());
+	// console.log(iterator.next());
+	// console.log(iterator.next());
+
+	function* asyncJob(){
+		// console.log(yield console.log("yielding"));
+		yield "yielding2";
+		// yield console.log("yielding3");
+		return 3;
+	}
+
+	let aj = asyncJob();
+	console.log(aj.next());
+	console.log(aj.next());
+
+
+</script>
+</body>
+</html>

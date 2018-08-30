@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>雨点</title>
+	<style type="text/css">
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		ul{
+			padding: 0;
+			margin: 0 auto;
+			position: relative;
+		}
+		li{
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			float: left;
+			margin-right: 20px;
+			background-color: red;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var ali = document.getElementsByTagName("li");
+			var dir = "down";
+			var alitimer= null;
+			var isworking = false;
+			for(var i=0;i<ali.length;i++){
+				ali[i].style.left = i*50 + "px";
+			}
+			// move(ali[0],"top","300px",4);
+			// alert(getstyle(ali[0],"width"));
+
+			document.onclick = function(){
+				if(dir == "down"&&!isworking){
+					isworking = true;
+					var i = 0;
+					clearInterval(alitimer);
+					alitimer = setInterval(function(){
+						move(ali[i],"top","400px",1,function(){
+							if(i>=ali.length){
+								clearInterval(alitimer);
+								dir = "top";
+								isworking = false;
+							}
+						});
+						i++;
+						if(i>=ali.length){
+							clearInterval(alitimer);
+						}
+						
+					},100);
+				}else if(dir == "top"&&!isworking){
+					isworking = true;
+					var i = ali.length - 1;
+					clearInterval(alitimer);
+					alitimer = setInterval(function(){
+						move(ali[i],"top","0",1,function(){
+							if(i<0){
+								clearInterval(alitimer);
+								dir = "down";
+								isworking = false;
+							}
+						});
+						i--;
+						if(i<0){
+								clearInterval(alitimer);
+						}
+					},100);
+				}
+
+			}
+		}
+
+		function move(obj,attr,to,speed,dofunction){
+			if( parseInt(getstyle(obj,attr)) > parseInt(to) ){
+				speed = -speed;
+			}
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				obj.style[attr] = parseInt(getstyle(obj,attr)) + speed +"px";
+
+				if( ( (speed > 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) < speed)) || ( (speed < 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) > speed)) ){
+					obj.style[attr] = to +"px";
+					clearInterval(obj.timer);
+					dofunction && dofunction();
+				}
+			},10);
+		}
+
+		function getstyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+		}
+	</script>
+</head>
+<body>
+
+	<ul class="clearfix">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		
+		
+
+	</ul>
+
+</body>
+</html>

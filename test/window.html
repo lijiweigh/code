@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+	
+	// 获取浏览器窗口相对于屏幕左上角的距离  不同浏览器的值不相同
+	var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+	var topPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+
+	// alert(leftPos + " : " + topPos);
+
+	// 把窗口移动到那个位置上 chrome firefox被禁用 ie可以  调整窗口大小resizeTo()  chrome firefox被禁用 ie可以 
+	// window.moveTo(200,200);
+
+	// 移动窗口，相对于当前位置 chrome firefox被禁用 ie可以  调整窗口大小resizeBy()  chrome firefox被禁用 ie可以
+	// window.moveBy(0,100);
+
+	//获取页面视口信息
+
+	var pageWidth = window.innerWidth;
+	var pageHeight = window.innerHeight;
+
+	if(typeof pageWidth != "number"){
+		if(document.compatMode == "CSS1Compat"){
+			pageWidth = document.documentElement.clientWidth;
+			pageHeight = document.documentElement.clientHeight;
+		}
+		else{
+			pageWidth = document.body.clientWidth;
+			pageHeight = document.body.clientHeight;
+		}
+	}
+
+	// alert(pageWidth + " : " + pageHeight);
+
+
+	// 导航和打开窗口 
+	// window.open() 4个参数：要加载的URL、 窗口目标、 一个特性字符串、 一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值 通常只需传第一个参数
+	// window.open("http://www.baidu.com");
+	// window.open("http://www.baidu.com","_blank");
+	// window.open("http://www.baidu.com","_self");
+	// window.open("http://www.baidu.com","newWindow");
+
+	// window.open("http://www.baidu.com","_blank","width=400,height=400,top=200,left=200,resizable=no");
+
+	//可以对通过window.open() 创建的窗口控制
+	// var newWindow = window.open("数组.html","_blank","width=400,height=400,top=200,left=200,resizable=no");
+
+	// newWindow.resizeTo(600,600);
+	// newWindow.moveTo(400,400);
+	// newWindow.close();	
+
+	//opener属性指向打开这个窗口的原始窗口
+	// alert(newWindow.opener == window);
+
+	//系统提示框 alert() confirm() prompt()
+
+	// alert(1);
+
+	// if(confirm("Are you sure?")){
+	// 	alert("you are sure");
+	// }else{
+	// 	alert("you are not sure");
+	// }
+
+	// var result = prompt("what's your name?","Mike");
+	// if(result){
+	// 	alert("Hello," + result);
+	// }
+
+	// 显示打印对话框
+	// window.print();
+	// 显示查找对话框
+	window.find();
+
+
+</script>
+</body>
+</html>

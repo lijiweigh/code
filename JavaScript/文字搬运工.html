@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文字搬运工</title>
+
+	<style type="text/css">
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.out{
+			width: 500px;
+			height: 300px;
+			border: 5px solid #ccc;
+			margin: 50px auto;
+		}
+		.left,.right,.center{
+			float: left;
+		}
+
+		.left,.right{
+			width: 40%;
+			height: 100%;
+			color: #fff;
+		}
+		.center{
+			width: 20%;
+			height: 100%;
+		}
+		.left{
+			background-color: skyblue;
+		}
+		.left textarea{
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			resize: none;
+			padding: 0;
+			border: none;
+			background-color: skyblue;
+		}
+		.right{
+			background-color: orange;
+			overflow: auto;
+		}
+		.center .num span{
+			display: inline-block;
+			width: 30%;
+			text-align: center;
+		}
+		.center .num span:nth-child(1){
+			margin-left: 15%;
+		}
+		.center .num span:nth-child(2){
+			
+			width: 10%;
+		}
+		.center .num{
+			/*padding: 0 15%;*/
+		}
+		.scro ul{
+			padding: 0 0 0 7px;
+			display: none;
+		}
+		.scro li{
+			float: left;
+			width: 7px;
+			height: 7px;
+			background-color: orange;
+			list-style: none;
+			margin: 0 3px;
+		}
+		.scro .active{
+			background-color: red;
+		}
+		input{
+			text-decoration: none;
+			width: 80%;
+			height: 30px;
+			line-height: 30px;
+			/*font-size: */
+			background: orange;
+			display: block;
+			margin: 10px auto;
+			color: #fff;
+			/*padding: 5px;*/
+			border: 0;
+			cursor: pointer;
+			outline: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var otextarea = document.querySelector(".left textarea");
+			var obtn = document.querySelector(".center input");
+			var aspan = document.querySelectorAll(".center .num span");
+			var ali = document.querySelectorAll(".center .scro li");
+			var oright = document.querySelector(".right");
+			var oul = document.querySelector(".center .scro ul");
+
+			var text = "";
+			var lefttext = "";
+			var righttext = "";
+			var timer = null;
+			var onoff = false;
+			var arr;
+
+			// alert(aspan.length);
+			otextarea.oninput = function(){
+				text = this.value;
+				aspan[0].innerHTML = "0";
+				aspan[2].innerHTML = text.length;
+			}
+
+			obtn.onclick = function(){
+				
+				if(onoff){
+					return 1;
+
+				}else{
+					text = otextarea.value;
+					righttext = "";
+					var index = 0;
+					clearInterval(timer);
+					timer = setInterval(function(){
+						if(text.length < 1){
+							onoff = false;
+							clearInterval(timer);
+							
+							oul.style.display = "none";
+							obtn.style.backgroundColor = "orange";
+							
+						}else{
+							
+							onoff = true;
+							obtn.style.backgroundColor = "#ccc";
+							oul.style.display = "block";
+
+
+
+							// righttext += text.substring(0,1);
+							// text = text.substring(1,text.length);
+							// otextarea.value = text;
+							// aspan[0].innerHTML = righttext.length;
+							// oright.innerHTML = righttext;
+
+							arr = text.split("");
+							righttext += arr.shift();
+							text = arr.join("");
+							otextarea.value = text;
+							aspan[0].innerHTML = righttext.length;
+							oright.innerHTML = righttext;
+
+
+
+							for(var i =0;i<ali.length;i++){
+								ali[i].className = "";
+							}
+							ali[index].className = "active";
+							index = ++index%ali.length;
+
+						}
+					},50);
+				}
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="out clearfix">
+		<div class="left">
+			<textarea maxlength="500"></textarea>
+		</div>
+		<div class="center">
+			<input type="button" value="把文字右移">
+			<div class="num">
+				<span>0</span><span>/</span><span>0</span>
+			</div>
+			<div class="scro">
+				<ul class="clearfix">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right"></div>
+	</div>
+
+</body>
+</html>

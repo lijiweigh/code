@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	var person = new Object();
+
+
+	// 数据属性
+	Object.defineProperty(person,"name",{
+		configurable : true, // 是否可以配置（删除，修改特性等）
+		enumerable : true, //是否可以遍历
+		writable : true, // 是否可以修改值
+		value : "tom" // 属性的值
+	});
+
+	// alert(person.name);
+
+	// person.name = "mike";
+
+	// alert(person.name);
+
+	// 访问器属性
+
+	var person2 = {
+		_name_ : "mike",
+		age : 18
+	};
+
+	Object.defineProperty(person2,"name",{
+		configurable : true,
+		enumerable : true,
+		get : function(){
+			return this._name_;
+		},
+
+		set : function(newValue){
+			this._name_ = newValue;
+			this.age += 1;
+		}
+	});
+
+	// alert(person2._name_);
+
+	// alert(person2.name);
+
+	// person2.name = "amy";
+
+	// alert(person2.name);
+	// alert(person2.age);
+
+	//定义多个属性
+
+	var person3 = new Object();
+
+	Object.defineProperties(person3,{
+		_year :{
+			value : 2018
+		},
+		edition : {
+			value : 5
+		},
+		year : {
+			get : function(){
+				return this._year;
+			},
+			set : function(newValue){
+				if(newValue > 2018){
+					this._year = newValue;
+					this.edition += newValue - this.edition;
+				}
+			}
+		}
+
+	});
+
+	// 读取属性的特性 
+	var descriptor = Object.getOwnPropertyDescriptor(person3,"_year");
+
+	alert(descriptor.configurable);
+	alert(descriptor.enumerable);
+
+	var descriptor2 = Object.getOwnPropertyDescriptor(person3,"year");
+
+	alert(descriptor2.set);
+	
+
+</script>
+</body>
+</html>

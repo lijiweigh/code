@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <asynccomponent></asynccomponent>
+    <asynccomponent2></asynccomponent2>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    
+    new Vue({
+      el: '#app',
+      components: {
+        asynccomponent: (resolve,reject) => {
+          setTimeout (() => {
+            resolve({
+              template: '<div>async component</div>'
+            })
+          },500)
+        },
+        asynccomponent2: () => ({
+          component: new Promise((resolve,reject) => {
+            setTimeout (() => {
+              resolve({
+                template: '<div>async component2222</div>'
+              })
+            },4000)
+          }),
+          loading: { template: '<div>loading</div>' },
+          error: { template: '<div>error</div>' },
+          timeout: 3000
+        })
+      }
+    })
+
+  </script>
+</body>
+</html>

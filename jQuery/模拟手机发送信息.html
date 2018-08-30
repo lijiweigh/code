@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟手机发信息</title>
+
+
+	<style type="text/css">
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		input{
+			border:none;
+		}
+
+		span,img,.head{
+			display: inline-block;
+			height: 20px;
+			width: 20px;
+		}
+
+		.clearfix{
+			zoom:1;
+		}
+
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.main{
+			width: 250px;
+			height: 400px;
+			border: 1px solid skyblue;
+			margin:50px auto;
+			
+		}
+
+		.msg{
+			width: 100%;
+			height: 369px;
+			border-bottom:1px solid #ccc;
+			overflow-y: auto;
+		}
+
+		.wrap{
+			width: 220px;
+			margin:10px 0;
+
+		}
+
+		.fl{
+			float: left;
+		}
+
+		.fr{
+			float: right;
+		}
+
+
+		.head,.content{
+			line-height: 20px;
+			float: left;
+		}
+
+		.content{
+			border-radius: 5px;
+			width: 192px;
+			padding: 4px;
+		}
+
+		.me .content{
+			background-color: skyblue;
+			color: #fff;
+		}
+
+		.other .content{
+			background-color: green;
+			color: #fff;
+		}
+
+
+		img{
+			
+		}
+
+		.send{
+			width: 100%;
+			height: 30px;
+			position: relative;
+			
+		}
+
+		.send input{
+			height: 20px;
+			width: 160px;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			text-indent: 5px;
+			margin:4px 5px 0 5px;
+		}
+
+		.send .user{
+			border:1px solid skyblue;
+			border-radius: 50%;
+			padding: 2px;
+			background: #fff;
+			margin-top: 2px;
+			margin-left: 5px;
+
+		}
+
+		.btn{
+			width: 40px;
+			border:1px solid #ccc;
+			text-align: center;
+			line-height: 20px;
+			margin-top: 4px;
+			background: #eee;
+			border-radius: 5px;
+		}
+
+		span{
+			cursor: pointer;
+		}
+
+		.imglist{
+			position: absolute;
+			left: 0px;
+			top: -35px;
+			display: none;
+		}
+
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			
+
+			var arr = ["img/表情/1.png","img/表情/2.png","img/表情/3.png","img/表情/4.png","img/表情/5.png","img/表情/6.png","img/表情/7.png","img/表情/8.png","img/表情/9.png","img/表情/10.png","img/表情/11.png","img/表情/qq.png"];
+
+			var imgList = $("<div>");
+
+			imgList.addClass("imglist");
+			imgList.attr("id","imglist");
+
+			for(var i=0;i<arr.length;i++){
+
+				$(imgList).html( $(imgList).html() + '<span class="user fl"><img src="'+ arr[i] + '"></span>' );
+
+				
+			}
+
+			
+			$(".send").append(imgList);
+
+			$(".imglist").find("span").each(function(i,elem){
+
+				$(elem).on("click",function(){
+					
+					$(".send .first").find("img").attr("src",$(this).find("img").attr("src"));
+					$(".imglist").css("display","none");
+					$(".text").get(0).focus();
+					
+				});
+
+			});
+
+			$(".first").on("click",function(){
+
+				$(".imglist").css("display","block");
+
+				$(".imglist").css("top",-1 * ( $(imgList).outerHeight() + 5) );
+
+			});
+
+			
+			
+
+
+			$(".btn").on("click",function(){
+
+				$(".text").get(0).focus();
+
+				if( !$(".text").val() ){
+					alert("发送内容不能为空！")
+					return;
+				}
+				if( $(".first img").attr("src").indexOf("1.png") > 0 ){
+					
+					$(".msg").html( $(".msg").html() + '<div class="wrap me clearfix fr"><div class="content">' + $(".text").val() + '</div><div class="head"><img src="img/表情/1.png"></div></div>' );
+
+				}else{
+					$(".msg").html( $(".msg").html() + '<div class="wrap other clearfix fl"><div class="head"><img src="' + $(".user img").attr("src") + '"></div><div class="content">' + $(".text").val() + '</div></div>' );
+				}
+
+				$(".text").val("");
+
+				$(".msg").scrollTop( $(".msg").get(0).scrollHeight - $(".msg").outerHeight()  );
+
+				
+
+			});
+
+			
+
+			$(".msg").scrollTop( $(".msg").get(0).scrollHeight - $(".msg").outerHeight() );
+
+			$(".text").get(0).focus();
+
+		});
+
+	</script>
+
+</head>
+<body>	
+
+	<div class="main">
+		
+		<div class="msg clearfix">
+			
+			
+
+
+		</div>
+
+
+		<div class="send clearfix">
+
+			
+			<span class="user fl first"><img src="img/表情/1.png"></span>
+			<input type="text" name="message" class="text fl">
+			<span class="btn fl">发送</span>
+
+			<!-- <div class="imglist">
+				<span class="user fl"><img src="img/表情/1.png"></span>
+				<span class="user fl"><img src="img/表情/2.png"></span>
+				<span class="user fl"><img src="img/表情/3.png"></span>
+				<span class="user fl"><img src="img/表情/4.png"></span>
+				<span class="user fl"><img src="img/表情/5.png"></span>
+			</div> -->
+
+		</div>
+
+	</div>
+
+</body>
+</html>

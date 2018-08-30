@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			height: 2000px;
+		}
+		#box{
+			width: 100px; 
+			height: 100px;
+			position: absolute;
+			/*top: 1000px;*/
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<button>click</button>
+		<button>click2</button>
+	</div>
+
+
+<script type="text/javascript" src="../jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#box").css({
+			background: "red"
+		})
+
+		// $("#box").offset({
+		// 	left : 50,
+		// 	top : 1000
+		// })
+		$("#box button").click(function(){
+			console.log("button click")
+		})
+
+		$("#box").click(function(){
+			console.log("box click")
+		})
+
+		console.log($("#box").offset().left,$("#box").offset().top)
+		$("#box").clone().css("top",200).appendTo($("body"))
+
+		// console.log($("#box button")[-1])
+
+		let obj1 = {
+
+		}
+
+		let obj2 = {
+			name: "tom",
+			age : 20,
+			arr : [3,5,6]
+		}
+
+		let obj = $.extend(true,obj1,obj2)
+		obj.arr[0] = 20
+
+		console.log(obj)
+		console.log(obj1)
+		console.log(obj2)
+
+		console.log($("#box button").toArray()[0].innerHTML)
+		let arr1 = [1,3,5]
+		let arr2 = [3,7,9]
+		let arr3 = arr1.concat(arr2)
+		console.log(arr3)
+		console.log(arr1)
+
+		$(document).on("click",function(e){
+			console.log(e.pageX,e.pageY)
+		})
+
+		let callbacks = $.Callbacks()
+
+		function fn1(value){
+			console.log(value)
+		}
+
+		function fn2(value){
+			console.log(value)
+		}
+
+		callbacks.add(fn1)
+		callbacks.fire("hello")
+		callbacks.add(fn2)
+		callbacks.fire("world")
+		console.log(callbacks.has(fn1))
+		console.log(callbacks.fired())
+		callbacks.disable()
+		callbacks.fire("disable")
+		console.log(callbacks.has(fn1))
+		callbacks.empty()
+
+		function fn3(...value){
+			console.log(this,value)
+		}
+
+		callbacks = $.Callbacks()
+		callbacks.add(fn3)
+		callbacks.fireWith(obj,["fire","With"])
+		callbacks.lock()
+		callbacks.fire("lock")
+
+		callbacks = $.Callbacks("once")
+		callbacks.add(fn2)
+		callbacks.fire("fn2 1")
+		callbacks.fire("fn2 2")
+
+		callbacks = $.Callbacks("memory")
+		callbacks.add(fn1)
+		callbacks.fire("memory")
+		callbacks.add(fn2)
+
+		callbacks = $.Callbacks("unique")
+		callbacks.add(fn1)
+		callbacks.add(fn1)
+		callbacks.fire("unique")
+
+		callbacks = $.Callbacks("stopOnFalse")
+		function fn4(value){
+			console.log("return false " + value)
+			return false
+		}
+
+		callbacks.add(fn1)
+		callbacks.add(fn4)
+		callbacks.add(fn3)
+		callbacks.fire("stopOnFalse")
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>qq列表</title>
+	<style type="text/css">
+		.par{
+			width: 200px;
+			border: 1px solid orange;
+			margin: 0 auto;
+		}
+		ul,h2{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		h2{
+			background: url(img/ico1.gif) 5px no-repeat;
+			text-indent: 1em;
+			background-color: skyblue;
+			cursor: pointer;
+		}
+		li{
+			text-indent: 2em;
+			cursor: pointer;
+		}
+		ul{
+			display: none;
+		}
+		.active{
+			background-color: orange;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var ah2 = document.getElementsByTagName("h2");
+			var ul = document.getElementsByTagName("ul");
+			var li = document.getElementsByTagName("li");
+
+			ulold = null;
+			h2old = null;
+			liold = null;
+			for(var i=0;i<ah2.length;i++){
+				ah2[i].index = i;
+				ul[i].index = i;
+				
+			}
+
+			for(var i=0;i<ul.length;i++){
+				ah2[i].onclick = function(){
+					if(h2old){
+						h2old.className = "";
+						h2old.style.backgroundImage = "url(img/ico1.gif)";
+						
+					}
+					if(ulold){
+						ulold.style.display = "none";
+						
+					}
+					if(this!=h2old){
+						this.className = "active";
+						this.style.backgroundImage = "url(img/ico2.gif)";
+					
+						h2old = this;
+					}else{
+						
+						h2old = null;
+					}
+					if(ul[this.index]!=ulold){
+						ul[this.index].style.display = "block";
+						
+						ulold = ul[this.index];
+					}else{
+						
+						ulold = null;
+					}
+				}
+			}
+
+			for(var i =0;i<li.length;i++){
+				li[i].index = i;
+				
+				li[i].onclick = function(){
+					if(liold){
+						liold.className = "null";
+						
+					}
+					if(this!=liold){
+						this.className = "active";
+					
+						liold = this;
+					}else{
+						
+						liold = null;
+					}
+
+				}
+
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="par">
+		<h2>我的好友</h2>
+		<ul>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+		</ul>
+		<h2>朋友</h2>
+		<ul>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+		</ul>
+		<h2>黑名单</h2>
+		<ul>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+			<li>小明</li>
+		</ul>
+	</div>
+</body>
+</html>

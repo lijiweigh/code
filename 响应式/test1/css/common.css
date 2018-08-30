@@ -1,0 +1,177 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*public*/
+.w{
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+.clearfix:after,.clearfix:before{
+	content: "";
+	display: table;
+}
+
+.clearfix:after{
+	clear: both;
+}
+
+.clearfix{
+	zoom:1;
+}
+
+.tc{
+	text-align: center;
+}
+
+.top_title{
+	background: url(../img/CompositePath.png) center top no-repeat;
+	padding-top: 100px;	
+}
+
+.top_title h4{
+
+	font-size: 35px;
+	color: #1a2940;
+}
+
+.top_title p{
+	color: #a8b9c0;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.line_bot{
+	width: 150px;
+	height: 1px;
+	background-color: #00c6bf;
+	margin: 14px auto 0;
+}
+
+/*public end */
+
+body{
+	height: 5000px;
+}
+
+/*header*/
+
+.header{
+	background-color: #19283f;
+	padding-top: 15px;
+	position:relative;
+}
+
+.header .menu{
+	color: #fff;
+	font-size: 38px;
+}
+
+.header .login{
+	display: none;
+}
+
+.header ul{
+	width: 100%;
+	top: 100%;
+	left :0;
+	position: absolute;
+	display: none;
+}
+
+.header ul li{
+	width: 100%;
+	background-color: #ccc;
+	padding: 0 10px;
+}
+
+.header ul a{
+	
+	color:#fff;
+}
+
+.header_text{
+	margin-top: 200px;
+	margin-bottom: 200px;
+}
+
+.header_text h2{
+	font-size: 40px;
+	line-height: 68px;
+	color: #f0f8fb;
+	/*padding:0 1em;*/
+}
+
+.header_text p{
+	font-size: 28px;
+	line-height: 1;
+	margin-top: 24px;
+	color: #a8b9c0;
+	/*padding:0 1em;*/
+}
+
+.header_text a{
+	display: inline-block;
+	margin-top: 42px;
+	font-size: 15px;
+	color: #ffc501;
+	width: 190px;
+	height: 45px;
+	line-height: 45px;
+	background-color: #ff3150;
+	border-radius: 17px;
+}
+/*header end */
+
+/*good_at*/
+.good_at{
+	padding-top: 110px;
+	padding-bottom: 40px;
+}
+
+.good_at .module{
+	padding-top: 64px;	
+}
+
+.good_at .item{
+	margin-bottom: 50px;
+}
+
+.good_at .item h5{
+	font-size: 20px;
+	color: #ffc501;	
+	line-height: 30px;
+	margin-top: 28px;
+}
+
+.good_at .item p{
+	font-size: 15px;
+	color: #a8b9c0;
+	line-height: 30px;
+	margin-top: 21px;
+}
+
+/*good_at end*/

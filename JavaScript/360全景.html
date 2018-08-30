@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>360全景</title>
+	<style type="text/css">
+		.out{
+			width: 640px;
+			height: 378px;
+			margin: 100px auto;
+			/*background: url("img/360全景图/miaov (0).jpg");*/
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var index = 0;
+			var lastindex = 0;
+			var speed = 0;
+			
+
+			var imglength = 77;
+
+			var odiv = document.getElementById("img");
+			var odiv2 = document.getElementById("out");
+			var aimg = odiv2.getElementsByTagName("img");
+
+
+			for(var i = 1;i<imglength;i++){
+
+				(function(newimg){
+
+					var img = new Image();
+
+					img.src = "img/360全景图/miaov ("+ i +").jpg";
+
+					img.onload = function(){
+						newimg.src = this.src;
+					}
+
+					odiv2.appendChild(newimg);
+					newimg.style.display = "none";
+
+				})(document.createElement("img"));
+
+			}
+
+			document.onmousedown = function(ev){
+				var ev = ev || event;
+
+				var fx = ev.clientX;
+
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+
+					speed = -(ev.clientX - fx)/10;
+					
+
+					if(speed > 0){
+						speed = Math.ceil(speed);
+					}else if(speed < 0){
+						speed = Math.floor(speed);
+					}
+
+					fx = ev.clientX;
+
+					lastindex = index;
+
+					index += speed;
+
+					index = index % imglength;
+
+					if(index < 0){
+						index += imglength; 
+					}
+
+					console.log(index);
+					document.title = speed;	
+
+				
+					aimg[lastindex].style.display = "none";
+					aimg[index].style.display = "inline";
+
+					
+					
+
+					return false;
+
+				}
+
+				document.onmouseup = function(){
+					document.onmouseup = null;
+					document.onmousemove = null;
+					move(aimg,speed);
+				}
+
+				return false;	
+			}
+
+			function move(obj,speed){
+
+				clearInterval(obj.timer);
+
+				obj.timer = setInterval(function(){
+
+					lastindex = index;
+
+					index += speed;
+
+					index = index % imglength;
+
+					if(index < 0){
+						index += imglength; 
+					}
+
+
+					document.title = speed;	
+
+					obj[lastindex].style.display = "none";
+					obj[index].style.display = "inline";
+
+					if(speed > 0){
+						speed--;
+					}else if(speed < 0){
+						speed++;
+					}else{
+						clearInterval(obj.timer);
+					}
+
+
+				},30)
+
+				
+			}
+		}
+
+		
+	</script>
+</head>
+<body>
+	<div class="out" id="out">
+		<img src="img/360全景图/miaov (0).jpg" id="img">
+	</div>
+</body>
+</html>

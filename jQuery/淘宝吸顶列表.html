@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>淘宝吸顶列表</title>
+
+	<style type="text/css">
+		
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		body{
+			height: 3000px;
+		}
+
+		.list{
+
+			height: 30px;
+			background-color: #ccc;
+			width: 80%;
+			border-radius: 5px;
+			margin: 0 auto;
+			position: absolute;
+
+
+		}
+
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			//$(".list").css("top", document.documentElement.clientHeight - $(".list").height());
+
+			//$(".list").css("top", window.innerHeight - $(".list").height());
+
+			var staticTop =  $(window).height() - $(".list").height();
+
+			$(".list").css("top", $(window).height() - $(".list").height() );
+
+			$(".list").css("left", ( $(window).width() - $(".list").width()) /2 );
+
+			$(window).on("scroll",function(){
+
+				//alert(1);
+
+				if($(window).scrollTop() > staticTop){
+
+					$(".list").css("top", $(window).scrollTop() );
+
+				}
+
+
+			});
+
+		});
+
+
+	</script>
+</head>
+<body>
+
+	<div class="list">
+		
+		
+
+	</div>
+
+</body>
+</html>

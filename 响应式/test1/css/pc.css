@@ -1,0 +1,41 @@
+@charset "utf-8";
+.w{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+.pc-w{
+	width: 1170px;
+	margin:auto;
+}
+
+.header .login{
+	display: block;
+	float: right;
+	color: #00c6bf;
+	line-height: 44px;
+}
+
+.header .login a{
+	color: #00c6bf;
+	line-height: 44px;
+}
+
+.header .login span{
+	padding: 0 20px;
+}
+
+.header .login .button{
+	padding: 10px 40px;
+	background-color: #ff3150;
+	border-radius: 8px;
+	margin-left: 20px;
+	color: #ffc501;
+	
+}
+
+.header_text{
+	margin-top: 305px;
+	margin-bottom: 225px;
+}

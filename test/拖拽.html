@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            position: relative;
+            height: 2000px;
+            width: 2000px;
+
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+
+    /*
+    * 1.鼠标按下：获取clientx - offsetleft + scrollleft
+    * 2.鼠标移动：设置left 为 clientx + ()
+    * 3.鼠标按上：清除事件
+    * */
+    var box = document.getElementById("box");
+
+    box.onmousedown = function(e){
+        var e = e || event;
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+//        var disx = e.clientX - box.offsetLeft + scrollLeft;
+        var disx = e.clientX - box.offsetLeft;
+        var disy = e.clientY - box.offsetTop;
+//        var disy = e.clientY - box.offsetLeft + scrollTop;
+
+        document.onmousemove = function(e){
+            var e = e || event;
+            if(e.setCapture){
+                e.setCapture();
+            }
+
+//            box.style.left = e.clientX - disx + scrollLeft + "px";
+//            box.style.top = e.clientY - disy + scrollTop + "px";
+            box.style.left = e.clientX - disx + "px";
+            box.style.top = e.clientY - disy + "px";
+
+        }
+
+        document.onmouseup = function () {
+            var e = e || event;
+            if(e.releaseCapture){
+                e.releaseCapture();
+            }
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>

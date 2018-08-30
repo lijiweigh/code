@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/prop-types.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+
+<script type="text/babel">
+
+    class FormInput extends React.Component{
+        constructor(props){
+            super(props);
+
+            this.state = {
+                psd:""
+            }
+
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleSubmit(e){
+            alert(this.nameInput.value);
+
+            e.preventDefault();
+        }
+
+        handleChange(e){
+            let psd = e.target.value;
+            this.setState({psd});
+        }
+
+        render(){
+            return (
+                <form action="#" target="_self" method="GET" onSubmit={this.handleSubmit} >
+                    用户名：<input type="text" ref={input=>this.nameInput=input} />
+                    密  码：<input type="password" onChange={this.handleChange} value={this.state.psd} />
+                    <input type="submit" value="提交" />
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<FormInput />,document.getElementById("box"))
+
+</script>
+</body>
+</html>

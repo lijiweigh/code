@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>线性渐变</title>
+	<style type="text/css">
+		div{
+			height: 600px;
+			width: 600px;
+			margin: 30px auto;
+			background-image: linear-gradient(to bottom , red , orange,yellow,green,skyblue,blue,purple);
+			background-image:linear-gradient(red 0,red 10px,yellow 10px,yellow 20px);
+			background-image:linear-gradient(red 30%,yellow 70%,blue 100%);
+			background-image: linear-gradient(
+				45deg,
+				red 0%,
+		        red 14.3%,
+		        orange 0,
+		        orange 28.6%,
+		        yellow 0,
+		        yellow 42.9%,
+		        green 0,
+		        green 57.2%,
+		        blue 0,
+		        blue 71.5%,
+		        indigo 0,
+		        indigo 85.8%,
+		        violet 0,
+		        violet 100%)
+			;
+
+			 /*
+                linear-gradient(red [百分比、像素],yellow [百分比、像素])  颜色1 颜色2 颜色3.......
+                方向：
+               		linear-gradient(red 百分比1,yellow 百分比2,blue 百分比3)   表示从百分比1到百分比2是从red到yellow的渐变 从百分比2到百分比3是yellow到blue的渐变
+
+                    1 to top、to bottom 、 to right 、 to left
+                    2 角度：  单位 deg
+                           0deg  = to top
+                           90deg = to right
+                           180deg = to bottom
+                           270deg = to left
+                            正值   顺时针旋转的
+                           支持负值  逆时针旋转的
+
+            */
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

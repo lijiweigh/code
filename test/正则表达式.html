@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>正则表达式</title>
+</head>
+<body>
+	
+<script type="text/javascript">
+	
+	var re = null,i;
+	var arr = [];
+	for(i = 0;i<10;i++){
+		re = /at/g;
+		arr.push(re);
+		console.log(re.test("catogstrop")  + "\n");
+	}
+
+	for(var j=0;j<arr.length - 1;j++){
+		console.log(arr[j] === arr[j+1]);
+	}
+
+</script>
+</body>
+</html>

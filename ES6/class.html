@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>class</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+	
+	// 1.简介
+
+	;(()=>console.log(this))()
+
+	function fun(){
+		;(()=>console.log(this))()
+	}
+
+	new fun()
+
+	class foo{
+		constructor(){
+			console.log(this)
+		}
+	}
+
+	foo.x = 1
+
+
+	new foo()	
+	console.log(foo.x)
+	console.log(foo.prototype.x)
+
+	
+
+</script>
+</body>
+</html>

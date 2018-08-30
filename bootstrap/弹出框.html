@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<title>弹出框</title>
+
+	<style type="text/css">
+		body{
+			padding: 100px;
+			height: 2000px;
+			position:relative;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<button type="button" class="btn btn-info" data-toggle="popover" title="title" data-content="some text">click</button>
+
+	<a href="#" role="button" tabindex="0" class="btn btn-warning" data-toggle="popover" data-trigger="focus" title="title" data-content="content">click</a>
+
+	<script type="text/javascript">
+		$("[data-toggle='popover']").popover({
+			container : "body"
+		});
+	</script>
+
+	<!-- <button type="button" class="btn btn-info" data-toggle="popover" data-content="content" title="title">click</button>
+
+	<a href="#" role="button" tabindex="0" class="btn btn-danger" data-toggle="popover" title="title" data-content="content" data-trigger="focus">danger</a>
+
+	<script type="text/javascript">
+		
+		$("[data-toggle='popover']").popover();
+
+	</script> -->
+
+</body>
+</html>

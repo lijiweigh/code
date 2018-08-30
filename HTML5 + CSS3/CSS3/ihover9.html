@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ihover9</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			perspective: 300px;
+		}
+		.hole{
+			margin: 100px auto;
+			width: 200px;
+			height: 40px;
+			position: relative;
+			/*perspective: 300px;*/
+			transform-style: preserve-3d;
+			transition: 1s;
+			transform-origin: center center -20px;
+			/*transform:rotateX(1deg);
+			transform:rotateY(1deg);*/
+		}
+		.z , .f{
+			width: 100%;
+			height:100%;
+			line-height: 40px;
+			color: #fff;
+			text-align: center;
+			font-size: 20px;
+			position: absolute;
+			/*transform-style: preserve-3d;*/
+			transition: 1s;
+			display: inline-block;
+		}
+		.f{
+			background-color: blue;
+			left: 0;
+			bottom: 100%;
+			transform-origin: center bottom;
+			transform: rotateX(90deg);
+		}
+		.z{
+			background-color: skyblue;
+			
+		}
+		.hole:hover{
+			transform: rotateX(-90deg);
+		}
+	</style>
+</head>
+<body>	
+	<div class="hole">
+		<div class="z">正面文字</div>
+		<div class="f">反面文字</div>
+	</div>
+</body>
+</html>

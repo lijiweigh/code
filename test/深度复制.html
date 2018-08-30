@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+
+   console.log( getType(11))
+    var person = {
+        name:"tom",
+        age:20,
+        arr:[3,5,7,9],
+        obj:{
+            attr1:"1111",
+            attr2:"2222"
+        }
+    }
+
+    var person2 = deep(person);
+    person2.arr[0] = 999;
+    console.log(person.length);
+    console.log(person2);
+
+   function getType(obj){
+       return {}.toString.call(obj).slice(8,-1);
+   }
+
+    function deep(obj){
+
+        var type,result;
+        type = getType(obj);
+        if(type === "Object"){
+            result = {};
+        }else if(type === "Array"){
+            result = [];
+        }else{
+            return obj;
+        }
+
+        for(var i in obj){
+            if(getType(obj[i]) === "Object" || getType(obj[i]) === "Array"){
+                result[i] = deep(obj[i]);
+            }else{
+                result[i] = obj[i];
+            }
+        }
+
+        return result;
+
+    }
+
+</script>
+</body>
+</html>

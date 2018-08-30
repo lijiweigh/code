@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title></title>
+	<style type="text/css">
+		html{
+			width: 100%;
+			height: 100%;
+		}
+
+		body{
+			height: 100%;
+			margin: 0;
+			position: relative;
+			overflow: hidden;
+			font-size: 30px;
+		}
+
+		#wrap{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		#move{
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: 0;
+		}
+	
+
+	</style>
+</head>
+<body>
+
+	<div id="wrap">
+		<div id="move">
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p><p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p><p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p><p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p><p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p><p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+			<p>abcefghijklmnopqrstuvwxyz</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		
+		let wrap = document.getElementById("wrap");
+		let move = document.getElementById("move");
+		let start = 0;
+		let dis = 0;
+		let now = 0;
+		let pos = 0;
+		let max = wrap.clientHeight - move.offsetHeight;
+		console.log(max)
+
+		move.addEventListener("touchstart",function(e){
+			let touch = e.changedTouches[0];
+			start = touch.pageY;
+			now = this.offsetTop;
+		})
+		move.addEventListener("touchmove",function(e){
+			let touch = e.changedTouches[0];
+			dis = touch.pageY - start;
+			pos = now + dis;
+			if(pos > 0){
+				pos = 0;
+			}else if(pos < max){
+				pos = max;
+			}
+
+			console.log(pos);
+
+			this.style.top = pos + "px";
+
+		})
+
+	</script>
+
+</body>
+</html>

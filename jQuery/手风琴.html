@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>手风琴</title>
+
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+		.outer{
+			height: 200px;
+			
+			position: relative;
+
+			margin: 50px auto;
+			overflow: hidden;
+		}
+
+		.outer .item{
+			width: 400px;
+			height: 100%;
+			position: absolute;
+		}
+
+		.red{
+			background-color: red;
+		}
+		.orange{
+			background-color: orange;
+		}
+		.yellow{
+			background-color: yellow;
+		}
+		.green{
+			background-color: green;
+		}
+		.blue{
+			background-color: blue;
+		}
+		.purple{
+			background-color: purple;
+		}
+		.pink{
+			background-color: pink;
+		}
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var smallWidth = 30;
+			var EWidth = parseInt( $(".item").css("width") );
+			var moveDis = EWidth - smallWidth;
+			var linjie = ( $(".item").size() -1 ) * smallWidth;
+
+			$.extend(
+				{
+					tab:function(obj,dir){
+
+						var calc = "";
+						if(dir == "left"){
+							calc = "-=";
+						}else{
+							calc = "+=";
+						}
+
+						obj.animate(
+							{
+								left : calc + moveDis
+							},
+							1000,
+							function(){
+
+							}
+						);
+					}
+				}
+			);
+
+			$(".outer").css("width", parseInt( EWidth ) +  ( $(".item").size() -1 )  * smallWidth );
+
+			$(".item").each(function(i,e){
+
+				$(e).css("left",i * smallWidth);
+
+				$(e).on("click",function(){
+
+					if( parseInt( $(e).css("left") ) > linjie ){
+
+						$.tab($(e),"left");
+						
+						var prevE = $(this).prevAll(".item");
+
+						prevE.each(function(i,e){
+
+							if( parseInt( $(e).css("left") ) < linjie ){
+								return;
+							}
+	
+							$.tab($(e),"left");
+
+						});
+
+					}else{
+
+						var nextE = $(this).nextAll(".item");
+		
+						nextE.each(function(i,e){
+
+							if( parseInt( $(e).css("left") ) > linjie ){
+								return;
+							}
+		
+							$.tab($(e),"right");
+
+						});
+					}
+
+				});
+
+			});
+
+
+
+		});
+
+	</script>
+
+</head>
+<body>
+
+	<div class="outer">
+		
+		<div class="item red"></div>
+		<div class="item orange"></div>
+		<div class="item yellow"></div>
+		<div class="item green"></div>
+		<div class="item blue"></div>
+		<div class="item purple"></div>
+		<div class="item pink"></div>
+		
+	</div>
+
+</body>
+</html>

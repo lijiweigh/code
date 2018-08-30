@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	function Person(){
+
+	}
+	Person.prototype.name = "tom";
+	Person.prototype.age = 20;
+	Person.prototype.sayName = function(){
+		alert(this.name);
+	}
+
+	var person1 = new Person();
+	var person2 = new Person();
+
+	// 检测某个原型对象是否是某个实例的原型对象
+	// alert(Person.prototype.isPrototypeOf(person1));
+	// alert(Person.prototype.isPrototypeOf(person2));
+
+	//获取实例的原型对象
+	// alert(Object.getPrototypeOf(person1).name);
+	// alert(Object.getPrototypeOf(person2) == Person.prototype);
+
+	// 检测某个实例是否拥有自己的属性（不是从原型对象那里得到的）
+
+	// alert(person1.hasOwnProperty("name"));
+	person2.name = "mike";
+	// alert(person2.hasOwnProperty("name"));
+
+	// in : 通过某个对象能够访问某个属性时返回true
+	// alert("name" in person2);
+
+	// 取得对象上所有可枚举的属性 
+	var pros = Object.keys(Person.prototype);
+
+	// alert(pros);
+
+	var pros2 = Object.keys(person2);
+	// alert(pros2);
+
+	// 获取对象上的所有属性 包括不可枚举的
+
+	var pros3 = Object.getOwnPropertyNames(Person.prototype);
+	alert(pros3);
+	var pros4 = Object.getOwnPropertyNames(person2);
+	alert(pros4);
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box">
+
+        操作剪贴板
+        beforecopy在发生复制操作之前触发copy在发生复制操作时触发beforecut在发生剪切操作之前触发setDate()
+
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    var box = document.getElementById("box");
+    box.style.width = 200 + "px";
+    box.style.height = 200 + "px";
+    box.style.backgroundColor = "red";
+    box.onclick = function(e){
+        var e = e || event;
+//        console.log(e.target);
+//        console.log(e.currentTarget);
+    }
+
+    console.log(document.cookie);
+
+    box.onselect = function(){
+        console.log(box.selectionStart)
+        console.log(box.innerText.substring(box.selectionStart,box.selectionEnd))
+    }
+
+    var obj = {
+        name:"tom"
+    }
+
+    Object.defineProperties(obj,{
+        age:{
+            value:20,
+            enumerable:true
+        }
+    })
+
+    console.log(obj);
+
+//    var obj2 = {
+//        name:"obj2",
+//        age:20,
+//        sex:"male",
+//        [Symbol.iterator] : Array.prototype[Symbol.iterator]
+//    }
+//    let a = 2;
+//
+//    for(var o of obj2){
+//        console.log(o);
+//    }
+
+
+</script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>多级鼠标右键</title>
+
+	<style type="text/css">
+		
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		.main{
+			width: 200px;
+			display: none;
+			position: absolute;
+		}
+
+		.item1{
+			height: 25px;
+			line-height: 25px;
+			background-color: #eee;
+			color: orange;
+			text-indent: 5px;
+			position: relative;
+		}
+
+		p{
+			display: inline-block;
+			width: 180px;
+			/*color: #fff;*/
+		}
+
+		span{
+			display: inline-block;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 20px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+
+		}
+
+		.active{
+			background-color: #666;
+			color: #fff;
+		}
+
+		.more1, .more2, .more3{
+			display: none;
+			position: absolute;
+		}
+
+	</style>
+
+	<script src="C:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+
+			$(document).on("contextmenu",function(ev){
+				$(".main").css("left",ev.pageX);
+				$(".main").css("top",ev.pageY);
+				$(".main").show();
+				return false;
+
+			});	
+
+			$(".item1").each(function(i,e){
+
+				$(e).on("mouseover",function(){
+					$(this).addClass("active");
+					if( $(this).find("span").size() ){
+						
+						$(".more" +( $(".item1").has("span").index($(this)) +1 ) ).show().css("left",$(".main").width() - 5).css("top",$(this).index() * 25);
+
+					}
+				});
+
+				$(e).on("mouseout",function(){
+					$(this).removeClass("active");
+
+					$(".more" +( $(".item1").has("span").index($(this)) +1 ) ).hide()
+				});
+
+			});
+
+			$(".more").each(function(i,e){
+
+				$(e).on("mouseover",function(){
+
+					$(this).show();
+
+				});
+
+				$(e).on("mouseout",function(){
+
+					$(this).hide();
+
+				});
+
+			});
+
+
+			$(document).on("click",function(ev){
+				
+				$(".main").hide();
+			
+
+			});	
+
+		});
+
+	</script>
+</head>
+<body>
+
+	<div class="main">
+		<div class="item1"><p>菜单111111</p><span>></span></div>
+		<div class="item1"><p>菜单222222</p></div>
+		<div class="item1"><p>菜单333333</p></div>
+		<div class="item1"><p>菜单444444</p><span>></span></div>
+		<div class="item1"><p>菜单555555</p></div>
+		<div class="item1"><p>菜单666666</p><span>></span></div>
+		<div class="item1"><p>菜单777777</p></div>
+		
+		<div class="more1 more">
+			
+			<div class="item1"><p>more1</p><span>></span></div>
+			<div class="item1"><p>more1</p></div>
+			<div class="item1"><p>more1</p></div>
+			<div class="item1"><p>more1</p><span>></span></div>
+			<div class="item1"><p>more1</p></div>
+			<div class="item1"><p>more1</p><span>></span></div>
+			<div class="item1"><p>more1</p></div>
+
+		</div>
+
+		<div class="more2 more">
+			
+			<div class="item1"><p>more2</p><span>></span></div>
+			<div class="item1"><p>more2</p></div>
+			<div class="item1"><p>more2</p></div>
+			<div class="item1"><p>more2</p><span>></span></div>
+			<div class="item1"><p>more2</p></div>
+			<div class="item1"><p>more2</p><span>></span></div>
+			<div class="item1"><p>more2</p></div>
+
+		</div>
+
+
+		<div class="more3 more">
+			
+			<div class="item1"><p>more3</p><span>></span></div>
+			<div class="item1"><p>more3</p></div>
+			<div class="item1"><p>more3</p></div>
+			<div class="item1"><p>more3</p><span>></span></div>
+			<div class="item1"><p>more3</p></div>
+			<div class="item1"><p>more3</p><span>></span></div>
+			<div class="item1"><p>more3</p></div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

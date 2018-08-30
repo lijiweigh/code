@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <p v-upper-case='msg'></p>
+        <p v-lower-case='msg'></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        
+        Vue.directive('upper-case',function(el,bind){
+            el.innerHTML = bind.value.toUpperCase(); 
+        })
+        
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'dskfjDFKAJDKJdfajk'
+            },
+            directives: {
+                'lower-case': function(el,bind){
+                    el.innerHTML = bind.value.toLowerCase();
+                }
+            }
+
+        
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	// promise
+	{
+		// console.log("start")
+		// setTimeout(function(){
+		// 	console.log("timeout")
+		// },0)
+		// console.log("end")
+
+		let p1 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				// reject("error")
+			},3000)
+		})
+
+		let p2 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve(p1)
+			},1000)
+		})
+
+		// p2.then(function(suc){
+		// 	console.log(suc)
+		// },function(err){
+		// 	console.log(err)
+		// })
+	}
+	// promise end
+
+	// generator
+	{
+		function* gen1(){
+			console.log("调用next方法开始执行")
+			console.log("yield 1111111111111111111")
+			yield 1
+			console.log("yield 2222222222222222222")
+			yield 2
+			console.log("return 3")
+			return 3
+		}
+
+		let ite1 = gen1()
+		// console.log( ite1.next() )
+		// console.log( ite1.next() )
+		// console.log( ite1.next() )
+		// console.log( ite1.next() )
+
+		function* gen2(){
+			try{
+				yield 1
+				yield 2
+				yield 3
+				yield 4
+			}catch(e){
+				console.log(e)
+			}
+			return 5
+		}
+
+		// for(let item of gen2()){
+		// 	console.log(item)
+		// }
+
+		let ite2 = gen2()
+		// console.log([...ite2])
+		ite2.next()
+
+		try{
+			ite2.throw(11)
+			ite2.throw(22)
+			ite2.throw(33)
+			ite2.throw(new Error("a"))
+			ite2.throw(new Error("b"))
+			ite2.throw(new Error("c"))
+		}catch(e){
+			console.log(e)
+		}
+
+		let delegatedIterator = (function* () {
+		  yield 'Hello!';
+		  yield 'Bye!';
+		}());			
+		// console.log(delegatedIterator)				
+	}
+
+	// generator end
+
+	// async
+	{
+		async function fn1(){
+			let a = 1
+			let b = 2
+			// await Promise.resolve("abc")
+			// return await Promise.resolve("abc")
+			await Promise.reject("123")
+		}
+
+		// console.log(fn1())
+		// fn1().then( v => console.log(v) ).catch( e => console.log(e) )
+	}
+	// async end
+
+	// console.log("\u{42}")
+
+
+	// deepClone
+
+	function getType(obj){
+		let type = Object.prototype.toString.call(obj).slice(8,-1)
+		return type
+	}
+
+	function deepClone(obj){
+		let type = getType(obj)
+		let newObj = null
+		if(type === "Object"){
+			newObj = {}
+		}else if(type === "Array"){
+			newObj = []
+		}else{
+			return obj
+		}
+
+		for(let item in obj){
+			if(typeof obj[item] === "object"){
+				newObj[item] = deepClone(obj[item])
+			}else{
+				newObj[item] = obj[item]
+			}
+		}
+
+		return newObj
+	}
+
+	let o1 = {
+		name : "tom",
+		age : 20,
+		more : {sex:"male",height:180}
+	}
+
+	let o2 = deepClone(o1)
+	o2.more.sex = "female"
+	console.log(o1)
+	console.log(o2)
+	// deepClone end
+
+	// Array 
+
+	{
+		// let arrLike = {
+		// 	"0" : 22,
+		// 	"1" : 33,
+		// 	"2" : 55,
+		// 	length : 3
+		// }
+
+		let arrLike2 = {
+			[0] : 22,
+			[1] : 33,
+			[2] : 55,
+			length : 3
+		}
+
+
+
+		// let arr3 = [].map.call(arrLike,o => o)
+		// let arr3 = Array.prototype.slice.call(arrLike2)
+		// let arr3 = Array.from(arrLike2)
+		//let arr3 = [].concat.call(arrLike2)  不行 会把arrLike2 当成一个对象添加
+
+		let arr3 = Array.from(arrLike2,x => x * 2)
+		console.log(arr3)
+
+		let arr2 = arr3.copyWithin(0,1)
+		console.log(arr2)
+
+		let odd = arr2.find(x=>x%2==0)
+		console.log(odd)
+	}
+
+	// Array end
+
+	// 对象的扩展
+	{
+		let o1 = {
+			age : 20,
+			name : "tom"
+		}
+
+		let o2 = {
+			age : 22,
+			sex : "female"
+		}
+
+		console.log(Object.assign(o1,o2)  === o1)  // true
+
+		console.log(Object.assign(2))
+	}
+	// 对象的扩展  end
+
+	// console.log("abc".keys())
+	// console.log("abc".values())
+	// console.log([3,5,6].entries().next())
+	// for(let [index,val] of [3,6,8].entries()){
+	// 	console.log(`${index} : ${val}`)
+	// }
+
+	// let {...n} = {a:1,b:2}
+	// console.log(n)
+
+
+	// set and map
+	{
+		console.log(`-------------------------------set and map -------------------------`)
+		let s1 = new Set([3,5,7,8,"abc","efg"])
+		console.log(s1.size)
+		// console.log`${s1.size}`
+
+		s1.add("aaa").add("bbb")
+		s1.delete(3)
+		s1.delete("abc")
+		console.log(s1)
+		console.log(s1.has("bbb"))
+		// s1.clear()
+		// console.log(s1)
+		// for(let item of s1.keys()){
+		// 	console.log(item)
+		// }
+		// for(let item of s1.values()){
+		// 	console.log(item)
+		// }
+		// for(let [key,value] of s1.entries()){
+		// 	console.log(key,value)
+		// }
+
+		s1.forEach((value,key,arr)=>console.log(value,key))
+
+		let m1 = new Map([["name","Tom"],["age",20],[undefined,"undefined"]])
+		console.log(m1.size)
+		console.log(m1.get(undefined))
+		m1.set(Symbol.for("map"),"Symbol")
+		console.log(m1.has(Symbol.for("map")))
+
+	}
+	// set and map end
+
+</script>
+</body>
+</html>

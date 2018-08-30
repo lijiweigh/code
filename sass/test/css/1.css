@@ -1,0 +1,215 @@
+@charset "UTF-8";
+/* line 1, ../sass/1.scss */
+body {
+  height: 300px;
+  width: 500px;
+}
+
+/* line 8, ../sass/1.scss */
+.class {
+  color: red;
+  class: none;
+}
+
+/* 中文注释 */
+/* line 15, ../sass/1.scss */
+.funky {
+  font: 20px/24px;
+  font-weight: bold;
+  font-family: "微软雅黑";
+}
+
+/* line 25, ../sass/1.scss */
+.m, .m2 {
+  background: red;
+  color: orange;
+  font-size: 20px;
+}
+
+/* line 31, ../sass/1.scss */
+.m2 {
+  width: 20px;
+}
+
+/* line 36, ../sass/1.scss */
+.parent {
+  width: 500px;
+}
+/* line 38, ../sass/1.scss */
+.parent .firstsub {
+  width: 300px;
+}
+/* line 41, ../sass/1.scss */
+.second {
+  width: 100px;
+}
+
+/* line 44, ../sass/1.scss */
+.third {
+  height: 200px;
+}
+
+@media screen {
+  /* line 52, ../sass/1.scss */
+  .box {
+    width: 100px;
+  }
+}
+/* line 55, ../sass/1.scss */
+.box2 {
+  width: 200px;
+}
+/* line 62, ../sass/1.scss */
+.box .box3 {
+  width: 300px;
+}
+
+/* line 72, ../sass/1.scss */
+p {
+  font-size: 10px;
+}
+
+/* line 76, ../sass/1.scss */
+h2 {
+  border: 1px solid red;
+}
+
+/* line 87, ../sass/1.scss */
+.div {
+  item-1: 1px;
+  item-2: 2px;
+  item-3: 3px;
+}
+
+/* line 94, ../sass/1.scss */
+.Monday {
+  background: url(Mon.png);
+}
+
+/* line 94, ../sass/1.scss */
+.Tuesday {
+  background: url(Tues.png);
+}
+
+/* line 94, ../sass/1.scss */
+.Thirthday {
+  background: url(Thirth.png);
+}
+
+/* line 94, ../sass/1.scss */
+.Forthday {
+  background: url(Forth.png);
+}
+
+/* line 100, ../sass/1.scss */
+.class {
+  o1: o2;
+}
+
+/* line 100, ../sass/1.scss */
+.class {
+  s1: s2;
+}
+
+/* line 108, ../sass/1.scss */
+p-6 {
+  font-size: 30px;
+}
+
+/* line 108, ../sass/1.scss */
+p-5 {
+  font-size: 25px;
+}
+
+/* line 108, ../sass/1.scss */
+p-4 {
+  font-size: 20px;
+}
+
+/* line 108, ../sass/1.scss */
+p-3 {
+  font-size: 15px;
+}
+
+/* line 108, ../sass/1.scss */
+p-2 {
+  font-size: 10px;
+}
+
+/* line 108, ../sass/1.scss */
+p-1 {
+  font-size: 5px;
+}
+
+/* line 125, ../sass/1.scss */
+.div {
+  font-weight: bold;
+  font-size: 30px;
+  font-family: "微软雅黑";
+  color: #ccc;
+}
+
+/* line 141, ../sass/1.scss */
+.cl {
+  display: inline-block;
+}
+/* line 131, ../sass/1.scss */
+.cl:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* line 138, ../sass/1.scss */
+* html .cl {
+  height: 1px;
+}
+
+/* line 1, ../sass/2.scss */
+.clazz {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "微软雅黑";
+}
+
+/* line 1, ../sass/_3.scss */
+.partial {
+  color: #ccc;
+}
+
+/* line 148, ../sass/1.scss */
+.error, .serious {
+  color: red;
+  font-weight: bold;
+}
+
+/* line 153, ../sass/1.scss */
+.serious {
+  font-size: 20px;
+}
+
+/* line 172, ../sass/1.scss */
+.div a.ul {
+  text-decoration: none;
+}
+
+/* line 191, ../sass/1.scss */
+.child {
+  font: 20px/24px;
+}
+
+/* line 198, ../sass/1.scss */
+.child2 {
+  font: 20px/24px;
+}
+
+/* line 202, ../sass/1.scss */
+.child3 {
+  color: red;
+}
+
+/* line 216, ../sass/1.scss */
+.fn {
+  font-size: 120px;
+}

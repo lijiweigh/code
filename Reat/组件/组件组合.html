@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/prop-types.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+
+<script type="text/babel">
+
+    class App extends React.Component{
+        constructor(props){
+            super(props);
+
+            this.state = {
+                arr : ["北京","上海","广州"]
+            }
+
+            this.add = this.add.bind(this);
+        }
+
+        add(value){
+            // this.setState(this.state.arr.unshift(value))
+            const {arr} = this.state;
+            arr.unshift(value);
+            this.setState(arr);
+        }
+
+        render(){
+            const {arr} = this.state;
+            return(
+                <div>
+                    <AddTODO add={this.add} count={arr.length} />
+                    <TODOList arr={arr} />
+                </div>
+            )
+        }
+    }
+
+    class AddTODO extends React.Component{
+        constructor(props){
+            super(props);
+
+            this.addTODO = this.addTODO.bind(this);
+        }
+
+        addTODO(){
+            const value = this.myinput.value.trim();
+            if(!value){
+                alert("请输入内容！");
+                return;
+            }
+            this.props.add(this.myinput.value);
+            this.myinput.value = "";
+        }
+
+        render(){
+            return(
+                <div>
+                    <input ref={input=>this.myinput=input} type="text"/>
+                    <button onClick={this.addTODO}>add # {this.props.count + 1}</button>
+                </div>
+            )
+        }
+    }
+
+    AddTODO.propTypes = {
+        count:PropTypes.number.isRequired,
+        add:PropTypes.func.isRequired
+    }
+
+    class TODOList extends React.Component{
+        constructor(props){
+            super(props);
+        }
+
+        // update(){
+        //
+        // }
+
+        render(){
+            const {arr} = this.props;
+            return(
+                <div>
+                    <ul>
+                        {arr.map((item,index)=><li key={index}>{item}</li>)}
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    TODOList.propTypes = {
+        arr : PropTypes.array.isRequired
+    }
+
+    ReactDOM.render(<App />,document.getElementById("box"));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/animate.css">
+  <title>Document</title>
+
+  <style>
+    #app{
+      height: 200px;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    .transition-one-enter,
+    .transition-one-leave-to{
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    
+    .transition-one-enter-active,
+    .transition-one-leave-active{
+      transition: all 1s;
+    }
+  </style>
+
+</head>
+<body>
+  
+  <div id="app">
+    <button @click='isshow = !isshow'>toggle</button>
+    <!-- <transition name='transition-one'>
+      <div class="box" v-show="isshow">
+      </div>
+    </transition> -->
+    <!-- <transition 
+      enter-active-class='animated bounceOut'
+      leave-active-class='animated bounce'
+    >
+      <div class="box" v-show="isshow">
+      </div>
+    </transition> -->
+    <!-- <transition @enter='enter'
+     @leave='leave'>
+      <div class="box" v-show="isshow">
+      </div>
+    </transition> -->
+    <transition
+      appear
+      appear-active-class='animated bounceOut'>
+      <div class="box" v-show="isshow">
+      </div>
+    </transition>
+    <p>ppppppppppp</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isshow: true
+      },
+      methods: {
+        enter (el,done) {
+          el.style.opacity = 1;
+          done();
+        },
+        leave (el,done) {
+          el.style.opacity = 0.5;
+          done();
+        }
+      }
+    })
+  </script>
+</body>
+</html>

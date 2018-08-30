@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>日历封面</title>
+	<style type="text/css">
+		.out{
+			width: 140px;
+			height: 139px;
+			background-image:linear-gradient(#F5F5F7 0,#C9CCD6 50%,#F5F5F7 100%);
+			border: 1px solid rgba(0,0,0,0.3);
+			border-radius: 5px;
+			position: relative;
+			text-align: center;
+			line-height: 139px;
+			font-size: 100px;
+			float: left;
+			margin-right: 50px;
+		}
+		.line{
+			width: 100%;
+			height: 1px;
+			background-color: rgba(0,0,0,0.3);
+			position: absolute;
+			top: 69px;
+			box-shadow: 0 -1px 1px rgba(255,255,255,0.7),0 1px 1px rgba(255,255,255,0.7);
+		}
+		.bot1,.bot2{
+			width: 139px;
+			height: 10px;
+			position: absolute;
+			background-image: linear-gradient(#F5F5F7 0,#C9CCD6 50%,#F5F5F7 100%);
+			border: 1px solid rgba(0,0,0,0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+		.bot1{
+			bottom: -3px;
+		}
+		.bot2{
+			bottom: -5px;
+			z-index: -2;
+		}
+		.light{
+			height: 50%;
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			z-index: 2;
+			background-image: linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.3)) ;
+		}
+		.text{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var da = new Date();
+			var hour = document.querySelector(".time1 .text");
+			var minute = document.querySelector(".time2 .text");
+			var second = document.querySelector(".time3 .text");
+			console.log(da.getHours() + "," + da.getMinutes() + "," + da.getSeconds());
+			var timer = setInterval(function(){
+				da = new Date();
+				hour.innerHTML = da.getHours() < 10 ? "0"+da.getHours() : da.getHours();
+				minute.innerHTML = da.getMinutes() < 10 ? "0"+da.getMinutes() : da.getMinutes();
+				second.innerHTML = da.getSeconds() < 10 ? "0"+da.getSeconds() : da.getSeconds();
+			},1000);
+		}
+	</script>
+</head>
+<body>
+	<div class="out time1">
+		<div class="text"></div>
+		<div class="line"></div>
+		<div class="bot1"></div>
+		<div class="bot2"></div>
+		<div class="light"></div>
+	</div>
+	<div class="out time2">
+		<div class="text"></div>
+		<div class="line"></div>
+		<div class="bot1"></div>
+		<div class="bot2"></div>
+		<div class="light"></div>
+	</div>
+	<div class="out time3">
+		<div class="text"></div>
+		<div class="line"></div>
+		<div class="bot1"></div>
+		<div class="bot2"></div>
+		<div class="light"></div>
+	</div>
+</body>
+</html>

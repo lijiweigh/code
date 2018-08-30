@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript" src="../src/react.development.js"></script>
+<script type="text/javascript" src="../src/react-dom.development.js"></script>
+<script type="text/javascript" src="../src/babel.min.js"></script>
+
+<script type="text/babel">
+
+    /*
+  需求: 自定义组件, 功能说明如下
+    1. 显示h2标题, 初始文本为: 你喜欢我
+    2. 点击标题更新为: 我喜欢你
+  */
+
+    class Like extends React.Component{
+
+        constructor(props){
+            super(props);
+
+            this.state = {
+                isLike : true
+            }
+
+            this.change = this.change.bind(this);
+
+        }
+
+        change(){
+            let isLike = !this.state.isLike;
+            this.setState({
+                isLike
+            })
+        }
+
+        render(){
+            let text = this.state.isLike ? "我喜欢你" : "你喜欢我";
+            return <h2 onClick={this.change}>{text}</h2>
+        }
+
+    }
+
+    ReactDOM.render(<Like />,document.getElementById("box"));
+
+</script>
+</body>
+</html>

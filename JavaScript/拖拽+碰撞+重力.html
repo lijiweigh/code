@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>拖拽+碰撞+重力</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+			cursor: pointer;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+		
+		window.onload = function(){
+
+			var odiv = document.getElementById("box");
+
+			var lastx = 0;
+			var lasty = 0;
+			var speedx = 0;
+			var speedy = 0;
+
+			// alert(odiv.offsetHeight);
+
+			odiv.onmousedown = function(ev){
+				var event = ev || event;
+				var offx = event.clientX - odiv.offsetLeft;
+				var offy = event.clientY - odiv.offsetTop;
+				// alert(offx);
+
+				document.onmousemove = function(ev){
+					var event = ev || event;
+					var x = event.clientX - offx;
+					var y = event.clientY - offy;
+					if(x<0){
+						x = 0;
+					}else if(x > document.documentElement.clientWidth - odiv.offsetWidth){
+						x = document.documentElement.clientWidth  - odiv.offsetWidth;
+					}
+					if(y<0){
+						y = 0;
+					}else if(y > document.documentElement.clientHeight - odiv.offsetHeight){
+						y = document.documentElement.clientHeight  - odiv.offsetHeight;
+					}
+
+					odiv.style.left = x + "px";
+					odiv.style.top = y + "px";
+
+					speedx = event.clientX - lastx;
+					speedy = event.clientY - lasty;
+
+					lastx = event.clientX;
+					lasty = event.clientY;
+
+					// console.log(speedx + " : " + speedy);
+				}
+
+				document.onmouseup = function(ev){
+					var event = ev || event;
+					document.onmousemove = null;
+					document.onmouseup = null;
+					move(odiv,speedx,speedy,function(){});
+				}
+			}	
+
+		}
+
+		function move(obj,speedx,speedy,fn){
+
+			clearInterval(obj.timer);
+			var x = 0;
+			var y = 0;
+
+			obj.timer = setInterval(function(){
+
+				speedy += 5;
+
+				x = obj.offsetLeft + speedx;
+				y = obj.offsetTop + speedy;
+
+
+				if(x<0){
+					speedx = -speedx;
+					speedx *= 0.8;
+					x = 0;
+				}else if(x > document.documentElement.clientWidth - obj.offsetWidth){
+					speedx = -speedx;
+					speedx *= 0.8;
+					x = document.documentElement.clientWidth - obj.offsetWidth;
+				}
+
+				if(y<0){
+					speedy = -speedy;	
+					speedy *= 0.8;
+					speedx *= 0.8;
+					y = 0;
+				}else if(y > document.documentEl	ement.clientHeight - obj.offsetHeight){
+					speedy = -speedy;
+					speedy *= 0.8;
+					speedx *= 0.8;
+					y = document.documentElement.clientHeight - obj.offsetHeight;
+				}
+
+				obj.style.left = x + "px";
+				obj.style.top = y + "px";
+
+				console.log(speedx + " : " + speedy);
+				console.log(x + " : " + y);
+				console.log( obj.offsetLeft + " : " +  obj.offsetTop);
+
+				if(Math.abs(speedx) < 1){
+					speedx = 0;
+				}
+				if(Math.abs(speedy) < 4){
+					speedy = 0;
+				}
+
+				if( (Math.abs(speedx) < 1) && (Math.abs(speedy) < 1) && (y == document.documentElement.clientHeight - obj.offsetHeight) ){
+					speedy = 0;
+					speedx = 0;
+					clearInterval(obj.timer);
+					 fn && fn();
+				}
+
+			},30);
+
+		}
+
+	</script>
+</head>
+<body>
+
+	<div class="box" id="box"></div>
+
+</body>
+</html>

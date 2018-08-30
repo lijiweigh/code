@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>加号往上飘</title>
+
+	<style type="text/css">
+		.out{
+			width: 400px;
+			height: 50px;
+			margin: 350px auto;
+			border: 1px solid orange;
+			position: relative;
+		}
+		/*.out:after{
+			content: "";
+			display: block;
+			height: 100%;
+			width: 100%;
+			background-color: red;
+		}*/
+		span{
+			display: block;
+			height: 100%;
+			width: 10%;
+			text-align: center;
+			line-height: 50px;
+			position: absolute;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var aspan = document.getElementsByTagName("span");
+			var odiv = document.getElementsByTagName("div")[0];
+			var dir = "up";
+
+
+			
+
+
+
+			
+
+			for(var i=0;i<aspan.length;i++){
+				aspan[i].style.left = i*40 + "px";
+
+
+			}
+
+			// alert(getstyle(aspan[1],"opacity"));
+
+			odiv.onclick = function(){
+				var odivthis = this;
+				if(!odivthis.isworking && dir == "up"){
+					clearInterval(odivthis.divtimer);
+					var i = 0;
+					odivthis.isworking = true;
+
+					
+
+					odivthis.divtimer = setInterval(function(){
+
+						move(aspan[i],"top","-300px",2,function(){
+							if(i>=aspan.length){
+								odivthis.isworking = false;
+								dir = "down";
+							}
+						});
+
+						setattr(aspan[i],"opacity",0);
+						setbackground(odiv);
+
+						i++;
+						if(i>=aspan.length){
+							clearInterval(odivthis.divtimer);
+						}	
+					},160);
+				}else if(!odivthis.isworking && dir == "down"){
+					clearInterval(odivthis.divtimer);
+					var i = 0;
+					odivthis.isworking = true;
+
+					odivthis.divtimer = setInterval(function(){
+						move(aspan[i],"top","0",2,function(){
+							if(i>=aspan.length){
+								odivthis.isworking = false;
+								dir = "up";
+							}
+						});
+
+						setattr(aspan[i],"opacity",1);
+						setbackground(odiv);
+						i++;
+						if(i>=aspan.length){
+							clearInterval(odivthis.divtimer);
+						}	
+					},160);
+				}
+				
+			}
+
+		}
+
+		function setbackground(odiv){
+			var odivthis = this;
+			if(!odivthis.isworking){
+				odivthis.isworking = true;
+				var x = 0;
+				clearInterval(odiv.backtimer);
+			    odiv.backtimer = setInterval(function(){
+			    	
+			    	console.log(1);
+			    	
+			    		odiv.style.backgroundImage = "linear-gradient(to right,transparent "+(x-200)+"%,transparent "+(x-100)+"%,rgb(0,255,255) "+x+"%,transparent "+x+"%,transparent 100%";
+			    	
+			    	x++;
+			    	
+			    	if(x>200){
+			    		clearInterval(odiv.backtimer);
+			    		odivthis.isworking = false;
+			    	}
+
+			    },10);
+			}
+			
+		}
+
+		function setcolor(obj){
+			var color = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1,0];
+
+			var colori = 0;
+
+			var colortimer = setInterval(function(){
+
+				obj.style.backgroundColor = "rgba(0,255,255," + color[colori] +")";
+				colori++;
+				if(colori>=color.length){
+					clearInterval(colortimer);
+				}
+			},50);
+		}
+
+		function setattr(obj,attr,to,dofunction){
+			clearInterval(obj.objtimer);
+			obj.now =  getstyle(obj,attr);
+			obj.objtimer = setInterval(function(){
+				obj.style[attr] = parseFloat( getstyle(obj,attr) ) + (to - obj.now)/20;
+
+				
+
+				if(getstyle(obj,attr)==to){
+					clearInterval(obj.objtimer);
+				}
+			},80);
+
+			dofunction && dofunction();
+		}
+
+
+		function move(obj,attr,to,speed,dofunction){
+			if( parseInt(getstyle(obj,attr)) > parseInt(to) ){
+				speed = -speed;
+			}
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				obj.style[attr] = parseInt(getstyle(obj,attr)) + speed +"px";
+
+				if( ( (speed > 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) < speed)) || ( (speed < 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) > speed)) ){
+					obj.style[attr] = to +"px";
+					clearInterval(obj.timer);
+					dofunction && dofunction();
+				}
+			},10);
+		}
+
+		function getstyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+		}
+
+
+	</script>
+</head>
+<body>
+
+	<div class="out">
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		<span>+1</span>
+		
+	</div>
+
+
+</body>
+</html>

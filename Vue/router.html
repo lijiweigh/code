@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      height: 3000px;
+      /* position: relative; */
+    }
+    .router-tran-enter,
+    .router-tran-leave-to{
+      opacity: 0;
+      transform: translateX(50px)
+    }
+    
+    .router-tran-enter-active,
+    .router-tran-leave-active{
+      transition: all .2s;
+    }
+   
+    .img,
+    img{
+      width: 1366px;
+      height: 768px;
+    }
+    /* .toggle-img-enter{
+      opacity: 0;
+    }
+    .toggle-img-enter-active{
+      transition: all 1s;
+    } */
+  </style>
+</head>
+<body>
+
+  
+  
+  <div id="app">
+    <router-link to="/componentA" id="componentA">componentA</router-link>
+    <router-link to="/componentB">componentB</router-link>
+    <br/><br/>
+    <div style="height: 2000px;"></div>
+    <div class="img" id="imgP"> 
+        
+     <aabc></aabc>
+        
+    </div>
+    <br/><br/><br/>
+    <transition name="router-tran" mode="out-in">
+        <router-view id="routerview"></router-view>
+    </transition>
+  </div>
+
+  <div id="out">
+    out
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    
+    let abcdefg = document.getElementById("imgP");
+    let out = document.getElementById("out");
+   
+
+    const componentA = {
+      template: "<div style='width:200px;height:200px;background:red;'>componentA</div>"
+    }
+
+    const componentB = {
+      template: "<div style='width:200px;height:200px;background:orange;'>componentB</div>"
+    }
+
+    const router = new VueRouter({
+      routes: [
+       {
+         path: '/componentA',
+         component: componentA
+       },
+       {
+         path: '/componentB',
+         component: componentB
+       }, {
+         path: '/',
+         redirect: '/componentA'
+       }
+
+      ]
+    })
+
+      new Vue({
+        el: '#app',
+        router,
+        data() {
+          return {
+            imgsrc: '',
+            isshow: false
+          }
+        },
+        components: {
+          aabc: {
+            props:["imgsrc"],
+            template: ' <img id="thisimg" :src="imgsrc" alt="">'
+          }
+        },
+        methods: {
+          getOffsetTop(obj){
+            let offsettop = 0;
+            while (obj) {
+              offsettop += obj.offsetTop;
+              obj = obj.offsetParent;
+            }
+            return offsettop;
+          }
+        },
+        mounted() {
+        
+          window.onscroll = () => {
+            console.log(this.getOffsetTop(thisimg))
+            // if ( document.documentElement.scrollTop > (this.getOffsetTop(oimg) + 100) ) {
+            //   this.isshow = true;
+            //   this.imgsrc = 'C:/code/bootstrap/img/new/1.jpg';
+
+            // }
+            
+          }
+        }
+      })
+
+
+
+    // console.log ($("#img").offset().top )
+    // console.log(thisimg)
+    function getPos(obj) {
+		
+    var pos = {left:0, top:0};
+    
+    while (obj) {
+      pos.left += obj.offsetLeft;
+      pos.top += obj.offsetTop;
+      obj = obj.offsetParent;
+    }
+    
+    return pos;
+    
+  }
+
+console.log(getPos(out))
+console.log(getPos(thisimg))
+
+  </script>
+</body>
+</html>

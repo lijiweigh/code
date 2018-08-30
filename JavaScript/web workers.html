@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	alert(window.Worker);
+	
+	var worker = new Worker("worker.js");
+
+	worker.onmessage = function(event){
+		console.log(event.data);
+	}
+
+	worker.postMessage(20);
+</script>
+</body>
+</html>

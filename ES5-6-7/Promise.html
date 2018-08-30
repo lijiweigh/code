@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+		
+	// let promise = new Promise((resolve,reject) =>{
+	// 	console.log("promise");
+	// 	resolve("resolve");
+	// });
+
+	// promise.then(
+	// 	(done)=>{
+	// 		console.log(done);
+	// 	},
+	// 	(error)=>{
+	// 		console.log(error);
+	// 	}
+
+	// );
+
+	// console.log(1111);
+	// console.log(2222);
+	// console.log(11133331);
+	// console.log(44444);
+	
+	// for(let i =0;i<10;i++){
+	// 	console.log(i);
+	// }
+
+	// setTimeout(()=>{
+	// 	console.log("timeout");
+	// },2000);
+
+	// location.reload(true);
+
+	alert(1);
+	console.log(111);
+
+	let pro = new Promise((resolve,reject)=>{
+
+		let xhr = null;
+		if(window.XMLHttpRequest){
+			xhr = new XMLHttpRequest();
+		}else{
+			xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4){
+				if(xhr.status === 200){
+					resolve(xhr.responseText);
+				}else{
+					reject("error : " + xhr.responseText);
+				}
+			}
+		}
+
+		xhr.open("GET","promise.html",true);
+		xhr.send();
+
+	});
+
+	pro.then((success)=>{
+		console.log(success);
+	}).catch((error)=>{
+		console.log(error);
+	})
+
+
+
+</script>
+
+</body>
+</html>

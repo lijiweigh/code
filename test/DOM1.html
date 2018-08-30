@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM1</title>
+</head>
+<body>
+	
+	<div id="box">
+		<h3>title</h3>
+		<p>12345kjaflkjflkjf</p>
+		<button type="button">click</button>
+	</div>
+
+
+<script type="text/javascript">
+	
+	//节点
+	var box = document.getElementById("box");
+
+	// alert(box.nodeType);
+	if(box.nodeType == 1){
+		//如果是元素节点，则nodeName属性返回的是标签名，nodeValue值始终是null
+		// alert(box.nodeName);
+	}
+
+	// childNodes 返回一个nodeList 对象，是一个类数组，并且是动态的，随节点改变而改变  包含元素节点和非元素节点
+	var nodeList = box.childNodes;
+
+	// children 返回一个nodeList 对象，是一个类数组，并且是动态的，随节点改变而改变  只包含元素节点,
+	var childrenlist = box.children;
+
+	for(var i=0;i<nodeList.length;i++){
+		// 以下两种方式都可以获得 nodeList 的元素
+		// console.log(nodeList[i]);
+		console.log(nodeList.item(i).nodeType);
+
+	}
+
+	//将nodeList 转换成数组
+	function convertToArray(list){
+		var arr = null;
+		try{
+			arr = Array.prototype.slice.call(list,0); // IE8及以前会报错
+		}catch(e){
+			arr = new Array();
+			for(var i=0;i<list.length;i++){
+				arr.push(list[i]);
+			}
+		}
+
+		return arr;
+	}
+
+	// 同胞节点
+	// for(var i=0;i<nodeList.length;i++){
+	// 	if(nodeList[i].nextSibling === null ){
+	// 		alert("这是最后一个节点");
+	// 	}else if(nodeList[i].previousSibling === null){
+	// 		alert("这是第一个节点");
+	// 	}
+	// }
+
+	//nextElementSibling  previousElementSibling
+	// firstElementChild  lastElementChild
+
+	console.log(nodeList.firstChild === nodeList[0]);
+	console.log(nodeList.lastChild === nodeList[nodeList.length-1]);
+
+	// alert( box.hasChildNodes() );
+
+	//ownerDocument 表示这个节点所在的文档的文档节点
+	// alert(box.ownerDocument == document);
+
+
+	// 操作节点
+	// 添加节点到父元素子节点列表末尾，但不会允许同一个节点在列表中出现两次，所以添加原有的节点会将该节点剪切到列表末尾
+	// box.appendChild(box.firstElementChild);
+
+	// 同样执行剪切工作
+	// box.insertBefore(box.firstElementChild,box.lastElementChild);
+
+	// 同样执行剪切工作 并把被替换的节点删除
+	// box.replaceChild(box.firstElementChild,box.lastElementChild)
+
+	//删除节点
+	// box.removeChild(box.lastElementChild);
+
+	//其他方法
+	// cloneNode() 不会复制用JavaScript定义的属性
+	// 深度复制，复制本身及其整个子节点树
+	var deepClone = box.cloneNode(true);
+	// 浅度复制，只复制节点本身
+	var shallowClone = box.cloneNode(false);
+
+	// 由于解析器的实现或DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点上调用这个方法是，就会在该节点的后代节点中查找这两种情况，如果找到了空文本节点，则删除他，如果找到相邻的文本节点，则将它们合并为一个文本节点
+	box.normalize();
+
+	// document   document表示整个HTML页面
+	//document.ducumentElement 指向网页的<html>元素 获取html 元素的方法有两种
+	var html = document.documentElement;
+	var html2 = document.childNodes[1];
+	var html3 = document.firstElementChild;
+	// alert(html === html2);
+	// alert(html2 === html3);
+
+	// document.body 指向 <body> 元素
+
+	// document.title 获得<title>中的文本 可以获得或修改网页的标题，但不会改变<title> 标签
+	var initTitle = document.title;
+	document.title = "dom1";
+
+	//获取页面的URL
+	var url = document.URL;
+	//获取页面的域名  如URL为 http://www.baidu.com/2/124/index   时，域名为 www.baidu.com
+	var domain = document.domain;
+	// 获取链接到当前页面的那个页面的URL
+	var referrer = document.referrer;
+
+
+	var imgs = document.getElementsByTagName("img");
+
+	//imgs 是一个HTMLCollection 对象，可以通过索引值取得元素，也可以通过元素的name特性取得元素
+	//如某个img的name特性为 imgname 则可以这样获取
+	var img1 = imgs.namedItem("imgname");
+	//或
+	var img2 = imgs["imgname"];
+
+	//可以通过name特性（attribute）获取元素
+	var radioBoxs = document.getElementsByName("myRadio");
+
+	// 获取HTML中所有带name特性的 <a> 
+	document.anchors;
+	//获取HTML中所有带有href特性的 <a>
+	document.links;
+
+
+	//Elememt 
+	//HTML
+	box.id;  //获取或修改元素id
+	box.className;  //获取或修改元素的class
+	box.title;    //  获取或修改元素的title
+
+	// 操作特性  可以操作原有的特性和自定义特性
+	box.getAttrbute("class");
+	box.setAttrbute("class","myClass");
+	box.removeAttribute("id");
+
+
+	// 创建节点
+	var newNode = document.createElement("div");
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>百度文库评分</title>
+
+	<style type="text/css">
+		body{
+			font-size: 15px;
+			/*vertical-align: middle;*/
+		}
+		span{
+			display: inline-block;
+		}
+		.out{
+			display: inline-block;
+			margin: 50px 30%;
+		}
+		/*ul:after{
+			content: "";
+			display: table;
+			clear: both;
+		}*/
+		.ul{
+			display: inline-block;
+			margin:0;
+			padding: 0;
+			/*background-color: yellow;*/
+			cursor: pointer;
+		}
+		a{
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			/*float: left;*/
+			margin-right: 5px;
+			/*background-color: gray;*/
+			border: 1px solid #ccc;
+			/*cursor: pointer;*/
+		}
+		.rate{
+			margin-right: 20px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var ali = document.getElementsByTagName("a");
+			var rate = document.querySelector(".rate");
+			var tips = document.querySelector(".tips");
+			var ul = document.querySelector(".ul");
+			var colors = ["差","较差","中等","推荐","极力推荐"];
+			// ul.cancelBubble = true;
+			var click = 999;
+			for(var i =0;i<ali.length;i++){
+				ali[i].index = i;
+				ali[i].onmouseover = function(){
+					
+					tips.style.display = "none";
+					rate.innerHTML = colors[this.index];
+					if(this.index > 1){
+						paint(ali,this.index+1,"red",ali.length);
+					}else{
+						paint(ali,this.index+1,"gray",ali.length);
+					}
+
+				}
+
+				ali[i].onclick = function(){
+					click = this.index;
+					if(this.index > 1){
+						paint(ali,this.index+1,"red",ali.length);
+					}else{
+						paint(ali,this.index+1,"gray",ali.length);
+					}
+				}
+					
+					
+			
+
+				
+
+			}	
+			
+			// ul.onmouseout = function(){
+			// 	// this.cancelBubble = true; 
+			// 	paint(ali,ali.length,"transparent");
+			// 	rate.innerHTML = "";
+				
+			
+			// }
+
+			// ul.innerHTML = "1";
+
+			
+
+			function paint(obj,num,color,all){
+				for(var i =0; i<num; i++){
+					obj[i].style.backgroundColor = color;
+				}
+				for(var i =num;i<all;i++){
+					obj[i].style.backgroundColor = "transparent";
+				}
+			}
+
+		}
+	</script>
+
+</head>
+<body>	
+
+		<div class="out">
+			<span>总体评价:</span>
+			<div class="ul">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+			<span class="rate"></span>
+			<span class="tips">小提示：点击星星就能评分</span>
+		</div>
+
+</body>
+</html>

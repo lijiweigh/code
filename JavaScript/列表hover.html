@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>列表hover</title>
+
+	<style type="text/css">
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear:both;
+		}
+		.hole{
+			width: 200px;
+			height: 300px;
+			border: solid 1px red;
+			margin: 50px auto;
+		}
+		.nav{
+
+			border: 1px solid skyblue;
+		}
+		ul{
+			margin:0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		.nav li{
+			
+			float: left;
+			width: 33.3333333%;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+			cursor: pointer;
+		}
+		.nav li:hover{
+			background-color: red;
+		}
+		.content ul{
+			height: 270px;
+		}
+		.content li{
+			height: 8%;
+			text-align: center;
+			
+			cursor: pointer;
+		}
+		.u2,.u3{
+			display: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var nav = document.querySelectorAll(".nav ul li");
+			var content = document.querySelectorAll(".content ul");
+			var cli = document.querySelectorAll(".content li");
+
+			for(var i = 0;i<nav.length;i++){
+				nav[i].index = i;
+				nav[i].onmouseover = function(){
+					clearpro(content,"display","none");
+					content[this.index]["style"].display = "block";
+					
+				}
+			}
+			for(var i = 0;i<content.length;i++){
+				content[i].index = i;
+				// content[i].onmouseover = function(){
+
+				// }
+			}
+
+			// alert(cli.length);
+			for(var i=0;i<cli.length;i++){
+				cli[i].onmouseover = function(){
+					clearpro(cli,"height","8%");
+					this.style.height = "16%";
+				}
+			}
+
+
+
+
+		}
+
+		function clearpro(obj,name,value){
+			// alert(obj.length);
+			for(var i=0;i<obj.length;i++){
+				obj[i].style[name] = value;
+			}
+		}
+
+
+
+	</script>
+
+</head>
+<body>
+
+	<div class="hole">
+		<div class="nav clearfix">
+			<ul class="clearfix">
+				<li>新闻</li>
+				<li>科技</li>
+				<li>热点</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="u1">
+				<li>1.是代练就分手了科技</li>
+				<li>2.是代练就分手了科技</li>
+				<li>3.是代练就分手了科技</li>
+				<li>4.是代练就分手了科技</li>
+				<li>5.是代练就分手了科技</li>
+				<li>6.是代练就分手了科技</li>
+				<li>7.是代练就分手了科技</li>
+				<li>8.是代练就分手了科技</li>
+				<li>9.是代练就分手了科技</li>
+				<li>10.是代练就分手了科技</li>
+				
+			</ul>
+			<ul  class="u2">
+				<li>1.速度发顺丰三地方是否</li>
+				<li>2.速度发顺丰三地方是否</li>
+				<li>3.速度发顺丰三地方是否</li>
+				<li>4.速度发顺丰三地方是否</li>
+				<li>5.速度发顺丰三地方是否</li>
+				<li>6.速度发顺丰三地方是否</li>
+				<li>7.速度发顺丰三地方是否</li>
+				<li>8.速度发顺丰三地方是否</li>
+				<li>9.速度发顺丰三地方是否</li>
+				<li>10.速度发顺丰三地方是否</li>
+				
+			</ul>
+			<ul  class="u3">
+				<li>1.图玉兔土豪金开个会</li>
+				<li>2.图玉兔土豪金开个会</li>
+				<li>3.图玉兔土豪金开个会</li>
+				<li>4.图玉兔土豪金开个会</li>
+				<li>5.图玉兔土豪金开个会</li>
+				<li>6.图玉兔土豪金开个会</li>
+				<li>7.图玉兔土豪金开个会</li>
+				<li>8.图玉兔土豪金开个会</li>
+				<li>9.图玉兔土豪金开个会</li>
+				<li>10.图玉兔土豪金开个会</li>
+				
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>

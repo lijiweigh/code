@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟qq发消息</title>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+		}
+		p{
+			margin: 0 ;
+			padding: 0;
+		}
+	 	.box{
+	 		width: 250px;
+	 		margin: 50px auto;
+	 		border: 1px solid #ccc;
+	 		padding: 5px;
+	 	}
+	 	.head{
+
+	 	}
+	 	.head img{
+	 		vertical-align: middle;
+	 	}
+	 	.head,.head img{
+	 		width: 20px;
+	 		height: 20px;
+	 	}
+		.content{
+			height: 300px;
+			overflow-y: auto;
+			word-wrap:break-word;
+			padding-bottom: 5px;
+			position: relative;
+		}
+		.text{
+			margin: 0 10px;
+		}
+		.send{
+			border: 1px solid orange;
+			background-color: red;
+			color: #fff;
+		}
+		
+		.content .div1{
+			display: inline-block;
+			width: 20px;
+			
+			float: left;
+			
+		}
+		.content .div2{
+			display: inline-block;
+			width: 180px;
+			background-color: skyblue;
+			float: left;
+			
+		}
+		.content .div3{
+			display: inline-block;
+			width:180px;
+			
+			float: right;
+			background-color: skyblue;
+			
+		}
+		.content .div4{
+			display: inline-block;
+			width: 20px;
+		
+			float: right;
+			
+		}
+		.out{
+			position: relative;
+		}
+		.out:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var send = document.getElementById("send");
+			var content = document.getElementById("content");
+			var head = document.getElementById("head");
+			var text = document.getElementById("text");
+			var img = document.getElementById("img");
+
+			var imgs = ["img/笑脸.jpg","img/滑稽.jpg"];
+			var istrue = true;
+			head.onclick = function(){
+				if(istrue){
+					img.src = imgs[1];
+					istrue = false;
+				}else{
+					img.src = imgs[0];
+					istrue = true;
+				}
+			}
+
+			send.onclick = function(){
+				if(text.value == ""){
+					alert("写点什么吧~~");
+				}else{
+					if(istrue){
+						// content.innerHTML = "<p><img src = 'img/笑脸.png'></p>"  + "<p>"+text.value +"</p>" +  content.innerHTML;
+						content.innerHTML += "<div class='out'><span class='div1'><img src = 'img/笑脸.png'></span> <span class='div2'>"+text.value+"</span></div>"+ "<br />";
+						text.value = '';
+						
+					}else{
+						content.innerHTML += "<div class='out'><span class='div4'><img src = 'img/滑稽.png'></span> <span class='div3'>"+text.value+"</span></div>"+ "<br />";
+						text.value = '';
+					}
+				}
+
+			}
+
+		};
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="content" id="content"></div>
+		<a href="javascript:;" class="head" id="head"><img src="img/笑脸.jpg" id="img"></a>
+		<input type="text" name="" class="text" id="text">
+		<a href="javascript:;" class="send" id="send">发送</a>
+	</div>
+
+	<div width="200px" height="300px"></div>
+</body>
+</html>

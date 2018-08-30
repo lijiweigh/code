@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+
+		.box{
+			width:1000px;
+			height: 1000px;
+			border:1px solid #000;
+		}
+
+		.box li{
+			float: left;
+			width:25%;
+			height: 25%;
+			background-color: #ccc;
+			border:1px solid red;
+			margin: -1px;
+		}
+	</style>
+</head>
+<body>
+
+<ul class="box">
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+	<li href="#"></li>
+</ul>
+
+<script type="text/javascript">
+	// for(var ele in window){
+	// 	console.log(window[ele]);
+	// }
+
+	// var arr = [1,2,3,3,45,6,6];
+	// for(var i in arr){
+	// 	console.log(i);
+	// }
+	var odate = new Date();
+	odate.setDate(odate.getDate() + 5);
+	document.cookie = "name=leo";
+	document.cookie = "age=20;expires=" + odate.toUTCString();
+	// document.cookie = "name=jack;expires=" + (new Date()).setDate(odate.getDate() - 10);
+	console.log(document.cookie);
+</script>	
+</body>
+</html>

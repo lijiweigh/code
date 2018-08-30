@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<title>滚动监听2</title>
+
+	<style type="text/css">
+		body{
+			padding: 100px;
+			height: 2000px;
+			position:relative;
+		}
+
+		
+		
+	</style>
+
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<!-- <body data-spy="scroll" data-target="#myScroll2"> -->
+<body>
+
+	<nav  id="myScroll">
+		<ul class="nav nav-tabs nav-justified" >
+			<li><a role="button"  href="#one">one</a></li>
+			<li><a role="button"  href="#two">two</a></li>
+			<li><a role="button"  href="#three">three</a></li>
+			<li><a role="button"  href="#four">four</a></li>
+		</ul>
+	</nav>
+
+	<ul class="list-group" style="position: relative;height: 300px;overflow-y: auto;" data-spy="scroll" data-target="#myScroll">
+		
+		<li class="list-group-item" id="one" style="height: 400px;">one</li>
+		<li class="list-group-item" id="two" style="height: 400px;">two</li>
+		<li class="list-group-item" id="three" style="height: 400px;">three</li>
+		<li class="list-group-item" id="four" style="height: 400px;">four</li>
+
+
+	</ul>
+
+
+
+
+
+	<!-- <div  id="nav-pills">
+		<nav class="nav navbar-default nav-pills">
+			<li><a href="#one">one</a></li>
+			<li><a href="#two">two</a></li>
+			<li><a href="#three">three</a></li>
+			<li><a href="#four">four</a></li>
+			<li><a href="#five">five</a></li>
+		</nav>
+	</div>
+
+	<div class="list-group" data-spy="scroll" data-target="#nav-pills" style="position: relative; height: 200px;overflow: auto;" >
+		<div class="list-group-item" id="one">one</div>
+		<div class="list-group-item" id="two">two</div>
+		<div class="list-group-item" id="three">three</div>
+		<div class="list-group-item" id="four">four</div>
+		<div class="list-group-item" id="five">five</div>
+
+	</div>
+
+	<script type="text/javascript">
+		
+		$("#nav-pills").on("activate.bs.scrollspy",function(){
+			console.log(3);
+		});
+
+	</script> -->
+
+
+	<!-- <div class="navbar navbar-default navbar-fixed-top" id="myScroll2">
+		
+		<ul class="navbar-nav nav navbar-default">
+			<li><a href="#one">one</a></li>
+			<li><a href="#two">two</a></li>
+			<li><a href="#three">three</a></li>
+			<li><a href="#four">four</a></li>
+			<li><a href="#five">five</a></li>
+			<li><a href="#six">six</a></li>
+			<li><a href="#seven">seven</a></li>
+		</ul>
+
+	</div>
+
+	<ul id="myScroll">
+		<li id="one"><a href="#">one</a></li>
+		<li id="two"><a href="#">two</a></li>
+		<li id="three"><a href="#">three</a></li>
+		<li id="four"><a href="#">four</a></li>
+		<li id="five"><a href="#">five</a></li>
+		<li id="six"><a href="#">six</a></li>
+		<li id="seven"><a href="#">seven</a></li>
+	</ul>
+
+	<script type="text/javascript">
+		
+		var i = 0;
+
+		$("body").scrollspy({target: "#myScroll2"});
+
+		$("#myScroll2").on("activate.bs.scrollspy",function(){
+			console.log(i++);
+		});
+
+	</script> -->
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>热身</title>
+	<style type="text/css">
+		.box{
+			margin-top: 50px;
+			margin-left: 200px;
+			width: 400px;
+			
+		}
+		.set{
+			background-color: skyblue;
+			height: 100px;
+			color: #000;
+			font: 20px/100px "微软雅黑";
+			text-align: center;
+			border: 1px solid orange;
+		}
+		.setting{
+			display: inline-block;
+			height: 50px;
+			padding: 0 10px;
+			color: #fff;
+			background-color: #f00;
+			line-height: 50px;
+			margin-left: 20px;
+		}
+		.setarea{
+			height: 100px;
+			width: 100px;
+			border: 1px solid orange;
+		}
+		.layer{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(0,0,0,.5);
+			display: none;
+		}
+		.panel{
+			width: 300px;
+			height: 200px;
+			border: 5px #ccc solid;
+			position: absolute;
+			top: 50px;
+			right: 150px;
+			padding: 10px;
+			background-color: #fff;
+		}
+		.row{
+			padding: 1px;
+			line-height: 60px;
+			height: 25%;
+		}
+		/*.row:before{
+			content: "";
+			display: table;
+			clear: both;
+		}*/
+		.row a{
+			color: white;
+			/*display: inline-block;*/
+			padding: 0 5px;
+			height: 20px;
+			margin-right: 2px;
+			margin-top: 1px;
+			background: red;
+		}
+		a{
+			text-decoration: none;
+		}
+		#reset,#ok{
+			display: inline-block;
+			width: 20%;
+			height: 40px;
+			line-height: 40px;
+			background-color: #f00;
+			color: #fff;
+			text-align: center;
+
+		}
+		#reset{
+			margin-left: 50px;
+		}
+		#ok{
+			margin-left: 50px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var area = document.getElementById("area");
+			document.getElementById("setting").onclick = function(){
+				document.getElementById("layer").style.display = "block";
+			}
+			document.getElementById("ok").onclick = function(){
+				document.getElementById("layer").style.display = "none";
+			}
+			document.getElementById("red").onclick = function(){
+				area.style.backgroundColor = "red";
+			}
+			document.getElementById("yellow").onclick = function(){
+				area.style.backgroundColor = "yellow";
+			}
+			document.getElementById("blue").onclick = function(){
+				area.style.backgroundColor = "blue";
+			}
+			document.getElementById("onew").onclick = function(){
+				area.style.width = "100px";
+			}
+			document.getElementById("twow").onclick = function(){
+				area.style.width = "200px";
+			}
+			document.getElementById("threew").onclick = function(){
+				area.style.width = "300px";
+			}
+			document.getElementById("oneh").onclick = function(){
+				area.style.height = "100px";
+			}
+			document.getElementById("twoh").onclick = function(){
+				area.style.height = "200px";
+			}
+			document.getElementById("threeh").onclick = function(){
+				area.style.height = "300px";
+			}
+			document.getElementById("reset").onclick = function(){
+				area.style.height = "100px";
+				area.style.width = "100px";
+				area.style.backgroundColor = "transparent";
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="box">
+		<div class="set">请为下面的div设置样式:<a href="javascript:;" class="setting" id="setting">设置</a></div>
+		<div class="setarea" id="area"></div>
+	</div>
+	<div class="layer" id="layer">
+		<div class="panel">
+			<div class="row">请选择背景颜色：<a href="javascript:;" id="red">红</a><a href="javascript:;" id="yellow">黄</a><a href="javascript:;" id="blue">蓝</a></div>
+			<div class="row">请选择背景宽度：<a href="javascript:;" id="onew">100px</a><a href="javascript:;" id="twow">200px</a><a href="javascript:;" id="threew">300px</a></div>
+			<div class="row">请选择背景高度：<a href="javascript:;" id="oneh">100px</a><a href="javascript:;" id="twoh">200px</a><a href="javascript:;" id="threeh">300px</a></div>
+			<div class="row select">
+				<a href="javascript:;" class="reset" id="reset">重置</a>
+				<a href="javascript:;" class="ok" id="ok">确认</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

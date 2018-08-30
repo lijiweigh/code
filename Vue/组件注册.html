@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <my-component-a 
+        v-for="(item, index) in items" 
+        :key="index"
+        :item='item'
+        >
+
+        </my-component-a>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var componentA = {
+        props: ["item"],
+        template: `<li :key='item.id'>{{item.msg}}</li>`
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                {id:1,msg:'hello'},
+                {id:2,msg:'vue'},
+                {id:3,msg:'world'}
+            ]
+        },
+        components: {
+            "my-component-a": componentA
+        }
+    })
+</script>
+</body>
+</html>

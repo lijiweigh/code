@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>照片墙</title>
+
+	<style type="text/css">
+		.out{
+			width: 414px;
+			margin: 50px auto;
+			position: relative;
+		}
+		img{
+			margin:5px;
+			float: left;
+			z-index: 1;
+			width: 128px;
+			box-sizing: border-box;
+			
+		}
+		.active{
+			border: 1px dashed red;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+		
+		window.onload = function(){
+
+			var imgs = document.getElementsByTagName("img");
+			
+			var json = {};
+
+			var pos = [];
+
+			var zindex = 1;
+
+			for(var i = 0; i < imgs.length; i++){
+
+				pos.push({"left":imgs[i].offsetLeft,"top":imgs[i].offsetTop});
+
+				imgs[i].index = i;
+
+			}
+
+			for(var i =0; i < imgs.length; i++){
+
+				imgs[i].style.left = pos[i]["left"] + "px";
+				imgs[i].style.top = pos[i]["top"] + "px";
+
+				imgs[i].style.position = "absolute";
+				imgs[i].style.margin = "0";
+
+				
+
+				imgs[i].onmousedown = function(ev){
+
+					var obj = this;
+
+					var ev = ev || event;
+
+					var x = ev.clientX - this.offsetLeft;
+					var y = ev.clientY - this.offsetTop;
+
+					zindex++;
+
+					document.onmousemove = function(ev){
+
+						var ev = ev || event;
+
+						obj.style.zIndex = zindex;
+
+						obj.style.left = ev.clientX - x + "px";
+						obj.style.top = ev.clientY - y + "px";
+
+						for(var j=0;j<imgs.length;j++){
+
+							if(obj == imgs[j]){
+								continue;
+							} 
+
+							isnear(obj,imgs[j]) ? imgs[j].className = "active" : imgs[j].className = "";
+						}
+
+
+						return false;
+					}
+
+					document.onmouseup = function(){
+
+						document.onmousemove = null;
+
+						document.onmouseup = null;
+
+						var obj2 = null;
+						var predis = 99999999999;
+
+						for(var j=0;j<imgs.length;j++){
+
+							 imgs[j].className = "";
+
+							if(obj == imgs[j]){
+								continue;
+							} 
+
+							if( isnear(obj,imgs[j]) ){
+
+								if( distance(obj,imgs[j]) < predis ){
+									predis = distance(obj,imgs[j]);
+									obj2 = imgs[j];
+								}
+								
+								
+
+							}
+
+						}
+
+						if(obj2){
+							
+
+							move(obj,{"left":pos[obj2.index]["left"],"top":pos[obj2.index]["top"]});
+
+							move(obj2,{"left":pos[obj.index]["left"],"top":pos[obj.index]["top"]});
+
+							
+							var tem = obj.index;
+							obj.index = obj2.index;
+							obj2.index = tem;
+						}else{
+							move(obj,{"left":pos[obj.index]["left"],"top":pos[obj.index]["top"]});
+						}
+						
+					}
+
+					return false;
+
+				}
+
+			}
+
+		
+
+			function isnear(obj1,obj2){
+
+				if( obj1.offsetLeft + obj1.offsetWidth < obj2.offsetLeft || obj1.offsetTop + obj1.offsetHeight < obj2.offsetTop || obj1.offsetLeft > obj2.offsetLeft + obj2.offsetWidth || obj1.offsetTop > obj2.offsetTop + obj2.offsetHeight ){
+
+					return false;
+				}else{
+					return true;
+				}
+
+
+			}
+
+			function distance(obj1,obj2){
+
+				var a = obj1.offsetLeft - obj2.offsetLeft;
+				var b = obj1.offsetTop - obj2.offsetTop;
+
+				return parseInt( Math.sqrt(a*a + b*b) );
+
+			}
+
+			function move(obj,target){
+
+				var length = 0;
+
+				var num = 0;
+
+				var speed = {};
+
+				var init = 20;
+
+
+				clearInterval(obj.timer);
+
+				for(var attr in target){
+
+					length++;
+
+					speed[attr] = (-(getStyle(obj,attr) - target[attr])) > 0 ? Math.ceil(-(getStyle(obj,attr) - target[attr])/10) :  Math.floor(-(getStyle(obj,attr) - target[attr])/10);
+
+
+					
+					console.log(attr + " : " + speed[attr]);
+					
+				}
+
+				console.log(speed);
+				console.log(length);
+
+				obj.timer = setInterval(function(){
+
+					for(var attr in target){
+
+						if(  Math.abs( getStyle(obj,attr) - target[attr] ) <= Math.abs(speed[attr]) ){
+							obj.style[attr] = target[attr] + "px";
+							num++;
+						}else{
+
+							obj.style[attr] = getStyle(obj,attr) + speed[attr] + "px";
+
+						}
+
+					}
+
+					if(num == length){
+						clearInterval(obj.timer);
+					}else{
+						console.log(num);
+						num = 0;
+					}
+
+				},30);
+
+				
+
+			}
+
+			function getStyle(obj,attr){
+				return obj.currentStyle ? parseInt(obj.currentStyle[attr]) : parseInt(getComputedStyle(obj)[attr]);
+			}
+
+
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<div class="out">
+		<img src="img/表情/1.png">
+		<img src="img/表情/2.png">
+		<img src="img/表情/3.png">
+		<img src="img/表情/4.png">
+		<img src="img/表情/6.png">
+		<img src="img/表情/7.png">
+		<img src="img/表情/8.png">
+		<img src="img/表情/9.png">
+		<img src="img/表情/5.png">
+	</div>
+
+</body>
+</html>

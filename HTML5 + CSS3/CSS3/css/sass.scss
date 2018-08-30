@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+*{
+	margin:0;
+	padding:0;
+}
+$width:300px;
+$height:300px;
+$bac_col:orange red;
+.box{
+	width: $width;
+	height: $height;
+	background-color: nth($bac_col,2);
+}
+
+ul{
+	li{
+		background-color:nth($bac_col,1);
+	}
+	.item_3{
+		background-color: #c00;
+	}
+}
+
+ul li{
+	font:{
+		size: 20px;
+		weight: bold;
+		style: italic;
+	}
+}
+
+.item_{
+	&1{
+		background-color: #ccc;
+	}
+	&2{
+		background-color: #fff;
+	}
+}
+
+.item{
+	// .item_4{
+	// 	background-color: #888;
+	// }
+	// @at-root .item_4{
+	// 	background-color: #600;
+	// }
+
+	@at-root{
+		.item_5{
+			font-size: 30px;
+		}
+	}
+}
+
+@mixin box-sha($x,$y,$size,$col){
+	box-shadow:$x $y $size $col;
+}
+
+@mixin box-sha2($shadow...){
+	box-shadow:$shadow;
+}
+
+// .item{
+// 	@include box-sha(0,0,10px,red);
+// }
+
+.box{
+	@include box-sha2(0 0 20px skyblue);
+}
+
+.font{
+	font-size: 50px;
+}
+
+.item li{
+	@extend .font;
+}
+
+%col{
+	color: pink;
+}
+
+.item li{
+	@extend %col;
+}
+
+$path:"E:/code/HTML5 + CSS3/CSS3/img/tu.jpg";
+
+.box{
+	background-image: url(#{$path});
+}
+
+
+
+// @for $i from 1 through 6{
+// 	.item_#{$i}{
+// 		margin-top: $i * 5px;
+// 	}
+// }
+$a:1;
+@while($a <= 6){
+	.item_#{$a}{
+		margin-top: $a * 10px;
+	}
+	$a: $a + 1;
+}
+
+$col2: red,orange,yellow,green,blue,pink,purple;
+
+@each $i in $col2{
+	.item{
+		color: $i;
+	} 
+}
+
+
+
+
+
+
+
+
+
+

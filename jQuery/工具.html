@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>工具</title>
+</head>
+<body>
+	
+	<div id="box1" style="width: 100px;height: 100px;background-color: red;"></div>
+	<ul id="ul1">
+		<li>aaaaaaaaaaaaa</li>
+		<li>bbbbbbbbbbbbb</li>
+		<li>cccccccccccccc</li>
+		<li>ddddddddddddddddd</li>
+		<li>aaaaaaaaaaaaa</li>
+	</ul>
+
+
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	
+	// jQuery.extend([deep], target, object1, [objectN])
+	/*
+		用一个或多个其他对象来扩展一个对象，返回被扩展的对象。
+		如果不指定target，则给jQuery命名空间本身进行扩展。这有助于插件作者为jQuery增加新方法。 如果第一个参数设置为true，则jQuery返回一个深层次的副本，递归地复制找到的任何对象。否则的话，副本会与原对象共享结构。 未定义的属性将不会被复制，然而从对象的原型继承的属性将会被复制。
+
+		target:一个对象，如果附加的对象被传递给这个方法将那么它将接收新的属性，如果它是唯一的参数将扩展jQuery的命名空间。
+		object1:待合并到第一个对象的对象。
+		objectN:待合并到第一个对象的对象。
+		
+		deep:如果设为true，则递归合并。
+		target:待修改对象。
+		object1:待合并到第一个对象的对象。	
+		objectN:待合并到第一个对象的对象。
+	*/
+
+	let obj1 = {
+		name:"tom",
+		istrue: false,
+		age : 20
+	}
+
+	let obj2 = {
+		name : "mike",
+		istrue : true,
+		age : 21,
+		grade : 5
+	}
+
+	let obj = $.extend(obj2,obj1)   // 如果有相同的属性，则后面的会覆盖前面的
+
+	console.log(obj)
+	console.log(obj1)
+
+	let obj3 = {
+		name:"tom",
+		istrue: false,
+		age : 20,
+		arr : [3,5,6,6]
+	}
+
+	obj = $.extend(obj1,obj3)
+	console.log(obj)
+	obj = $.extend(true,obj1,obj3)
+	console.log(obj)
+
+	// jQuery.grep(array, callback, [invert])  使用过滤函数过滤数组元素。此函数至少传递两个参数：待过滤数组和过滤函数。过滤函数必须返回 true 以保留元素或 false 以删除元素。array:待过滤数组。callback:此函数将处理数组每个元素。第一个参数为当前元素，第二个参数而元素索引值。此函数应返回一个布尔值。另外，此函数可设置为一个字符串，当设置为字符串时，将视为“lambda-form”（缩写形式？），其中 a 代表数组元素，i 代表元素索引值。如“a > 0”代表“function(a){ return a > 0; }”。invert:如果 "invert" 为 false 或为设置，则函数返回数组中由过滤函数返回 true 的元素，当"invert" 为 true，则返回过滤函数中返回 false 的元素集。
+
+	let arr = [3,5,6,1]
+	arr = $.grep(arr,function(item,index){
+		return item > 1
+	})
+
+	// jQuery.makeArray(obj)  将类数组对象转换为数组对象。类数组对象有 length 属性，其成员索引为 0 至 length - 1。实际中此函数在 jQuery 中将自动使用而无需特意转换。
+
+	let weiArr = {}
+	weiArr[0] = 0
+	weiArr[1] = 1
+	weiArr.length = 2
+	console.log(weiArr.map)
+
+	weiArr = $.makeArray(weiArr)
+	console.log(weiArr.map)
+
+	// jQuery.map(arr|obj,callback)  将一个数组中的元素转换到另一个数组中。作为参数的转换函数会为每个数组元素调用，而且会给这个转换函数传递一个表示被转换的元素作为参数。转换函数可以返回转换后的值、null（删除数组中的项目）或一个包含值的数组，并扩展至原始数组中。
+
+	arr = $.map(arr,function(item){
+		return item + 5
+	})
+
+	console.log(arr)
+
+	// jQuery.inArray(value,array,[fromIndex])  确定第一个参数在数组中的位置，从0开始计数(如果没有找到则返回 -1 )。
+
+	console.log($.inArray(8,arr,1))
+
+	// jQuery.toArray()   把jQuery集合中所有DOM元素恢复成一个数组。
+	console.log($("#ul1 li").toArray())
+
+	// jQuery.merge(first,second)  合并两个数组 返回的结果会修改第一个数组的内容——第一个数组的元素后面跟着第二个数组的元素。要去除重复项，请使用$.unique()
+
+	
+	console.log($.merge([0,3,5],[0,6,7]))
+
+	// jQuery.unique(array)  删除数组中重复元素。只处理删除DOM元素数组，而不能处理字符串或者数字数组。
+	console.log($.unique($("li")))
+
+	// jQuery.parseJSON(json)  接受一个JSON字符串，返回解析后的对象。
+	let j = $.parseJSON('{"name":"tom","age":20}')
+	console.log(j,j.name)
+
+	// jQuery.proxy(function,context)	
+	/*
+		返回一个新函数，并且这个函数始终保持了特定的作用域。
+		当有事件处理函数要附加到元素上，但他们的作用域实际是指向另一个对象时，这个方法最有用了。此外，最妙的是，jQuery能够确保即便你绑定的函数是经过jQuery.proxy()处理过的函数，你依然可以传递原先的函数来准确无误地取消绑定。请参考下面的例子。
+
+		function:将要被改变作用域的函数
+		context:一个object，那个函数的作用域会被设置到这个object上来。
+		
+		context:一个object，那个函数的作用域会被设置到这个object上来。
+		name：改变上下文中的函数名(这个函数必须是前一个参数 'context' 对象的属性)
+
+	*/
+
+	function fn(){
+		alert(this.name)
+	}
+
+	let obj4 = {
+		name : "Tom",
+		click : function(){
+			alert(this.name)
+		}
+	}
+
+	fn = $.proxy(fn,obj4)
+	// fn()
+
+	// $("#box1").click( $.proxy(fn,obj4) )
+	// 等价于
+	$("#box1").dblclick( $.proxy(obj4,"click") )
+
+	// jQuery.contains(container,contained) 一个DOM节点是否包含另一个DOM节点。
+	console.log( $.contains($("#ul1")[0],$("#ul1 li:first")[0]) )
+
+	// jQuery.type(obj)  检测obj的数据类型。
+	console.log($.type(null),typeof(null))  // null object
+	console.log($.type([]),typeof([]))  //  array object
+
+	// jQuery.isArray(obj) 测试对象是否为数组。
+
+	//jQuery.isFunction(obj)	测试对象是否为函数。注意：jQuery 1.3以后，在IE浏览器里，浏览器提供的函数比如'alert'还有 DOM 元素的方法比如 'getAttribute' 将不认为是函数
+
+	// jQuery.isEmptyObject(obj)  jQuery 1.4 新增。测试对象是否是空对象（不包含任何属性）。jQuery 1.4 中，这个方法既检测对象本身的属性，也检测从原型继承的属性（因此没有使用hasOwnProperty）。
+
+	function Super(){
+		this.name = "tom"
+	}
+
+	function Sub(){
+
+	}
+
+	Sub.prototype = new Super()
+	let sub = new Sub()
+
+	console.log($.isEmptyObject(sub))  // false
+	console.log($.isEmptyObject({}))  // true
+
+
+	// jQuery.isNumeric(value)  确定它的参数是否是一个数字。$.isNumeric() 方法检查它的参数是否代表一个数值。如果是这样，它返回 true。否则，它返回false。该参数可以是任何类型的
+	console.log("-------------------------")
+	console.log( $.isNumeric("") )  // false
+	console.log( $.isNumeric("22") )	//true
+	console.log( $.isNumeric(22) )  //true
+	console.log( $.isNumeric(null) ) // false
+	console.log( $.isNumeric(NaN) ) // false
+
+	// jQuery.trim(str)   去掉字符串起始和结尾的空格。
+	console.log("----"+ $.trim("   trim   ") +"---")
+
+	// jQuery.error(message)  接受一个字符串，并且直接抛出一个包含这个字符串的异常。这个方法的主要目的是提供给插件开发人员，让他们可以重载这个方法，并以更好的方式显示错误，或者提供更多信息。
+
+
+	// $.fn.jquery  代表 jQuery 版本号的字符串。.jquery 属性是通过 jQuery 原型赋值的，通过使用它的别名 $.fn 进行引用。它是一个含有 jQuery 版本号的字符串，例如 "1.5.0" 或 "1.4.4".
+
+	console.log($("#ul1").jquery,$.fn.jquery)
+
+	// 可以用来判断一个对象是否是jQuery对象
+	if(document.getElementById("ul1").jquery){
+		console.log("这是一个jQuery对象")
+	}else{
+		console.log("这不是一个jQuery对象")
+	}
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+</script>
+</body>
+</html>

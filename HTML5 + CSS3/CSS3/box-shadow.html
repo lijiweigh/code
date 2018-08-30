@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>box-shadow</title>
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 400px;
+			margin:30px auto;
+			background-color: skyblue;
+
+			/*box-shadow: 0 0 10px red;*/
+			/*box-shadow: 0 0 10px 5px red;*/
+			/*box-shadow: inset 0 0 10px red;*/			/* inset 是往内的阴影 */
+			box-shadow: -10px 0 10px red,0 10px 10px yellow,10px 0 10px orange,0 -10px 10px blue;  /* 多个条件可以用逗号隔开*/
+			 /*
+                box-shadow: x y size 增强（可选参数） color;
+                            x轴  y轴   大小（不允许使用负值） 增强（可选参数）  颜色
+
+            */
+		}
+	</style>
+</head>
+<body>
+	<div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+
+    function setCookie(name,value,day){
+        if(day){
+            var date = new Date();
+            date = date.setDate(date.getDate() + day);
+            document.cookie = name + "=" + value + ";" + date;
+        }else{
+            document.cookie = name + "=" + value;
+        }
+    }
+
+    function getCookie(name){
+        var all = document.cookie.split("; ");
+        for(var i in all){
+            var cookie = all[i].split("=");
+            if(cookie[0] === name){
+                return cookie[1];
+            }
+        }
+        return "";
+    }
+
+    setCookie("age",20);
+    setCookie("aaa","abc");
+    setCookie("bbb","dklfj");
+    setCookie("ccc","sfda");
+    setCookie("eee","2sfasf0");
+    setCookie("fff","2sfaf0");
+    setCookie("ggg","2sasffd0");
+
+    console.log(document.cookie)
+    console.log(getCookie("aaa"))
+
+</script>
+</html>

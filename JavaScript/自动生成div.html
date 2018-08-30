@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自动生成div</title>
+	<style type="text/css">
+		#all{
+			width: 590px;
+			height: 590px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+		}
+		#all div{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			text-align: center;
+			line-height: 50px;
+			font-size: 30px;
+		}
+		#all div:nth-child(5n + 1){
+			background-color: red;
+		}
+		#all div:nth-child(5n + 2){
+			background-color: orange;
+		} 
+		#all div:nth-child(5n + 3){
+			background-color: yellow;
+		}
+		#all div:nth-child(5n + 4){
+			background-color: green;
+		}
+		#all div:nth-child(5n){
+			background-color: blue;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var all = document.getElementById("all");
+			function start(){
+				all.innerHTML = "";
+				for(var i = 0; i < 100; i++){
+					all.innerHTML += "<div style='left: " +( i%10 * 60 + "px;") + " top: " + (parseInt(i/10) * 60 + "px") + " '> "+i+"</div>";
+				}
+			};
+			var btn = document.getElementById("btn");
+			// alert(btn);
+			btn.onclick = start;
+			
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="生成100个div" id="btn">
+	<div id="all"></div>
+</body>
+</html>

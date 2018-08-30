@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>多组图片切换</title>
+
+	<style type="text/css">
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.panel1,.panel2{
+			padding: 10px;
+			box-shadow: 0 0 5px #ccc;
+			text-align: center;
+		}
+		.panel1 img{
+			height: 350px;
+
+		}
+		.panel2 img{
+			height: 350px;
+		}
+		.panel1{
+			float: left;
+			margin-left: 100px;
+		}
+		.panel2{
+			float: right;
+			margin-right: 100px;
+		}
+		p{
+			text-align: center;
+		}
+		li{
+			float: left;
+			margin-right: 50px;
+			list-style: none;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: skyblue;
+		}
+		.panel1 ul{
+			margin-left: 145px;
+		}
+		.panel2 ul{
+			margin-left: 17px;
+		}
+		.active{
+			background-color: orange;
+		}
+		.but{
+			
+			display: inline-block;
+			margin: 30px auto;
+			margin-left: 616px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			// var img1 = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+
+			// var img2 = ["img/1.png","img/2.png","img/3.png","img/4.png"];
+			var imgs = [["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"],
+			["img/1.png","img/2.png","img/3.png","img/4.png"]];
+
+			var aimg = document.getElementsByTagName("img");
+			var ap = document.getElementsByTagName("p");
+			var aSpan = document.getElementsByTagName("span");
+			var aLi1 = document.querySelectorAll(".panel1 li");
+			var aLi2 = document.querySelectorAll(".panel2 li");
+			var abtn = document.getElementsByTagName("input");
+
+		    // alert(imgs[1].length);
+
+			// for(var i=0;i<img1.length;i++){
+			// 	img1.index = i;
+			// }
+			// for(var i=0;i<img2.length;i++){
+			// 	img2.index = i;
+			// }
+
+			var indexs = [0,0];
+			// var index1 = 0;
+			// var index2 = 0;
+
+			// function fn(){
+			// 	ap[0].innerHTML = "第1组第"+(index1 +1)+"张";
+			// 	ap[1].innerHTML = "第2组第"+(index2 +1)+"张";
+			// 	for(var i=0;i<aLi1.length;i++){
+			// 		aLi1[i].className = "";
+			// 	}
+			// 	for(var i=0;i<aLi2.length;i++){
+			// 		aLi2[i].className = "";
+			// 	}
+			// 	aLi1[index1].className = "active";
+			// 	aLi2[index2].className = "active";
+			// 	aSpan[0].innerHTML = (index1 + 1) + "/" + img1.length;
+			// 	aSpan[1].innerHTML = (index2 + 1) + "/" + img2.length;
+			// 	aimg[0].src = img1[index1];
+			// 	aimg[1].src = img2[index2];
+			// };
+
+			function fn(){
+				ap[0].innerHTML = "第1组第"+(indexs[0] +1)+"张";
+				ap[1].innerHTML = "第2组第"+(indexs[1] +1)+"张";
+				for(var i=0;i<aLi1.length;i++){
+					aLi1[i].className = "";
+				}
+				for(var i=0;i<aLi2.length;i++){
+					aLi2[i].className = "";
+				}
+				aLi1[indexs[0]].className = "active";
+				aLi2[indexs[1]].className = "active";
+				aSpan[0].innerHTML = (indexs[0] + 1) + "/" + imgs[0].length;
+				aSpan[1].innerHTML = (indexs[1] + 1) + "/" + imgs[1].length;
+				aimg[0].src = imgs[0][indexs[0]];
+				aimg[1].src = imgs[1][indexs[1]];
+			};
+
+			fn();
+			
+			
+			// aimg[0].onclick = function(){
+			// 	index1++;
+			// 	if(index1 == img1.length){
+			// 		index1 = 0;
+			// 	}
+			// 	fn();
+			// }
+			// aimg[1].onclick = function(){
+			// 	index2++;
+			// 	if(index2 == img2.length){
+			// 		index2 = 0;
+			// 	}
+			// 	fn();
+			// }
+
+			for(var i=0;i<aimg.length;i++){
+				aimg[i].index = i;
+				aimg[i].onclick = function(){
+					indexs[this.index]++;
+					if(indexs[this.index] == imgs[this.index].length){
+						indexs[this.index] = 0;
+					}
+				fn();
+				}
+			}
+
+
+			// for(var i=0;i<abtn.length;i++){
+			// 	aimg[i].index = i;
+			// 	aimg[i].onclick = function(){
+			// 		indexs[this.index]++;
+			// 		if(indexs[this.index] == imgs[this.index].length){
+			// 			indexs[this.index] = 0;
+			// 		}
+			// 	fn();
+			// 	}
+			// }
+
+
+			abtn[0].onclick = function(){
+				indexs[0]--;
+				indexs[1]--;
+				if(indexs[0]<0){
+					indexs[0] = imgs[0].length - 1;
+				}
+				if(indexs[1]<0){
+					indexs[1] = imgs[1].length - 1;
+				}
+				fn();
+			}
+
+			abtn[1].onclick = function(){
+				indexs[0]++;
+				indexs[1]++;
+				if(indexs[0]==imgs[0].length){
+					indexs[0] = 0;
+				}
+				if(indexs[1] == imgs[1].length){
+					indexs[1] = 0;
+				}
+				fn();
+			}
+		}
+	</script>
+</head>
+
+
+<body>
+
+	<div class="but">
+		<input type="button" value="上一组">
+		<input type="button" value="下一组">
+	</div>
+	<div class="clearfix">
+		<div class="panel1">
+			<img src="img/1.jpg" class="img">
+			<p class="content">第一组第一张</p>
+			<span>1/4</span>
+			<ul class="clearfix " >
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+	<div class="panel2">
+		<img src="img/1.png" class="img">
+		<p class="content">第一组第一张</p>
+		<span>1/4</span>
+		<ul class="clearfix " >
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	</div>
+	
+
+</body>
+</html>

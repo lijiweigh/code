@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	
+	// 创建对象方式：
+
+	// 1 工厂模式
+	/*function CreatPerson(name,age,job){
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.job = job;
+		o.sayName = function(){
+			alert(this.name);
+		}
+
+		return o;
+	}
+
+	var p1 = CreatPerson("tom",20,"doctor");*/
+
+	function CreatePerson(name,age){
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.getName = function(){
+			return this.name;
+		}
+
+		return o;
+	}
+
+	var p1 = CreatePerson("tom",20);
+
+	// 2 构造函数模式
+
+	/*function Person2(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.sayName = function(){
+			alert(this.name);
+		}
+	}
+
+	var p2 = new Person2("tom",20,"doctor");*/
+
+	function Person2(name,age){
+		this.name = name;
+		this.age = age;
+		this.getName = function(){
+			return this.name;
+		}
+	}
+
+	var p2 = new Person2("mike",22);
+
+
+	// 3 原型模式
+
+	/*function Person3(){};
+
+	Person3.prototype.name = "tom";
+	Person3.prototype.age = 18;
+	Person3.prototype.job = "doctor";
+	Person3.prototype.sayName = function(){
+		alert(this.name);
+	}
+
+	var p3 = new Person3();*/
+
+	function Person3(){}
+	Person3.prototype.name = "merry";
+	Person3.prototype.age = 21;
+	Person3.prototype.getName = function () {
+		return this.name;
+	}
+
+	var p3 = new Person3();
+	console.log(p3.getName())
+
+	// 4 混合2 和 3
+	/*function Person4(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+	}
+
+
+	Person4.prototype.sayName = function(){
+		alert(this.name);
+	}
+
+	var p4 = new Person4("tom",20,"doctor");*/
+
+	function Person4(name,age){
+		this.name = name;
+		this.age = age;
+	}
+
+	Person4.prototype.getName = function(){
+		return this.name;
+	}
+
+	var p4 = new Person4("aaa",11);
+
+	// 5 动态原型模式
+
+	/*function Person5(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+
+		if(typeof this.sayName != "function"){
+			Person5.prototype.sayName = function(){
+				alert(this.name);
+			}
+		}
+	}
+
+	var p5 = new Person5("tom",20,"doctor");*/
+
+	function Person5(name,age){
+		this.name = name;
+		this.age =age;
+		if(typeof this.getName != "function"){
+			Person5.prototype.getName = function () {
+				return this.name;
+			}
+		}
+	}
+
+	var p5 = new Person5("bbb",20);
+
+	//6 寄生构造函数模式
+	/*function Person6(name,age,job){
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.job = job;
+		o.sayName = function(){
+			alert(this.name);
+		}
+
+		return o;
+	}
+
+	var p6 = new Person6("tom",20,"doctor");*/
+
+
+
+	//7 稳妥构造函数模式： 没有公共属性，其方法也不引用this
+
+	/*function Person7(name,age,job){
+		var o = new Object();
+
+		var name = name;
+		var age = age;
+		var job = job;
+
+		o.sayName = function(){
+			alert(name);
+		}
+
+		return o;
+	}
+
+	var p7 = Person7("tom",20,"doctor");*/
+
+
+
+
+
+
+</script>
+</body>
+</html>

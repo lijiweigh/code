@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>回调函数</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	
+	// function fn1(value){
+	// 	console.log("fn1: " + value + " , this: " + this)
+	// }
+
+	// let cal = $.Callbacks();
+	// cal.add(fn1)
+	// cal.fire("foo")
+	// console.log(cal.fired())
+
+	// cal.fireWith(window,["bar"])
+
+	let callbacks = $.Callbacks()
+
+	function fn1(value){
+		console.log(this + " , " +value)
+	}
+
+	function fn2(value){
+		console.log("fn2 : " + value)
+	}
+	// callbacks.add(callbacks)  向回调列表中添加一个回调或回调集合
+	console.log("----------------callbacks.add(callbacks)-------------------")
+	callbacks.add(fn1)
+	callbacks.fire("hello")
+	callbacks.add(fn2)
+	callbacks.fire("world")
+
+	// callbacks.disable()  禁用回调列表中的回调 
+	console.log("----------------callbacks.disable()-------------------")
+	// callbacks.disable()
+	callbacks.fire("fire")  // 无反应
+	callbacks.add(fn1)
+	callbacks.fire("fire")  // 无反应
+
+	// callbacks.empty()  从列表中删除所有的回调.   如果前面callback被disable了，那么这个方法返回的也是false
+	console.log("----------------callbacks.empty()-------------------")
+	console.log(callbacks.has(fn1),callbacks.has(fn2))
+	callbacks.empty()
+	console.log(callbacks.has(fn1),callbacks.has(fn2))
+
+	// callbacks.fire(arguments) 
+
+	// callbacks.fired()  测试callbacks是否fire过
+	console.log("----------------callbacks.fired()-------------------")
+	console.log(callbacks.fired())
+	let callbacks2 = $.Callbacks()
+	console.log(callbacks2.fired())
+
+	// callbacks.fireWith(obj,args)  以给定的obj为this，给定的args为参数，触发回调函数   args为数组形式
+	console.log("----------------callbacks.fireWith(obj,args)-------------------")
+	callbacks.add(fn1)
+	callbacks.fireWith(window,["window"])
+
+	// callbacks.has(callback)  判断回调列表中是否含有指定的回调函数
+	console.log("----------------callbacks.has(callback)-------------------")
+	console.log(callbacks.has(fn1),callbacks.has(fn2))
+
+	// callbacks.lock()  锁定在其当前状态的回调列表。 
+	console.log("----------------callbacks.lock()-------------------")
+	callbacks.lock()
+	callbacks.fire("fn1")
+	callbacks.add(fn2)   // 无效
+	callbacks.fire("fn2")   // 无效
+
+	// callbacks.locked()   确定回调列表是否被锁定
+	console.log("----------------callbacks.locked()-------------------")
+	console.log(callbacks.locked())
+
+	// callbacks.remove(callback)  删除回调列表中的指定回调函数
+	console.log("----------------callbacks.remove(callback)-------------------")
+	callbacks2.add(fn1)
+	callbacks2.fire("fn1")
+	callbacks2.remove(fn1)
+	callbacks2.fire("fn1")   // 无响应
+	console.log(callbacks2.has(fn1))  // false
+
+	// $.Callbacks(flags)
+
+	/*
+		flags:
+			once:           will ensure the callback list can only be fired once (like a Deferred)
+ 		 *                 	确保这个callback列表只会被执行一次
+		 *
+		 *  memory:         will keep track of previous values and will call any callback added
+		 *                  after the list has been fired right away with the latest "memorized"
+		 *                  values (like a Deferred)
+		 *                  会记住前一次执行时的参数，执行后被添加的callback会被立即执行，并且传入被记住的之前的参数
+		 *
+		 *  unique:         will ensure a callback can only be added once (no duplicate in the list)
+		 *                  确保一个callback之会被添加一次
+		 *
+		 *  stopOnFalse:    interrupt callings when a callback returns false
+		 *                  当某个callback返回false时，终止执行callback列表
+	*/
+
+	// once
+
+	console.log("----------------once-------------------")
+	let callbacks3 = $.Callbacks("once")
+	callbacks3.add(fn1)
+	callbacks3.fire("once")
+	callbacks3.fire("once")  // 无反应
+	callbacks3.add(fn2)
+	callbacks3.fire("once2")  // 无反应
+
+	// memory
+	console.log("----------------memory-------------------")
+	callbacks3 = $.Callbacks("memory")
+	callbacks3.add(fn1)
+	callbacks3.fire("memory")
+	callbacks3.add(fn2)   // fn2直接执行
+
+	// callbacks.lock() 过的，如果以memory为参数创建的callback，则添加新回调函数时仍然可以执行
+	callbacks3.lock()
+	callbacks3.add(fn1)  // fn1 可以执行
+	callbacks3.disable()
+	callbacks3.add(fn2)  // fn2 不执行
+
+	// unique
+	console.log("----------------unique-------------------")
+	callbacks3 = $.Callbacks("unique")
+	callbacks3.add(fn1)
+	callbacks3.add(fn1)
+	callbacks3.fire("unique")
+
+	callbacks = $.Callbacks()
+	callbacks.add(fn2)
+	callbacks.add(fn2)
+	callbacks.fire("no unique")  // fn2 执行两次，因为回调队列中有两个fn2
+
+	// stopOnFalse
+	console.log("----------------stopOnFalse-------------------")
+	function fn3(value){
+		console.log("fn3 : " + value)
+		return false
+	}
+
+	callbacks = $.Callbacks("stopOnFalse")
+	callbacks.add(fn1)
+	callbacks.add(fn3)
+	callbacks.add(fn2)
+	callbacks.fire("stopOnFalse")  // fn2 不执行，因为fn3中返回了false
+
+
+</script>
+</body>
+</html>

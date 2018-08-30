@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>
+    <input type="text" placeholder="abc" style="color:red;padding-left: 20px;width: 100px;height: 20px;font-size: 16px;">
+  </div>
+  <br/>
+  <br/>
+  <!-- <div>
+    <input type="text"><br/>
+  </div> -->
+  <div>
+    <textarea name="" id="" cols="30" rows="10" placeholder="aaaaaa" style="padding-left: 20px;width: 100px;height: 200px;font-size: 16px;"></textarea>
+  </div>
+  <!-- <div>
+    <textarea name="" id="" cols="30" rows="10" ></textarea>
+  </div> -->
+
+
+  <script>
+
+    function placeholder() {
+      if ('placeholder' in document.createElement('input')) {
+        return;
+      }
+
+      var elements = document.querySelectorAll('[placeholder]');
+      console.log(elements);
+
+      for (var i = 0; i < elements.length; i++) {
+        var span = document.createElement("span");
+        elements[i].parentNode.style.position = 'relative';
+        span.style.position = 'absolute';
+        // span.className = 'placeholder';
+        span.style.lineHeight = 1;
+        span.innerHTML = elements[i].getAttribute('placeholder');
+        span.style.color = getStyle(elements[i], 'color');
+        span.style.left = getStyle(elements[i], 'paddingLeft');
+        span.style.fontSize = getStyle(elements[i], 'fontSize');
+
+        var paddingt = parseInt(getStyle(elements[i], 'paddingTop'));
+        var bordert = parseInt(getStyle(elements[i], 'borderTopWidth'));
+        // console.log(paddingt,bordert);
+        span.style.top = paddingt + bordert + 'px';
+        span.style.height = getStyle(elements[i], 'fontSize');
+        span.style.width = getStyle(elements[i], 'width')
+
+        elements[i].parentNode.appendChild(span);
+
+        (function (span, i) {
+          elements[i].onfocus = function () {
+            elements[i].onpropertychange = function () {
+              if (this.value !== '') {
+                span.style.display = 'none';
+              }
+            }
+          }
+        })(span, i);
+
+        (function (span, i) {
+          elements[i].onblur = function () {
+
+            if (this.value === '') {
+              span.style.display = 'inline';
+            } else {
+              span.style.display = 'none';
+            }
+            elements[i].onpropertychange = null;
+          }
+        })(span, i);
+      }
+
+      function getStyle(obj, attr) {
+        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+      }
+
+    }
+
+    placeholder();
+
+  </script>
+
+</body>
+
+</html>

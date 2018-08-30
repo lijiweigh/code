@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    fn("aaaaabbbbbbcccddeeeeeeeeeeeeeeeggggg");
+
+    function fn(str){
+        var obj = {};
+
+        for(var c in str){
+            if(!obj[str[c]]){
+                obj[str[c]] = 1;
+            }else{
+                obj[str[c]]++;
+            }
+        }
+
+//        Array.prototype.max.apply(null,obj);
+        var max = 0;
+        var arr = Object.keys(obj);
+//        for(var key in arr){
+//            console.log(obj[arr[key]]);
+//            if(obj[arr[key]] > max){
+//                max = obj[arr[key]];
+//            }
+//        }
+
+        for(var key in obj){
+            console.log(obj[key]);
+            if(obj[key] > max){
+                max = obj[key];
+            }
+        }
+
+        console.log(obj);
+        console.log(max);
+
+    }
+
+</script>
+</body>
+</html>

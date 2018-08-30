@@ -1,0 +1,29 @@
+.wrap{
+  .first{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    -webkit-animation: move 1s both;
+    -o-animation: move 1s both;
+    animation: move 1s both;
+  }
+}
+
+@keyframes move {
+  
+  from{
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  
+  to{
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}

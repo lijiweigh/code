@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+
+
+
+<script type="text/javascript">
+
+	Ajax("get","1.html","",function(str){
+		console.log(str);
+	})
+
+	
+	function Ajax(method,url,data,fn){
+
+		var xhr = null;
+
+		if(window.XMLHttpRequest){
+			xhr = new XMLHttpRequest();
+		}else{
+			xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xhr.onreadystatechange = function(){
+
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					fn && fn(xhr.responseText);
+				}else{
+					alert("error : " + xhr.status);
+				}
+			}
+
+		}
+
+		if(method == "get" && data){
+			url += "?" + data;
+		}
+
+		xhr.open(method,url,true);
+
+		if(method == "get"){
+			xhr.send();
+		}else{
+			xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+			xhr.send(data);
+		}
+	}
+
+</script>
+</body>
+</html>

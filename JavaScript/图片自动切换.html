@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片自动切换</title>
+
+	<style type="text/css">
+		.out{
+			width: 400px;
+			height: 300px;
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			/*width: 1600px;*/
+			position: absolute;
+		}
+		.clearfix:after{
+			content: "";
+			display: table;
+			clear:both;
+		}
+		a{
+			display: block;
+			width: 400px;
+			height: 300px;
+		}
+		img{
+			width: 400px;
+			height: 300px;
+
+		}
+		.text{
+			height: 100px;
+			width: 400px;
+			word-break: break-word;
+			background-color: rgba(0,0,0,.5);
+			color: #fff;
+			position: relative;
+			/*top: -100px;*/
+		}
+		.activ{
+			top: -100px;
+		}
+		li{
+			float: left;
+			/*position: relative;*/
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var oul = document.getElementsByTagName("ul")[0];
+			var adiv = document.querySelectorAll(".text");
+
+			oul.style.width = adiv.length * parseInt(getstyle(adiv[0],"width")) + "px";
+
+			var liwidth = parseInt(getstyle(adiv[0],"width"));
+
+			var i = 0;
+			oul.isworking = false;
+			oul.speed = 8;
+
+		    // adiv[i].adivtimer = setInterval(function(){
+
+		    // });
+		   
+
+			oul.oultimer = setInterval(function(){
+				if(!oul.isworking){
+
+
+
+					
+
+
+					console.log(oul.speed);
+					oul.isworking = true;
+
+					move(adiv[i],"top","0px",4,function(){
+
+						i++;
+
+						if(i>=adiv.length){
+							i = 0;
+							oul.speed = 20;
+							setTimeout(function(){
+								oul.speed = 8;
+							},2000);
+						}
+
+						move(oul,"left",-i * liwidth + "px",oul.speed,function(){
+							oul.isworking = false;
+							move(adiv[i],"top","-100px",4);
+						});
+					});
+
+					
+
+					
+				}
+				
+
+			},3000);
+
+		}
+
+
+
+
+		function move(obj,attr,to,speed,dofunction){
+			if( parseInt(getstyle(obj,attr)) > parseInt(to) ){
+				speed = -speed;
+			}
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				obj.style[attr] = parseInt(getstyle(obj,attr)) + speed +"px";
+
+				if( ( (speed > 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) < speed)) || ( (speed < 0)&&(parseInt(to) - parseInt(getstyle(obj,attr)) > speed)) ){
+					obj.style[attr] = to +"px";
+					clearInterval(obj.timer);
+					dofunction && dofunction();
+				}
+			},10);
+		}
+
+		function getstyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+		}
+	</script>
+</head>
+<body>
+	<div class="out">
+		<ul class="clearfix">
+			<li>
+				<a href="javascript:;"><img src="img/1.jpg"></a>
+				<div class="text activ">fasflksdjflksjflksdjfaslkfjslkfj;lsdfasfsfasff</div>
+			</li>
+
+			<li>
+				<a href="javascript:;"><img src="img/2.jpg"></a>
+				<div class="text">fasflksdjflksjflksdjfaslkfjslkfj;lf</div>
+			</li>
+
+			<li>
+				<a href="javascript:;"><img src="img/3.jpg"></a>
+				<div class="text">fasflksdjflksjflksdjfaslkfjslkfj;lf</div>
+			</li>
+
+			<li>
+				<a href="javascript:;"><img src="img/4.jpg"></a>
+				<div class="text">fasflksdjflksjflksdjfaslkfjslkfj;lf</div>
+			</li>
+			
+
+		</ul>
+	</div>
+
+	<input type="date" name="date" />
+</body>
+</html>

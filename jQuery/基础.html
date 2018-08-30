@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jquery</title>
+
+	<style type="text/css">
+		/*div{
+			height: 50px;
+			background: red;
+		}*/
+
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+		body{
+			height: 2000px;
+		}
+
+		/*.box{
+			width: 100px;
+			height: 100px;
+			padding: 20px;
+			position: absolute;
+			border:10px solid red; 
+			left: 20px;
+		}
+
+		.box2{
+			width: 50px;
+			height: 50px;
+			padding: 20px;
+			position: absolute;
+			border:10px solid red; 
+			left: 20px;
+			margin-left: 20px;
+		}*/
+
+		.box1, .box2{
+			height: 100px;
+			width: 100px;
+			
+		}
+
+		.box1{
+			background: red;
+		}
+
+		.box2{
+			background: orange;
+		}
+
+	</style>
+
+	<script src="E:\code\jQuery\jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+
+		// window.onload = function(){
+		// 	alert(document.body.clientWidth);	
+		// }
+		
+		$(function(){
+
+			//alert( $("#div1").attr("title") );
+
+			//$("#div1").attr("class","div1");
+
+			// $("div").css("background","yellow");
+			//$("div").filter(".box1").css("background","green");
+
+			//$("div").not(".box1").css("background","orange");
+
+			//$("div").has("span").css("background","orange");
+
+			//$("div").has(".box1").css("background","skyblue");
+
+			// $("p").next().css("background","orange");
+
+			// $("p").prev().css("background","skyblue");
+
+			// $("ul").find(".li2").css("background","orange");
+
+			// $("ul").find("li").eq(3).html("eq(3)");
+
+			// alert( $("ul").find(".li3").index() );
+
+
+			// console.log( $("div").width() );
+			// console.log( $("div").innerWidth() );
+			// console.log( $("div").outerWidth() );
+			// console.log( $("div").outerWidth(true) );
+
+			//$("span").insertBefore($(".box"));
+
+			//$("<p>pppp</p>").insertAfter($("span"));
+
+			//$("div").before($("<p>pppp</p>"));
+
+			// $("<p>ppppppppp</p>").appendTo($("div"));
+
+			// $("<p>ppppppppp</p>").prependTo($("div"));
+
+			// $("span").remove();
+
+			// $("div").click(function(){
+
+			// 	alert("click");
+
+			// });
+
+			// $("div").on("click",function(){
+			// 	alert("click");
+			// });
+
+			// $("div").on("click mouseover",function(){
+			// 	alert("click mouseover");
+			// })
+
+			// $("div").on(
+			// {
+			// 	"click":function(){
+			// 		alert("click");
+			// 		$("div").off();
+			// 	},
+			// 	"mouseover":function(){
+			// 		alert("mouseover");
+			// 	}
+			// }
+			// );
+
+
+			// $(document).on("scroll",function(){
+			// 	console.log($(window).scrollTop());
+			// })
+
+
+			// $(document).click(
+			// function(ev){
+			// 	alert(ev.pageY);
+			// });
+
+			// $(document).keydown(function(ev){
+			// 	alert(ev.which);
+			// });
+
+
+
+			// alert($(".box2").offset().left);
+
+			//alert($(".box2").position().left);
+
+			// $(".box2").parent().css("background","yellow");
+
+			//$(".box2").offsetParent().css("background","orange");
+
+			//alert($("input").val());
+
+			//$("input").val(456)
+
+			// alert($("li").size());
+
+			// $("li").each(function(i,elem){
+			// 	$(elem).html(i);
+			// });
+
+			$(".box1").hover(function(){
+
+				//$(".box2").hide(1000);
+				//$(".box2").fadeOut(1000);
+				//$(".box2").slideUp(1000);
+				$(".box2").fadeTo(1000,0.2);
+
+
+			},function(){
+
+				//$(".box2").show(1000);
+				//$(".box2").fadeIn(1000);
+				//$(".box2").slideDown(1000);
+				$(".box2").fadeTo(1000,1);
+
+			});
+
+		});
+
+
+
+	</script>
+</head>
+<body>
+
+<!--
+	<div id="div1" title="title1">div1</div>
+-->
+
+	<!-- <div class="box1">box1</div>
+	<div>div<span class="box1">span</span></div> -->
+
+	<!-- <div>div</div>
+	<p>pppppppppppp</p>
+	<q>qqqqqqqqqqqqqq	</q>
+
+	<ul>
+		<li class="li1">aaaaaaaaaa</li>
+		<li class="li2">bbbbbbbbbb</li>
+		<li class="li3">cccccccccc</li>
+		<li class="li4">dddddddddd</li>
+		<li class="li5">eeeeeeeeee</li>
+
+	</ul> -->
+
+	<!-- <div class="box">
+
+		<div class="box2"></div>
+
+	</div> -->
+
+	<!-- <input type="button" name="" value="123">
+
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul> -->
+
+	<div class="box1"></div>
+	<div class="box2"></div>
+	
+</body>
+</html>
